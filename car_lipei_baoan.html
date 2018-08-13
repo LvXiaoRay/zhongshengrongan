@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-理赔报案</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/jquery-labelauty.css">
+</head>
+<body>
+<div class="wrapper">
+
+    <!--container begin 内容开始-->
+    <div class="container" style=";min-height: 450px">
+
+        <hr style="width: 95%;margin-left: 2.5%;margin-bottom: 10px;visibility: hidden">
+
+        <div style="width: 90%;margin-left: 5% ">
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        <p style="">事故报案登记列表:</p>
+                    </td>
+                    <td>
+                        <button style="margin-left: 80%" onclick="xinzeng()" class="download_btn">新增报案</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <table class="layui-table" id="table_statistics" style="margin-left: 5%;width:90%;text-align: center">
+
+            <tr style="text-align: center; background-color: #c4d69e">
+                <th style="text-align: center">序号</th>
+                <th style="text-align: center">报案时间</th>
+                <th style="text-align: center">经办人姓名</th>
+                <th style="text-align: center">经办人电话</th>
+                <th style="text-align: center">理赔报案号</th>
+                <th style="text-align: center">定损人姓名</th>
+                <th style="text-align: center">是否需要协助</th>
+                <th style="text-align: center">是否结案</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+        </table>
+
+
+        <div class="tcdPageCode"></div>
+        <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+    </div>
+
+
+    <!--container 内容结束end-->
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/jquery-labelauty.js"></script>
+<script>
+    // 跳转至新增报案页面
+    function xinzeng() {
+        window.location.href= "car_lipei_baoan_new.html";
+    }
+</script>
+<script>
+    var str = ""
+    var vars = {};
+    // 简单的字符串作为变量名
+    var varname = {}
+    //批量定义
+    var personnel_list;
+
+
+    _get('/service/claim/vehicle/report/', {}).then(function (data) {
+        if (data.code === 0) {
+            data_Object = data.data;
+            // localStorage.setItem("personnel_list_length",data.data.count);
+
+            if (data.data.all_count > 10) {
+                page_num = Math.ceil(data.data.all_count / 10);
+                $(".tcdPageCode").createPage({
+                    pageCount: page_num,
+                    current: 1,
+                    backFn: function (p) {
+                        _get('/service/claim/vehicle/report/', {
+                            limited: 10,
+                            offset: (p - 1) * 10
+                        }).then(function (data) {
+                            if (p === page_num) {
+                                for (i = 9; i >= data.data.count; i--) {
+                                    for (j = 0; j < 9; j++) {
+                                        document.getElementById(i + "_" + j).style.display = "none";
+                                    }
+                                }
+                            }
+                            else {
+                                for (i = 0; i < 10; i++) {
+                                    for (j = 0; j < 9; j++) {
+                                        document.getElementById(i + "_" + j).style.display = "table-cell"
+                                    }
+                                }
+
+                            }
+                            for (i = 0; i < 10; i++) {
+                                document.getElementById(i + "_0").innerHTML = (p - 1) * 10 + i + 1;
+                                document.getElementById(i + "_1").innerHTML = data.data.list[i].Accident_time;
+                                document.getElementById(i + "_2").innerHTML = data.data.list[i].Claimer_name;
+                                document.getElementById(i + "_3").innerHTML = data.data.list[i].Claimer_phone;
+                                document.getElementById(i + "_4").innerHTML = data.data.list[i].lipei_baoan_id;
+                                document.getElementById(i + "_5").innerHTML = data.data.list[i].dingsun_name;
+                                document.getElementById(i + "_6").innerHTML = data.data.list[i].is_need_help;
+                                if (data_Object.list[i].is_jiean === null){
+                                    document.getElementById(i + "_7").innerHTML = "未填写";
+                                } else {
+                                    document.getElementById(i + "_7").innerHTML = data.data.list[i].is_jiean;
+                                }
+                                document.getElementById(i+"_8").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_lipei_baoan_detail.html?'+i+'">查看详情</a></span>'
+                            }
+                        }).fail(function () {
+                            alert('无法链接网络！');
+                        });
+                    }
+                });
+                for (var i = 0; i < 10; i++) {
+                    varname = "td" + i;
+                    vars[varname] = ""
+                }
+                for (var i = 0; i < 10; i++) {
+                    for (var j = 0; j < 9; j++) {
+                        vars['td' + i] += '<td id="' + i + '_' + j + '" style="height: 37px!important;"></td>'
+                    }
+                    //vars['td'+i]+='<td id="'+i+'_'+5+'" style="height: 37px!important;"><span style="margin-right: 10px">查看个人信息</span></td>'
+                }
+                for (var i = 0; i < 10; i++) {
+                    str += '<tr style="height: 37px!important;">' + vars['td' + i] + '</tr>';
+                }
+                document.getElementById("table_statistics").innerHTML += str;
+                for (i = 0; i < 10; i++) {
+                    document.getElementById(i + "_0").innerHTML = (p - 1) * 10 + i + 1;
+                    document.getElementById(i + "_1").innerHTML = data.data.list[i].Accident_time.split("T")[0];
+                    document.getElementById(i + "_2").innerHTML = data.data.list[i].Claimer_name;
+                    document.getElementById(i + "_3").innerHTML = data.data.list[i].Claimer_phone;
+                    document.getElementById(i + "_4").innerHTML = data.data.list[i].lipei_baoan_id;
+                    document.getElementById(i + "_5").innerHTML = data.data.list[i].dingsun_name;
+                    document.getElementById(i + "_6").innerHTML = data.data.list[i].is_need_help;
+                    if (data_Object.list[i].is_jiean === null){
+                        document.getElementById(i + "_7").innerHTML = "未填写";
+                    } else {
+                        document.getElementById(i + "_7").innerHTML = data.data.list[i].is_jiean;
+                    }
+                    document.getElementById(i+"_8").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_lipei_baoan_detail.html?'+i+'">查看详情</a></span>'
+                }
+
+            }
+            else {
+                $(".tcdPageCode").createPage({
+                    pageCount: 1,
+                    current: 1,
+                    backFn: function (p) {
+                        alert(p);
+                    }
+                });
+                for (i = 0; i < data.data.count; i++) {
+                    for (var i = 0; i < data.data.count; i++) {
+                        varname = "td" + i;
+                        vars[varname] = ""
+                    }
+                    for (var i = 0; i < data.data.count; i++) {
+                        for (var j = 0; j < 9; j++) {
+                            vars['td' + i] += '<td id="' + i + '_' + j + '" style="height: 37px!important;"></td>'
+                        }
+                    }
+                    for (var i = 0; i < data.data.count; i++) {
+                        str += '<tr style="height: 37px!important;">' + vars['td' + i] + '</tr>';
+                    }
+                    document.getElementById("table_statistics").innerHTML += str;
+                    for (i = 0; i < data.data.count; i++) {
+                        document.getElementById(i + "_0").innerHTML = i + 1;
+                        document.getElementById(i + "_1").innerHTML = data.data.list[i].Accident_time.split("T")[0];
+                        document.getElementById(i + "_2").innerHTML = data.data.list[i].Claimer_name;
+                        document.getElementById(i + "_3").innerHTML = data.data.list[i].Claimer_phone;
+                        document.getElementById(i + "_4").innerHTML = data.data.list[i].lipei_baoan_id;
+                        document.getElementById(i + "_5").innerHTML = data.data.list[i].dingsun_name;
+                        document.getElementById(i + "_6").innerHTML = data.data.list[i].is_need_help;
+                        if (data_Object.list[i].is_jiean === null){
+                            document.getElementById(i + "_7").innerHTML = "未填写";
+                        } else {
+                            document.getElementById(i + "_7").innerHTML = data.data.list[i].is_jiean;
+                        }
+                        document.getElementById(i+"_8").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_lipei_baoan_detail.html?'+i+'">查看详情</a></span>'
+                    }
+
+                }
+            }
+
+        }
+        else {
+        }
+    });
+</script>
+<script>
+    $(function () {
+        $(':input').labelauty();
+    });
+
+    function change_word() {
+        document.getElementById("wenjian_chose").innerHTML = "提交文件"
+        document.getElementById("file_name").innerHTML = "文件名称：" + document.getElementById("file_input").value;
+    }
+
+    function chose() {
+        if (document.getElementById("wenjian_chose").innerHTML == "选择文件") {
+            document.getElementById("file_input").click();
+        }
+        if (document.getElementById("wenjian_chose").innerHTML == "提交文件") {
+            _post('/service/claim/personnel/', {
+                file: document.getElementById("file_input").value,
+            }).then(function (data) {
+                if (data.code == 0) {
+                    alert("已上传，请等待审核！")
+                    window.location.href = "index.html"
+                }
+                else {
+                    if (data.code == -1) {
+                        alert("登录失效，请重新登陆！");
+                    }
+                    if (data.code == -2) {
+                        alert("您的权限不足，无法操作！")
+                    }
+                    if (data.code == -3) {
+                        alert("您的账号已被锁定！")
+                    }
+                    if (data.code == -4) {
+                        alert("信息不完整，无法操作！")
+                    }
+                    if (data.code == -5) {
+                        alert("数据有误，请提供准确的数据！")
+                    }
+                }
+            }).fail(function () {
+            })
+        }
+    }
+</script>
+</body>
+</html>

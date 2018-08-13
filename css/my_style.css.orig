@@ -1,0 +1,252 @@
+<<<<<<< HEAD
+.product_search {
+=======
+.product_search{
+    /*width:180px;*/
+    /*border: 1px solid #5BB33a;*/
+>>>>>>> fe-tmp
+    float: left;
+    position: relative;
+    z-index: 10;
+    padding-left: 20px;
+
+}
+
+.product_search1 {
+    padding-left: 0px;
+    width: 40px
+}
+<<<<<<< HEAD
+
+.product_search_button {
+    width: 45px;
+    height: 33px;
+    border-color: #5BB33a;
+=======
+.product_search_button{
+    width:40px;
+    height: 32px;
+    border-color:#5BB33a;
+>>>>>>> fe-tmp
+    background-color: #5BB33a;
+    color: #ffffff;
+    border-width: 2px;
+    padding: 0px;
+}
+.product_search_input{
+    height: 30px;
+    border-width:1px;
+    padding: 0px;
+    padding-left: 10px;
+    margin-right: -2px;
+    font-size: 13px;
+    padding-left: 10px;
+    border: 1px solid #5BB33a;
+<<<<<<< HEAD
+}
+
+/* 版权样式 */
+.copyright {
+    background: #323232;
+    height: 120px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+=======
+>>>>>>> fe-tmp
+}
+/***************************************************************以上是搜索边框*****************************************************************************/
+.download_btn {
+    border-radius: 5%;
+    border: none;
+    background: #5BB33a;
+    color: #fff;
+    padding: 5px 15px;
+}
+/* *************************************************下载文件按钮*************************************************************/
+.check_detail:hover{
+    color:#5BB33a;
+}
+/*************************************************************查看详情hover***************************************************/
+*{ margin:0; padding:0; list-style:none;}
+a{ text-decoration:none;}
+a:hover{ text-decoration:none;}
+.tcdPageCode{padding: 15px 20px;text-align: left;color: #ccc;text-align:center;}
+.tcdPageCode a{display: inline-block;color: #5BB33a;display: inline-block;height: 25px;	line-height: 25px;	padding: 0 10px;border: 1px solid #ddd;	margin: 0 2px;border-radius: 4px;vertical-align: middle;}
+.tcdPageCode a:hover{text-decoration: none;border: 1px solid #5BB33a;}
+.tcdPageCode span.current{display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;color: #fff;background-color: #5BB33a;	border: 1px solid #5BB33a;border-radius: 4px;vertical-align: middle;}
+.tcdPageCode span.disabled{	display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;	color: #bfbfbf;background: #f2f2f2;border: 1px solid #bfbfbf;border-radius: 4px;vertical-align: middle;}
+/******************************************************分页插件++++++++++++++++++++++++++++++++++++++++++++++*/
+.state_box{margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;}
+/***************************************************************************************************************/
+.all_link{
+    font-size: 14px;
+}
+#introduce_people:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#introduce_company:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#introduce_company_info:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#toubao_progress:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#toubao_handle:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#toubao_statistic:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#baoquan_state:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#baoquan_handle:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#baoquan_people_change:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#lipei_baoan:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#lipei_handle:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#lipei_dianfu:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#lipei_statistic:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+#company_introduce:hover{
+    color: #5BB33a;
+    font-size: 14px;
+}
+
+.all_link:hover{
+    color: #5BB33a;
+    font-size: 14px;
+
+}
+/*******************************************************************************************************************/
+.div1_1{
+
+    z-index: 5;
+    width: 90%;
+    left:5%;
+    height: 430px;
+    display:block;
+    position:absolute;
+    top: 130px;
+
+    background: white;
+}
+.div1_child1{
+
+    border-right: 1px dashed ;
+    border-right-color: #b4b4b4;
+    z-index: 5;
+    margin-top: 10px;
+    margin-right: 2px;
+    width: 50%;
+    height: 380px;
+    display:block;
+    position:absolute;
+    background: #ffffff;
+}
+
+.div1_child2{
+    z-index: 5;
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 2px;
+    height: 430px;
+    left:50%;
+    display:block;
+    position:absolute;
+    background: rgba(255, 255, 255, 1);
+}
+<<<<<<< HEAD
+
+/* ----------------------------------------------- 通用hover样式 end --------------------------------------------- */
+
+/* ------------------------------------------- 导航栏下拉框文字样式 start ------------------------------------------ */
+.all_link {
+    font-size: 14px;
+}
+
+.all_link:hover {
+    color: #5BB33a;
+    font-size: 14px;
+}
+
+/* -------------------------------------------- 导航栏下拉框文字样式 end ------------------------------------------- */
+
+/* ------------------------------------------------- 定损网点 start ----------------------------------------------- */
+#keyword {
+    width: 300px;
+    height: 38px;
+    padding-left: 10px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+}
+
+.key_search {
+    width: 50px;
+    height: 40px;
+    background-color: #5BB33a;
+    color: #ffffff;
+    float: right;
+    outline: none;
+}
+
+/* --------------------------------------------------- 定损网点 end ----------------------------------------------- */
+
+/* --------------------------------------------- 详细信息页面 文字样式 start ---------------------------------------- */
+/*正文第一行格式*/
+.para1 {
+    padding-left: 60px;
+    font-size: 15px;
+}
+/*正文第一行之后行格式*/
+.para2 {
+    padding-left: 60px;
+    margin-top: 20px;
+    font-size: 15px
+}
+/*正文二级格式*/
+.para_next {
+    padding-left: 60px;
+    margin-top: 5px;
+    font-size: 15px;
+    margin-left: 20px
+}
+/*正文序号格式*/
+.para_span {
+    font-size: 15px;
+    color: #5BB33a;
+}
+
+/* --------------------------------------------- 详细信息页面 文字样式 end ----------------------------------------- */
+=======
+/*********************************************************说明文档的标题*********************************************/
+.biaoti_head{
+    font-size: 15px;color: #5BB33a
+}
+>>>>>>> fe-tmp

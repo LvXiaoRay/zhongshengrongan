@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-投保办理</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+
+</head>
+<body>
+<div class="wrapper">
+
+    <div class="header_nav">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li  style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>                <!--首页-->
+                    <li  id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a  href="#">人员保险</a></li>
+                    <li  class="active" id="hover_che" style="padding-left: 20px;height: 80px"><a href="#">车辆保险</a></li>
+                    <li  id="hover_cai" style="padding-left: 20px;height: 80px"><a href="#">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="company_information.html">企业介绍</a></li>                     <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="product_search_input" style="height: 31px;" placeholder="请输入关键字"></li>
+                    <li class="product_search1"><button id="btn_search_product" class="product_search_button"
+                                                        style="width: 45px;height: 33px;">搜索</button></li>       <!--关于我们-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------------header_nav end-------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="min-height: 400px; margin-bottom:80px;height:auto;width: 89%;left: 5%">
+
+        <hr style="width: 95%;margin-left: 2.5%;margin-bottom: 10px;visibility: hidden">
+        <div style="width: 100%; margin-left: 1%; padding-left: 15px;">
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        <p style="">车辆新增记录:</p>
+                    </td>
+                    <td>
+                        <button style="margin-left: 75%" onclick="xinzeng()" class="download_btn">新增记录</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <table class="layui-table"  id="table_statistics" style="width:95%;margin-left: 2.5%;text-align: center;margin-right:10px">
+
+            <tr style="text-align: center;background-color: #c4d69e">
+                <th style="text-align: center">序号</th>
+                <th style="text-align: center">险种类别</th>
+                <th style="text-align: center">投保年度</th>
+                <th style="text-align: center">投保日期</th>
+                <th style="text-align: center">是否生效</th>
+                <th style="text-align: center">机动车类别</th>
+                <th style="text-align: center">操作</th>
+
+            </tr>
+        </table>
+        <div class="tcdPageCode"></div>
+        <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+    </div >
+
+    <!--container 内容结束end-->
+
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/lib.js"></script>
+<script>
+    var str=""
+    var vars = {};
+    // 简单的字符串作为变量名
+    var  varname={}
+    //批量定义
+    var personnel_list;
+
+
+    _get('/service/insure/che/', {
+    }).then(function (data) {
+        if (data.code == 0) {
+            // localStorage.setItem("personnel_list_length",data.data.count);
+
+            if(data.data.all_count>10){
+                page_num=Math.ceil(data.data.all_count/10);
+                $(".tcdPageCode").createPage({
+                    pageCount:page_num,
+                    current:1,
+                    backFn:function(p){
+                        _get('/service/insure/che/', {
+                            limited:10,
+                            offset:(p-1)*10,
+                        }).then(function (data) {
+                            if(p==page_num){
+                                for(i=9;i>=data.data.count;i--){
+                                    for(j=0;j<7;j++){
+                                        document.getElementById(i+"_"+j).style.display="none";
+                                    }
+                                }
+                            }
+                            else{
+                                for(i=0;i<10;i++){
+                                    for(j=0;j<7;j++){
+                                        document.getElementById(i+"_"+j).style.display="table-cell"
+                                    }
+                                }
+
+                            }
+                            for(i=0;i<10;i++){
+                                document.getElementById(i+"_0").innerHTML=(p-1)*10+i+1;
+                                document.getElementById(i+"_1").innerHTML="车辆保险";
+                                document.getElementById(i+"_2").innerHTML=data.data.list[i].upload_year;
+                                document.getElementById(i+"_3").innerHTML=data.data.list[i].upload_date.split("T")[0];
+                                if(data.data.is_effective){
+                                    document.getElementById(i+"_4").innerHTML="是";
+                                }
+                                else{
+                                    document.getElementById(i+"_4").innerHTML="否";
+                                }
+                                // 如果是机动车，跳入机动车界面显示
+                                if(data.data.list[i].insure_type == "vehicle"){
+                                    document.getElementById(i+"_5").innerHTML="机动车";
+                                    document.getElementById(i+"_6").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail.html?'+data.data.list[i].id+'">查看详情</a></span>'
+                                }
+                                // 如果是非机动车，跳入非机动车界面显示
+                                else{
+                                    document.getElementById(i+"_5").innerHTML="非机动车";
+                                    document.getElementById(i+"_6").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail_feijidongche.html?'+data.data.list[i].id+'">查看详情</a></span>'
+                                }
+
+
+                            }
+                        }).fail(function () {
+                            alert('无法链接网络！');
+                        });
+                    }
+                });
+                for(var i=0; i<10; i++) {
+                    varname="td"+i;
+                    vars[varname]=""
+                }
+                for(var i=0;i<10;i++){
+                    for (var j=0;j<7;j++){
+                        vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+                    }
+                    //vars['td'+i]+='<td id="'+i+'_'+5+'" style="height: 37px!important;"><span style="margin-right: 10px">查看个人信息</span></td>'
+                }
+                for(var i=0;i<10;i++){
+                    str+='<tr style="height: 37px!important;">'+vars['td'+i]+'</tr>';
+                }
+                document.getElementById("table_statistics").innerHTML+=str;
+                for(i=0;i<10;i++){
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_1").innerHTML="车辆保险";
+                    document.getElementById(i+"_2").innerHTML=data.data.list[i].upload_year;
+                    document.getElementById(i+"_3").innerHTML=data.data.list[i].upload_date.split("T")[0];
+                    if(data.data.is_effective){
+                        document.getElementById(i+"_4").innerHTML="是";
+                    }
+                    else{
+                        document.getElementById(i+"_4").innerHTML="否";
+                    }
+                    // 如果是机动车，跳入机动车界面显示
+                    if(data.data.list[i].insure_type == "vehicle"){
+                        document.getElementById(i+"_5").innerHTML="机动车";
+                        document.getElementById(i+"_6").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail.html?'+data.data.list[i].id+'">查看详情</a></span>'
+                    }
+                    // 如果是非机动车，跳入非机动车界面显示
+                    else{
+                        document.getElementById(i+"_5").innerHTML="非机动车";
+                        document.getElementById(i+"_6").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail_feijidongche.html?'+data.data.list[i].id+'">查看详情</a></span>'
+                    }
+                }
+
+            }
+            else {
+                $(".tcdPageCode").createPage({
+                    pageCount:1,
+                    current:1,
+                    backFn:function(p){
+                        alert(p);
+                    }
+                });
+                for(i=0;i<data.data.count;i++){
+                    for(var i=0; i<data.data.count; i++) {
+                        varname="td"+i;
+                        vars[varname]=""
+                    }
+                    for(var i=0;i<data.data.count;i++){
+                        for (var j=0;j<7;j++){
+                            vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+                        }
+                    }
+                    for(var i=0;i<data.data.count;i++){
+                        str+='<tr style="height: 37px!important;">'+vars['td'+i]+'</tr>';
+                    }
+                    document.getElementById("table_statistics").innerHTML+=str;
+                    for(i=0;i<data.data.count;i++){
+                        document.getElementById(i+"_0").innerHTML=i+1;
+                        document.getElementById(i+"_1").innerHTML="车辆保险";
+                        document.getElementById(i+"_2").innerHTML=data.data.list[i].upload_year;
+                        document.getElementById(i+"_3").innerHTML=data.data.list[i].upload_date.split("T")[0];
+                        if(data.data.is_effective){
+                            document.getElementById(i+"_4").innerHTML="是";
+                        }
+                        else{
+                            document.getElementById(i+"_4").innerHTML="否";
+                        }
+                        // 如果是机动车，跳入机动车界面显示
+                        if(data.data.list[i].insure_type == "vehicle"){
+                            document.getElementById(i+"_5").innerHTML="机动车";
+                            document.getElementById(i+"_6").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail.html?'+data.data.list[i].id+'">查看详情</a></span>'
+                        }
+                        // 如果是非机动车，跳入非机动车界面显示
+                        else{
+                            document.getElementById(i+"_5").innerHTML="非机动车";
+                            document.getElementById(i+"_6").innerHTML= '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail_feijidongche.html?'+data.data.list[i].id+'">查看详情</a></span>'
+                        }
+                    }
+
+                }
+            }
+
+        }
+        else {
+        }
+    }).fail(function () {
+        alert('无法链接网络！');
+    });
+</script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script>
+
+
+    function xinzeng() {
+        window.location.href="car_toubao_new.html";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投保办理</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+</head>
+<body>
+<div class="wrapper">
+    <!--------------------------------------header_user begin 顶部导航栏------------------------------------->
+
+    <!---------------------------------------header_user end-------------------------------------->
+    <!---------------------------------------header_nav begin 导航栏------------------------------------->
+    <div class="header_nav">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li  style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>                <!--首页-->
+                    <li  id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a  href="#">人员保险</a></li>
+                    <li  id="hover_che" style="padding-left: 20px;height: 80px"><a href="#">车辆保险</a></li>
+                    <li  id="hover_cai" style="padding-left: 20px;height: 80px"><a href="#">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="#">企业介绍</a></li>                     <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="product_search_input" placeholder="请输入关键字"></li>
+                    <li class="product_search1"><button id="btn_search_product" class="product_search_button">搜索</button></li>         <!--关于我们-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------------header_nav end-------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom:80px;height:auto">
+
+    <table class="layui-table"  id="table_statistics" style="width: 90%;margin-left:5%;text-align: center">
+
+        <tr style="text-align: center">
+
+            <th   style="text-align: center">序号</th>
+            <th  style="text-align: center" >发票抬头</th>
+            <th  style="text-align: center" >投保人</th>
+            <th   style="text-align: center">人员类别</th>
+            <th  style="text-align: center">姓名</th>
+            <th  style="text-align: center">身份证号码</th>
+            <th  style="text-align: center">年龄</th>
+            <th  style="text-align: center">性别</th>
+            <th  style="text-align: center">投保年度</th>
+            <th  style="text-align: center">投保类别</th>
+
+
+        </tr>
+    </table>
+    <div class="tcdPageCode"></div>
+    <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+</div >
+<!--container 内容结束end-->
+
+
+<script src="js/lib.js"></script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script>
+    var str=""
+    var vars = {};
+    // 简单的字符串作为变量名
+    var  varname={}
+    //批量定义
+    for(var i=0; i<10; i++) {
+        varname="td"+i;
+        vars[varname]=""
+    }
+    for(var i=0;i<10;i++){
+        for (var j=0;j<10;j++){
+
+            vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+        }
+
+    }
+
+    for(var i=0;i<10;i++){
+        str+='<tr style="height: 37px!important;">'+vars['td'+i]+'</tr>';
+    }
+    document.getElementById("table_statistics").innerHTML+=str;
+
+    _get('/service/insure/personnel/stat/', {
+    }).then(function (data) {
+        if (data.code == 0) {
+            localStorage.setItem("personnel_statistics_length",data.data.list.length);
+
+            if(data.data.list.length>10){
+                for(i=0;i<10;i++){
+                    if(i%2==1){
+                        document.getElementById(i+"_2").innerHTML="是";
+
+                    }else{
+                        document.getElementById(i+"_2").innerHTML="未生效";
+
+                    }
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_1").innerHTML="来来来";
+                    document.getElementById(i+"_3").innerHTML=2018;
+                    if(i%2==1){
+                        document.getElementById(i+"_4").innerHTML="2018-02-02";
+                    }else{
+                        document.getElementById(i+"_4").innerHTML="2018-02-09";
+                    }
+
+                }
+            }
+            else {
+                for(i=0;i<data.data.list.length;i++){
+                    if(i%2==1){
+                        document.getElementById(i+"_2").innerHTML="是";
+
+                    }else{
+                        document.getElementById(i+"_2").innerHTML="未生效";
+
+                    }
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_1").innerHTML="来来来";
+                    document.getElementById(i+"_3").innerHTML=2018;
+                    if(i%2==1){
+                        document.getElementById(i+"_4").innerHTML="2018-02-02";
+                    }else{
+                        document.getElementById(i+"_4").innerHTML="2018-02-09";
+                    }
+
+                }
+            }
+
+        }
+        else {
+            alert("链接错误！")
+        }
+    }).fail(function () {
+        alert('无法链接网络！');
+    });
+
+</script>
+<script>
+    $(".tcdPageCode").createPage({
+        pageCount:50,
+        current:1,
+        backFn:function(p){
+            alert(p);
+        }
+    });
+</script>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script>
+
+
+</script>
+</body>
+</html>

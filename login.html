@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录注册</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <!--------------------------------------header_user begin------------------------------------->
+    <!--<div class="header_user">-->
+        <!--<div class="main_width">-->
+            <!--&lt;!&ndash;<span class="tel">客服电话：400-663-6600（周一至周六 9:00-18:00）</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="fr">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="my_insurance"><a href="#">我的保险</a></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="Backlog"><a href="#">未完成订单</a></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="message"><a href="#">消息</a></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="register"><a href="#">注册</a></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="fg"><a href="#">|</a></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span><a href="#">登录</a></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+    <!---------------------------------------header_user end-------------------------------------->
+    <!---------------------------------------header_nav begin------------------------------------->
+    <div class="header_nav">
+        <div class="main_width">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <!--<div class="menuBox">-->
+            <!--<ul class="menu">-->
+            <!--<li class="active"><a href="#">首页</a></li>-->
+            <!--<li class="special"><a href="claims.html">保险产品</a></li>-->
+            <!--<li><a href="#">理财中心</a></li>-->
+            <!--<li><a href="#">关于我们</a></li>-->
+            <!--</ul>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <!----------------------------------------header_nav end-------------------------------------->
+    <!--<div class="container">-->
+        <!--<div class="login_bg">-->
+            <!--<div class="form">-->
+                <!--&lt;!&ndash;<div class="slogan"></div>&ndash;&gt;-->
+                <!--<form action="#" method="post" name="loginForm" id="loginForm">-->
+                    <!--<h2>登录中盛融安</h2>-->
+                    <!--<div class="user_box">-->
+                        <!--<span class="icon"></span>-->
+                        <!--<input type="text" class="userName" id="name1" name="userName" placeholder="用户名">-->
+                    <!--</div>-->
+                    <!--<div class="pwd_box">-->
+                        <!--<span class="icon"></span>-->
+                        <!--<input type="password" class="userPwd" id="password1" name="userPwd" placeholder="密码">-->
+                    <!--</div>-->
+                    <!--<div class="detail_box">-->
+                        <!--<input type="checkbox" id="login_check">-->
+                        <!--<label for="login_check">下次自动登录</label>-->
+                        <!--<a href="#" class="forgetPwd">忘记密码？</a>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<input type="button" onclick="tz()" class="login_btn" id="loginBtn" value="登录">-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="container">
+        <div class="login_bg">
+            <div class="form">
+                <!--<div class="slogan"></div>-->
+                <form action="#" method="post" name="loginForm" id="loginForm">
+                    <!--选择 个人登录 或者 企业账号登录-->
+                    <input type="radio" checked="checked" name="login" value="company" style="margin-bottom: 24px;">
+                    <span style="color: #c30a18; font-size: 16px; font-weight: bold; height: 20px; line-height: 20px;">
+                        企业登录中盛融安
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="login" value="personal">
+                    <span style="color: #c30a18; font-size: 16px; font-weight: bold; height: 20px; line-height: 20px;">
+                        个人登录中盛融安
+                    </span>
+
+                    <div class="user_box">
+                        <span class="icon"></span>
+                        <input type="text" class="userName" id="username" name="username" placeholder="用户名">
+                    </div>
+                    <div class="pwd_box">
+                        <span class="icon"></span>
+                        <input type="password" class="userPwd" id="password" name="password" placeholder="密码">
+                    </div>
+                    <div class="detail_box">
+                        <input type="checkbox" id="login_check">
+                        <label for="login_check">下次自动登录</label>
+                        <a href="#" class="forgetPwd">忘记密码？</a>
+                    </div>
+                    <div>
+                        <input type="button" class="login_btn" id="loginBtn" value="登录" onclick="check()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--footer begin-->
+    <div class="copyright">
+        <div class="main_width footer">
+            <div class="footer_nav">
+                <p>
+                    <a href="#">关于中盛融安金融</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安小金库</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安钱包</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安白条</a>
+                    <span class="divider">|</span>
+                    <a href="#">联系我们</a>
+                    <span class="divider">|</span>
+                    <a href="#">免责声明</a>
+                </p>
+                <p>Copyright © 2004-2016 zsra.com 中盛融安，版权所有<span class="divider">|</span>投资有风险，购买需谨慎</p>
+            </div>
+            <div class="footer_contact">
+                <div class="f_contact_time">
+                    联系我们<span>（09:00-22:00）</span>
+                </div>
+                <div class="f_contact_content">
+                    <div class="f_cc_left">
+                        <span class="f_cc_item">个人业务：400-098-8511</span>
+                        <span class="f_cc_item">企业业务：400-088-8816</span>
+                    </div>
+                    <div class="f_cc_mid">
+                        <a href="#" class="f_cc_link item_JIMI">咨询我们</a>
+                        <a href="#" class="f_cc_link item_kefu">在线客服</a>
+                    </div>
+                    <div class="f_cc_right">
+                        <a href="#" class="f_cc_link item_mail">客服邮箱</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer end-->
+</div>
+<script src="js/lib.js"></script>
+<script src="js/md5.js"></script>
+<script type="text/javascript">
+    localStorage.clear();
+
+    document.onkeyup = function (e) {//按键信息对象以函数参数的形式传递进来了，就是那个e
+        var code = e.charCode || e.keyCode;  //取出按键信息中的按键代码(大部分浏览器通过keyCode属性获取按键代码，但少部分浏览器使用的却是charCode)
+        if (code === 13) {
+            check();
+        }
+    }
+
+    function check() {
+        var must1 = document.getElementById("username").value;
+        var must2 = document.getElementById("password").value;
+        var choose_login = $('input:radio:checked').val();
+        if (must1 !=="" && must2 !=="") {
+            _get('/service/login/', {
+                username: document.getElementById("username").value,
+                password: md5(document.getElementById("password").value),
+            }).then(function (data) {
+                if (data.code === 0) {
+                    localStorage.clear();
+                    saveToken(data.data.token);
+                    localStorage.setItem("id_person", document.getElementById("username").value)
+                    // 如果是企业账号，跳转至企业自服务页面
+                    if (choose_login === 'company'){
+                        window.location.href = "index_real.html"
+                    }else {     // 如果是个人账号，跳转至电商页面
+                        window.location.href = "../index.html"
+                    }
+                }
+                else {
+                    localStorage.removeItem("id_person");
+                    alert("账号或密码错误！");
+                    window.location.href = "login.html"
+                }
+
+
+            }).fail(function () {
+                alert('无法链接网络！');
+            });
+        }
+        else {
+            alert("请输入账号密码！")
+        }
+
+    }
+</script>
+</body>
+</html>

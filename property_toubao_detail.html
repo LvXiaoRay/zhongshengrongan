@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投保办理</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/boxImg.css">
+</head>
+<body>
+<div class="wrapper">
+    <!--------------------------------------header_user begin 顶部导航栏------------------------------------->
+    <div class="header_user"  style="display: none">
+        <div class="main_width">
+            <!--<span class="tel">客服电话：400-663-6600（周一至周六 9:00-18:00）</span>-->
+            <span class="fr">
+
+
+                <span><a href="javascript:localStorage.clear();window.location.href='../login.html'">已登录，退出登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                <span class="register"><a href="#">个人中心</a></span>
+                <span class="Backlog"><a href="#">保单查询</a></span>
+                <span class="message"><a href="#">服务专区</a></span>
+                <span class="my_insurance"><a href="#">网站导航</a></span>
+            </span>
+        </div>
+    </div>
+
+    <!---------------------------------------header_user end-------------------------------------->
+    <!---------------------------------------header_nav begin 导航栏------------------------------------->
+    <div class="header_nav"  style="display: none">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li  style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>                <!--首页-->
+                    <li  id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a  href="#">人员保险</a></li>
+                    <li  id="hover_che" style="padding-left: 20px;height: 80px"><a href="#">车辆保险</a></li>
+                    <li class="active" id="hover_cai" style="padding-left: 20px;height: 80px"><a href="#">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="company_information.html">企业介绍</a></li>
+                    <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="product_search_input" placeholder="请输入关键字"></li>
+                    <li class="product_search1"><button id="btn_search_product" class="product_search_button">搜索</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- hover窗口-->
+    <div class="div1_1" id="hover_main1" style="display: none;width: 89%;left: 5.5%;height: 320px">
+        <div class="div1_child1" style="height: 300px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">人员保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px" >
+                    <span ><a class="all_link"  id="introduce_people" href="people_insurance_case.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承包保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a  class="all_link" id="introduce_company" href="people_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险公司顾问信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a class="all_link" id="introduce_company_info"  href="people_insurance_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link"  id="toubao_progress" href="toubao_progress.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle" href="touble_handle.html" >投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic" href="toubao_statistics.html" >投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people5.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">保全</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="baoquan_state" href="baoquan_statement.html">保全说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="baoquan_handle" href="baoquan_handle.html" >保全办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="baoquan_people_change" href="baoquan_people_change.html" >人员信息变更</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_baoan"  href="lipei_baoan.html">理赔报案</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_handle" href="lipei_handle.html" >理赔办理</a></span>
+                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_dianfu" href="lipei_dianfu.html" >理赔垫付</a></span>
+                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_statistic" href="lipei_statistics.html">理赔统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="company_introduce"  href="company_info.html">详细介绍</a></span>
+                </div>
+
+            </div>
+
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+        </div>
+    </div>
+
+    <div class="div1_1" id="hover_main2" style="display: none;width: 89%;left: 5.5%;height: 390px">
+        <div class="div1_child1" style="height: 370px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">车辆保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px">
+                    <span><a class="all_link" id="chexian_progress2" href="people_insurance_case.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承保保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span><a class="all_link" id="car_toubao_progress" href="people_company.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险公司顾问信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span><a class="all_link" id="introduce_company_info2" href="people_insurance_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">车投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="toubao_progress2" href="car_toubao_progress.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle2" href="car_toubao_handle.html">投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic2" href="car_toubao_statistics.html">投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">定损和修车网点查询</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="toubao_progr" href="car_dingsun.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people5.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">保费垫付</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="baoquan_state2" href="car_dianfu_progress.html">垫付流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span> <span><a
+                        class="all_link" id="baoquan_handle2" href="car_dianfu.html">保费垫付办理</a></span> <span class="fg"><a
+                        style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="dianfu_statistics" href="car_dianfu_statistics.html">保费垫付办理</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">机动车辆理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px"><span
+                        style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="lipei_baoan2" href="car_lipei_progress.html">理赔流程</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="lipei_handle2" href="car_lipei_baoan.html">理赔报案</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="lipei_statistic2" href="car_lipei_statistics.html">理赔统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">机动车辆第三者责任保险理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="company_introduce2" href="car_dianfu_need_know.html">垫付须知</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="car_third" href="car_third_dianfu.html">机动车辆第三者责任保险紧急医疗垫付</a></span>
+
+
+                </div>
+
+            </div>
+
+            <hr style=" clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">机动车批改</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="lipei_boan2" href="liepi_baoan.html">批改流程</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hndl2" href="car_add_xianzhong.html">增加险种</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_staistic2" href="car_change_baoe.html">保额变更</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hndl" href="car_tuibao_handle.html">退保办理</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_staisti2" href="car_change_info.html">信息变更</a></span>                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>                    <span><a class="all_link" id="pigai_record" href="car_pigai_record.html">批改记录</a></span>
+
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="lipei_boa2" href="company_info.html">详细信息</a></span>
+
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+    </div>
+
+
+    <div class="div1_1" id="hover_main3" style="display: none;width: 89%;left: 5.5%;height: 320px">
+        <div class="div1_child1" style="height: 300px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">财产保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px" >
+                    <span ><a class="all_link"  id="chexian_progress3" href="property_insurance_plan.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承保保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a  class="all_link" id="car_toubao_progress3" href="property_insurance_company.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险公司顾问信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a class="all_link" id="introduce_company_info3"  href="property_insurance_counselor.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link"  id="toubao_progress3" href="property_toubao_process.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle3" href="property_toubao_handle.html" >投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic3" href="property_touble_statistics.html" >投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">资产增减</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_baoan3"  href="property_asset_increase_statement.html">资产增减说明</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_handle3" href="property_asset_increase_handle.html" >资产增减办理</a></span>
+
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_bao"  href="property_lipei_progress.html">理赔流程</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hand3" href="property_lipei_baoan.html" >理赔报案</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipe_hand3" href="property_lipei_handle.html" >理赔办理</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipe_had3" href="property_lipei_statistics.html" >理赔统计查询</a></span>
+
+                </div>
+
+            </div>
+
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lpei_bao"  href="property_company_info.html">详细信息</a></span>
+                </div>
+
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+    </div>
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-top: 40px;margin-right:5%;margin-bottom:80px;height:auto">
+
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">投保办理</p>
+
+        <div class="state_box" id="state_0" style="display: none">
+        <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">一、《资产明细表》审核中</p>
+            <textarea class="text_area" >本次投保已提交，请等待审核。</textarea>
+
+        </div>
+
+    </div>
+        <div class="state_box" id="state_1" style="display: none">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">一、《资产明细表》审核通过</p>
+                <textarea class="text_area" >本次投保审核已通过，请等待《缴费通知单》和《确认函》。</textarea>
+
+            </div>
+
+        </div>
+        <div class="state_box" id="state_0_1" style="display: none">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">一、《资产明细表》审核结果</p>
+                <textarea class="text_area" style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     padding-top: 10px;
+                                     border-color: #5BB33a">这次提交有问题；请重新发送文件</textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px">重新上传</button>
+        </div>
+
+
+        <div class="state_box" style="display: none" id="state_2">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">二、承保《确认函》和《缴费通知单》信息确认</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 10px;text-align: left;padding-left: 40px">注意：您已经完成《资产明细表》的上传，本次上传的信息无误，请确认《确认函》和《缴费通知单》。确认之后请上传缴费凭证。</p>
+            </div>
+            <table style="margin-top: 20px; margin-left: 30px;">
+                <tr>
+                    <td><img  id="imgPre_1" modal="zoomImg"   style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+                    <td style="visibility: hidden"><img    style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+                    <td><img  id="imgPre_2" modal="zoomImg"  style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+                </tr>
+                <tr>
+                    <td><p style="font-size: 16px">确认函</p></td>
+                    <td style="visibility: hidden"><p style="font-size: 16px">确认函</p></td>
+                    <td><p style="font-size: 16px">缴费通知单</p></td>
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_1" onchange="preImg(this.id,'imgPre_1');" />
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_2" onchange="preImg(this.id,'imgPre_2');" />
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">确认</button>
+        </div>
+
+        <div class="state_box" style="display: none">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">确认函和缴费通知单确认反馈结果：</p>
+                <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     padding-top: 10px;               border-color: #5BB33a">这次提交有问题；请重新发送文件</textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px">重新上传</button>
+        </div>
+        <div  style="display: none" class="state_box">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">三、上传承保确认函和缴费通知单快递单号</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 10px;text-align: left;padding-left: 40px">注意：您已经完成确认函和缴费通知单的上传，请邮寄承保确认函和缴费通知单后快递单号录入并拍照上传。</p>
+            </div>
+            <table style="margin-top: 20px; margin-left: 30px;">
+                <tr>
+                    <td><img  id="imgPre_2_1" onclick="photo_1_3()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+
+                </tr>
+                <tr>
+                    <td><p style="font-size: 16px">快递单号</p></td>
+
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_3" onchange="preImg(this.id,'imgPre_2_1');UpladFile(this.id,1);" />
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">上传</button>
+        </div>
+        <div  style="display: none" class="state_box">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">三、交费凭证上传</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 10px;text-align: left;padding-left: 40px">注意：请将缴费凭证拍照后上传，以便后台人员录入信息。</p>
+            </div>
+            <table style="margin-top: 20px; margin-left: 30px;">
+                <tr>
+                    <td><img  id="imgPre_3_1" onclick="photo_1_4()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+
+                </tr>
+                <tr>
+                    <td><p style="font-size: 16px">缴费凭证</p></td>
+
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_4" onchange="preImg(this.id,'imgPre_3_1');UpladFile(this.id,1);" />
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">上传</button>
+        </div>
+        <div style="display: none" class="state_box">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">四、保费发票确认</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 10px;text-align: left;padding-left: 40px">注意：请仔细检查本次投保发票是否正确，不正确请进行反馈。</p>
+            </div>
+            <table style="margin-top: 20px; margin-left: 30px;">
+                <tr>
+                    <td><img  id="imgPre_4_1" onclick="photo_1_4()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+
+                </tr>
+                <tr>
+                    <td><p style="font-size: 16px">保费发票扫描件</p></td>
+
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_5" onchange="preImg(this.id,'imgPre_4_1');UpladFile(this.id,1);" />
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">发票正确</button>  <button class="download_btn" style="visibility: hidden;font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">发票错误</button> <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">发票错误</button>
+        </div>
+        <div style="display: none" class="state_box">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">五、发票原件收到确认</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 10px;text-align: left;padding-left: 40px">注意：如果您收到本次投保办理的发票，请点击确认。</p>
+            </div>
+            <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 180px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     padding-top: 10px;               border-color: #5BB33a">我已收到本次投保办理的发票。</textarea>     <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">确认</button>
+        </div>
+
+        <div style="display: none" class="state_box">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">保费发票扫描件上传反馈结果：</p>
+                <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     padding-top: 10px;               border-color: #5BB33a">这次提交有问题；请重新发送文件</textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px">重新上传</button>
+        </div>
+        <table class="layui-table"  id="table_statistics" style="width: 90%;margin-left:5%;text-align: center">
+
+            <tr style="text-align: center" class="table_head">
+
+                <th   style="text-align: center;font-weight: bold">序号</th>
+                <th  style="text-align: center;font-weight: bold" >资产描述</th>
+                <th  style="text-align: center;font-weight: bold" >购置价值</th>
+                <th   style="text-align: center;font-weight: bold">数量</th>
+                <th  style="text-align: center;font-weight: bold">小计</th>
+                <th  style="text-align: center;font-weight: bold">资产分类</th>
+            </tr>
+        </table>
+        <div class="tcdPageCode" ></div>
+        <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+    </div >
+    <!--container 内容结束end-->
+    <!--footer footer开始 begin-->
+    <div class="copyright"  style="display: none">
+        <div class="main_width footer">
+            <div class="footer_nav">
+                <p>
+                    <a href="#">关于中盛融安金融</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安小金库</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安钱包</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安白条</a>
+                    <span class="divider">|</span>
+                    <a href="#">联系我们</a>
+                    <span class="divider">|</span>
+                    <a href="#">免责声明</a>
+                </p>
+                <p>Copyright © 2004-2016 zsra.com 中盛融安，版权所有<span class="divider">|</span>投资有风险，购买需谨慎</p>
+            </div>
+            <div class="footer_contact">
+                <div class="f_contact_time">
+                    联系我们<span>（09:00-22:00）</span>
+                </div>
+                <div class="f_contact_content">
+                    <div class="f_cc_left">
+                        <span class="f_cc_item">个人业务：400-098-8511</span>
+                        <span class="f_cc_item">企业业务：400-088-8816</span>
+                    </div>
+                    <div class="f_cc_mid">
+                        <a href="#" class="f_cc_link item_JIMI">咨询我们</a>
+                        <a href="#" class="f_cc_link item_kefu">在线客服</a>
+                    </div>
+                    <div class="f_cc_right">
+                        <a href="#" class="f_cc_link item_mail">客服邮箱</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer footer介绍 end-->
+    <div class="sideBar" style="display: none">
+        <a href="#" class="slider_block app"><i></i></a>
+        <a href="#" class="slider_block jimi"><i></i></a>
+        <a href="#" class="slider_block feedback"><i></i></a>
+        <a href="javascript:" class="slider_block backtop" id="backtop"><i></i></a>
+    </div>
+</div>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/simpleAlert.js"></script>
+<script src="js/boxImg.js" type="text/javascript"></script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery.page.js"></script>
+<script>
+
+    var str=""
+    var vars = {};
+    // 简单的字符串作为变量名
+    var  varname={}
+    //批量定义
+    var page_num;//页面数量
+    _get('/service/insure/pici/property/'+location.search.split("?")[1].split("&")[0]+'/', {
+    }).then(function (data) {
+        if (data.code == 0) {
+            localStorage.setItem("personnel_list_length",data.data.length);
+            personnel_list=data.data;
+            if(data.data.count>10){
+                console.log(data.data.property_list.length)
+                page_num=Math.ceil(data.data.count/10);
+                $(".tcdPageCode").createPage({
+                    pageCount:page_num,
+                    current:1,
+                    backFn:function(p){
+                        _get('/service/insure/pici/property/'+location.search.split("?")[1].split("&")[0]+'/', {
+                            limited:10,
+                            offset:(p-1)*10,
+                        }).then(function (data) {
+                            if(p==page_num){
+                                for(i=9;i>=data.data.property_list.length;i--){
+                                    document.getElementById(i).style.display="none";
+                                }
+                            }
+                            else{
+                                for(i=0;i<10;i++){
+                                    document.getElementById(i).style.display="table-row"
+                                }
+                            }
+                            for(i=0;i<data.data.property_list.length;i++){
+                                document.getElementById(i+"_1").innerHTML=data.data.property_list[i].zican_miaoshu;
+                                document.getElementById(i+"_2").innerHTML=data.data.property_list[i].gouzhi_jiazhi;
+                                document.getElementById(i+"_0").innerHTML=(p-1)*10+i+1;
+                                document.getElementById(i+"_3").innerHTML=data.data.property_list[i].number;
+                                document.getElementById(i+"_4").innerHTML=data.data.property_list[i].price*data.data.property_list[i].amount;
+                                document.getElementById(i+"_5").innerHTML= data.data.property_list[i].zican_fenlei;
+                            }
+                        }).fail(function () {
+                            alert('无法链接网络！');
+                        });
+                    }
+                });
+                for(var i=0; i<10; i++) {
+                    varname="td"+i;
+                    vars[varname]=""
+                }
+                for(var i=0;i<10;i++){
+                    for (var j=0;j<6;j++){
+
+                        vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+                    }
+                    //vars['td'+i]+='<td id="'+i+'_'+5+'" style="height: 37px!important;"><span style="margin-right: 10px">查看个人信息</span></td>'
+                }
+                for(var i=0;i<10;i++){
+                    str+='<tr style="height: 37px!important;" id="'+i+'">'+vars['td'+i]+'</tr>';
+                }
+                document.getElementById("table_statistics").innerHTML+=str;
+                for(i=0;i<10;i++){
+                    document.getElementById(i+"_1").innerHTML=data.data.property_list[i].zican_miaoshu;
+                    document.getElementById(i+"_2").innerHTML=data.data.property_list[i].gouzhi_jiazhi;
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_3").innerHTML=data.data.property_list[i].number;
+                    document.getElementById(i+"_4").innerHTML=data.data.property_list[i].price*data.data.property_list[i].amount;
+                    document.getElementById(i+"_5").innerHTML= data.data.property_list[i].zican_fenlei;
+                }
+                if(data.data.procedure_step==0&&data.data.procedure_state==0){
+                    document.getElementById("state_0").style.display="block";
+                } else if(data.data.procedure_step==0&&data.data.procedure_state==-1){
+                    document.getElementById("state_0_1").style.display="block";
+                }else if(data.data.procedure_step==1&&data.data.procedure_state==0){
+                    document.getElementById("state_1").style.display="block";
+                }else if(data.data.procedure_step==2&&data.data.procedure_state==0){
+                    document.getElementById("state_2").style.display="block";
+                    document.getElementById("imgPre_1").src=HOST+data.data.chengbaoquerenhan[0].file_url;
+                    document.getElementById("imgPre_2").src=HOST+data.data.jiaofeitongzhidan[0].file_url;
+                }else if(data.data.procedure_step==3&&data.data.procedure_state==0){
+                    document.getElementById("state_2_1").style.display="block";
+                }else if(data.data.procedure_step==4&&data.data.procedure_state==0){
+                    document.getElementById("state_3").style.display="block";
+
+                }else if(data.data.procedure_step==5&&data.data.procedure_state==0){
+                    document.getElementById("state_3_1").style.display="block";
+                }else if(data.data.procedure_step==6&&data.data.procedure_state==0){
+                    document.getElementById("state_4_1").style.display="block";
+                }else if(data.data.procedure_step==7&&data.data.procedure_state==0){
+                    document.getElementById("state_5").style.display="block";
+                }else if(data.data.procedure_step==8&&data.data.procedure_state==0){
+                    document.getElementById("state_5_1").style.display="block";
+                }else if(data.data.procedure_step==8&&data.data.procedure_state==-1){
+                    document.getElementById("state_5_1_1").style.display="block";
+                }else if(data.data.procedure_step==9&&data.data.procedure_state==0){
+                    document.getElementById("state_6_1").style.display="block";
+                }else if(data.data.procedure_step==10&&data.data.procedure_state==0){
+                    document.getElementById("state_end").style.display="block";
+                }
+            }
+            else {
+                if(data.data.procedure_step==0&&data.data.procedure_state==0){
+                    document.getElementById("state_0").style.display="block";
+                } else if(data.data.procedure_step==0&&data.data.procedure_state==-1){
+                    document.getElementById("state_0_1").style.display="block";
+                }else if(data.data.procedure_step==1&&data.data.procedure_state==0){
+                    document.getElementById("state_1").style.display="block";
+                }else if(data.data.procedure_step==2&&data.data.procedure_state==0){
+                    document.getElementById("state_2").style.display="block";
+                    document.getElementById("imgPre_1").src=HOST+data.data.chengbaoquerenhan[0].file_url;
+                    document.getElementById("imgPre_2").src=HOST+data.data.jiaofeitongzhidan[0].file_url;
+                }else if(data.data.procedure_step==3&&data.data.procedure_state==0){
+                    document.getElementById("state_2_1").style.display="block";
+                }else if(data.data.procedure_step==4&&data.data.procedure_state==0){
+                    document.getElementById("state_3").style.display="block";
+
+                }else if(data.data.procedure_step==5&&data.data.procedure_state==0){
+                    document.getElementById("state_3_1").style.display="block";
+                }else if(data.data.procedure_step==6&&data.data.procedure_state==0){
+                    document.getElementById("state_4_1").style.display="block";
+                }else if(data.data.procedure_step==7&&data.data.procedure_state==0){
+                    document.getElementById("state_5").style.display="block";
+                }else if(data.data.procedure_step==8&&data.data.procedure_state==0){
+                    document.getElementById("state_5_1").style.display="block";
+                }else if(data.data.procedure_step==8&&data.data.procedure_state==-1){
+                    document.getElementById("state_5_1_1").style.display="block";
+                }else if(data.data.procedure_step==9&&data.data.procedure_state==0){
+                    document.getElementById("state_6_1").style.display="block";
+                }else if(data.data.procedure_step==10&&data.data.procedure_state==0){
+                    document.getElementById("state_end").style.display="block";
+                }
+
+                if(data.data.count==0){
+                    alert("本批次没有信息！")
+                }
+                $(".tcdPageCode").createPage({
+                    pageCount:1,
+                    current:1,
+                    backFn:function(p){
+                        // alert(p);
+                    }
+                });
+
+
+                    for(var i=0; i<data.data.count; i++) {
+                        varname="td"+i;
+                        vars[varname]=""
+                    }
+                    for(var i=0;i<data.data.count;i++){
+                        for (var j=0;j<7;j++){
+
+                            vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+                        }
+
+                    }
+                    for(var i=0;i<data.data.count;i++){
+                        str+='<tr style="height: 37px!important;">'+vars['td'+i]+'</tr>';
+                    }
+                    document.getElementById("table_statistics").innerHTML+=str;
+                    for(i=0;i<data.data.count;i++){
+                        document.getElementById(i+"_1").innerHTML=data.data.property_list[i].zican_miaoshu;
+                        document.getElementById(i+"_2").innerHTML=data.data.property_list[i].gouzhi_jiazhi;
+                        document.getElementById(i+"_0").innerHTML=i+1;
+                        document.getElementById(i+"_3").innerHTML=data.data.property_list[i].number;
+                        document.getElementById(i+"_4").innerHTML=data.data.property_list[i].xiaoji;
+                        document.getElementById(i+"_5").innerHTML= data.data.property_list[i].zican_fenlei;
+
+                    }
+                }
+
+
+        }
+        else {
+            if(data.code==1){
+                alert(data.desc)
+            }
+            if(data.code==-1){
+                alert("登录失效，请重新登陆！");
+            }
+            if(data.code==-2){
+                alert("您的权限不足，无法操作！")
+            }
+            if(data.code==-3){
+                alert("您的账号已被锁定！")
+            }
+            if(data.code==-4){
+                alert("信息不完整，无法操作！")
+            }
+            if(data.code==-5){
+                alert("数据有误，请提供准确的数据！")
+            }
+        }
+    }).fail(function () {
+        alert('无法链接网络！');
+    });
+</script>
+
+<script>
+    document.getElementById("hover_renyuan").onmouseover = function(){
+        document.getElementById("hover_main1").style.display="block";
+    }
+    document.getElementById("hover_renyuan").onmouseout = function(){
+        document.getElementById("hover_main1").style.display="none"
+
+    }
+    document.getElementById("hover_main1").onmouseover=function () {
+        document.getElementById("hover_main1").style.display="block";
+    }
+    document.getElementById("hover_main1").onmouseout=function () {
+        document.getElementById("hover_main1").style.display="none";
+    }
+
+
+    document.getElementById("hover_che").onmouseover = function(){
+        document.getElementById("hover_main2").style.display="block";
+    }
+    document.getElementById("hover_che").onmouseout = function(){
+        document.getElementById("hover_main2").style.display="none"
+
+    }
+    document.getElementById("hover_main2").onmouseover=function () {
+        document.getElementById("hover_main2").style.display="block";
+    }
+    document.getElementById("hover_main2").onmouseout=function () {
+        document.getElementById("hover_main2").style.display="none";
+    }
+
+
+    document.getElementById("hover_cai").onmouseover = function(){
+        document.getElementById("hover_main3").style.display="block";
+    }
+    document.getElementById("hover_cai").onmouseout = function(){
+        document.getElementById("hover_main3").style.display="none"
+
+    }
+    document.getElementById("hover_main3").onmouseover=function () {
+        document.getElementById("hover_main3").style.display="block";
+    }
+    document.getElementById("hover_main3").onmouseout=function () {
+        document.getElementById("hover_main3").style.display="none";
+    }
+</script>
+</body>
+</html>

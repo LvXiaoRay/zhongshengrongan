@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-信息变更</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+<div class="wrapper">
+
+
+
+
+
+
+
+
+    <!--------------------------------------------------header_nav end------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom: 80px;height:auto;">
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">信息变更</p>
+        <!-- 上传变更申请 -->
+        <div id="upload_application" style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: auto;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;">
+            <div>
+                <div  style="text-align: left; padding-left: 40px; padding-top: 30px;">
+                    <input type="radio" checked="checked" name="change_info" value="1" onclick="change_info_rad()">
+                    <span style="color: #5BB33a;">人员信息</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="change_info" value="2" onclick="change_info_rad()">
+                    <span style="color: #5BB33a;">车辆信息</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="change_info" value="3" onclick="change_info_rad()">
+                    <span style="color: #5BB33a;">险别信息</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="change_info" value="4" onclick="change_info_rad()">
+                    <span style="color: #5BB33a;">其他</span>
+                </div>
+
+                <!-- 人员信息上传内容 -->
+                <table id="person_info" style="margin-top: 20px;text-align: left; color: #5BB33a;">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td style="padding-left: 55px;">变更前</td>
+                        <td style="padding-left: 55px;">变更后</td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改被保险人：</p></td>
+                        <td><input id="changed_customer" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_customer1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改投保人：</p></td>
+                        <td><input id="changed_uploader" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_uploader1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改行驶证车主：</p></td>
+                        <td><input id="changed_owner" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_owner1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                </table>
+                <!-- 车辆信息上传内容 -->
+                <table id="vehicle_info" style="margin-top: 20px;text-align: left;display: none; color: #5BB33a;">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td style="padding-left: 55px;">变更前</td>
+                        <td style="padding-left: 55px;">变更后</td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改发动机号：</p></td>
+                        <td><input id="changed_motor_id" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_motor_id1" style="display: inline-block;margin-right: 40px"/></td>
+
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改车架号：</p></td>
+                        <td><input id="changed_carframe_id" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_carframe_id1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改车牌号：</p></td>
+                        <td><input id="changed_car_id" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_car_id1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改使用性质：</p></td>
+                        <td><input id="changed_character" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_character1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                </table>
+                <!-- 险别信息上传内容 -->
+                <table id="type_info" style="margin-top: 20px;text-align: left;display: none; color: #5BB33a;">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td style="padding-left: 55px;">变更前</td>
+                        <td style="padding-left: 55px;">变更后</td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改车损险及附加：</p></td>
+                        <td><input id="changed_chesunxianjifujia" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_chesunxianjifujia1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改商业三者及附加：</p></td>
+                        <td><input id="changed_sangyesanzhejifujia" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_sangyesanzhejifujia1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改盗抢险及附加：</p></td>
+                        <td><input id="changed_daoqiangxianjifujia" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_daoqiangxianjifujia1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改车上人员责任险及附加：</p></td>
+                        <td><input id="changed_csryzrxjifujia" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_csryzrxjifujia1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">更改其他险别：</p></td>
+                        <td><input id="changed_qitaxianbie" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_qitaxianbie1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                </table>
+                <!-- 其他上传内容 -->
+                <table id="other_info" style="margin-top: 20px;text-align: left;display: none; color: #5BB33a;">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td style="padding-left: 55px;">变更前</td>
+                        <td style="padding-left: 55px;">变更后</td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>    <!-- 空一行 -->
+                    <tr>
+                        <td><p style="padding-left: 40px;display: inline-block;">退保：</p></td>
+                        <td><input id="changed_is_tuibao" style="display: inline-block;margin-right: 40px"/></td>
+                        <td><input id="changed_is_tuibao1" style="display: inline-block;margin-right: 40px"/></td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <table style="margin-top: 10px; margin-left: 30px;">
+                <tr>
+                    <!-- 参考车辆垫付 -->
+                    <td><img  id="imgPre_1_1" onclick="photo_1_1()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+                    <td><img  id="imgPre_1_2" onclick="photo_1_2()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+                    <!--<tr><td align="left"><p style="padding-left: 40px;display: inline-block;">申请人：</p></td><td><input id="owner" style="display: inline-block;margin-right: 40px;border: none"/></td></tr>-->
+                </tr>
+                <tr>
+                    <td><p style="font-size: 16px">盖章申请书</p></td>
+                    <td><p style="font-size: 16px">营业执照盖章件</p></td>
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne1" id="imgOne_1_1_1" onchange="preImg(this.id,'imgPre_1_1');" />
+            <input style="display: none" accept="image/*" type="file" value="" name="imgTwo2" id="imgOne_1_1_2" onchange="preImg(this.id,'imgPre_1_2');" />
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px; margin-bottom: 20px;width: 150px;height: 50px" onclick="upload_application()">上传</button>
+        </div>
+
+        <!-- 审核存在问题 -->
+        <div id="request_bed" style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none;">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">《信息变更申请表》审核确认反馈结果：</p>
+                <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     border-color: #5BB33a;
+                                     padding-top: 10px;
+               ">本次提交存在问题；请重新提交文件</textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px">重新上传</button>
+        </div>
+
+        <!-- 审核已通过 -->
+        <div id="request_well" style="margin-left: 5%;margin-right:5%;margin-top: 10px;height: 45px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none;">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">《信息变更申请表》审核已通过</p>
+            </div>
+        </div>
+
+    </div >
+
+    <!--container 内容结束end-->
+
+
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/lib.js"></script>
+<script>
+    // 信息变更按钮
+    search_type = "1";
+    function change_info_rad() {
+        search_type = $('input:radio:checked').val();
+        if (search_type === "1"){
+            $("#person_info").show();
+            $("#vehicle_info").hide();
+            $("#type_info").hide();
+            $("#other_info").hide();
+        }else if (search_type === "2") {
+            $("#person_info").hide();
+            $("#vehicle_info").show();
+            $("#type_info").hide();
+            $("#other_info").hide();
+        }else if (search_type === "3") {
+            $("#person_info").hide();
+            $("#vehicle_info").hide();
+            $("#type_info").show();
+            $("#other_info").hide();
+        }else if (search_type === "4") {
+            $("#person_info").hide();
+            $("#vehicle_info").hide();
+            $("#type_info").hide();
+            $("#other_info").show();
+        }
+    }
+
+
+    function photo_1_1() {
+        document.getElementById("imgOne_1_1_1").click();
+    }
+    function photo_1_2() {
+        document.getElementById("imgOne_1_1_2").click();
+    }
+
+    function preImg(sourceId, targetId) {
+        if (typeof FileReader === 'undefined') {
+            alert('格式错误');
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = document.getElementById(targetId);
+            img.src = this.result;
+        }
+        reader.readAsDataURL(document.getElementById(sourceId).files[0]);
+    }
+
+    // 填充变更前信息
+    var carframe_id = location.search.split("?")[1];
+    _get('/service/insure/vehicle/stat/', { is_jidongche:"True", carframe_id : carframe_id }).then(function (data) {
+        if (data.code === 0) {
+            var data_Object_vehicle = data.data.list;
+            // 人员信息
+            document.getElementById("changed_customer").value = data_Object_vehicle[0].customer_name;
+            document.getElementById("changed_uploader").value = data_Object_vehicle[0].uploader_username;
+            document.getElementById("changed_owner").value = data_Object_vehicle[0].owner;
+            // 车辆信息
+            document.getElementById("changed_motor_id").value = data_Object_vehicle[0].motor_id;
+            document.getElementById("changed_carframe_id").value = data_Object_vehicle[0].carframe_id;
+            document.getElementById("changed_car_id").value = data_Object_vehicle[0].car_id;
+            document.getElementById("changed_character").value = data_Object_vehicle[0].character;
+            // 险别信息
+            document.getElementById("changed_chesunxianjifujia").value = data_Object_vehicle[0].chesunbaofei;
+            document.getElementById("changed_sangyesanzhejifujia").value = data_Object_vehicle[0].sanzhebaofei;
+            document.getElementById("changed_daoqiangxianjifujia").value = data_Object_vehicle[0].daoqiangbaofei;
+            document.getElementById("changed_csryzrxjifujia").value = data_Object_vehicle[0].sijibaofei;
+            // 其他（暂无）
+        }
+    })
+
+    // 上传申请文件
+    function upload_application() {
+        if (document.getElementById("imgPre_1_1").getAttribute("src") === "images/add_img.png") {           // 判断是否已经上传图片
+            alert("请上传盖章申请书！")
+        } else if (document.getElementById("imgPre_1_2").getAttribute("src") === "images/add_img.png") {
+            alert("请上传营业执照盖章件！")
+        }
+        else {
+            if (search_type === "1") { //修改人员信息
+                _post('/service/revise/renyuan/', {
+                    carframe_id: carframe_id,
+                    changed_customer: document.getElementById("changed_customer1").value,
+                    changed_uploader: document.getElementById("changed_uploader1").value,
+                    changed_owner: document.getElementById("changed_owner1").value,
+                    gaizhang_shenqingshu: document.getElementById("imgOne_1_1_1").files[0],
+                    yyzz_gaizhangjian: document.getElementById("imgOne_1_1_2").files[0]
+                }).then(function (data) {
+                    if (data.code === 0) {
+                        //alert_simple.close();
+                        alert("已上传，请等待审核！")
+                        window.location.href="car_change_info.html";
+                        // $('#upload_application').hide();
+                        // $('#request_bed').hide();
+                        // $('#request_well').show();
+                    }
+                    else {
+                        if (data.code === -1) {
+                            alert("登录失效，请重新登陆！");
+                            localStorage.clear();
+                        }
+                        if (data.code === -2) {
+                            alert("您的权限不足，无法操作！")
+                        }
+                        if (data.code === -3) {
+                            alert("您的账号已被锁定！")
+                        }
+                        if (data.code === -4) {
+                            alert("信息不完整，无法操作！")
+                        }
+                        if (data.code === -5) {
+                            alert("数据有误，请提供准确的数据！")
+                        }
+
+                    }
+                })
+            } else if (search_type === "2") { //修改车辆信息
+                _post('/service/revise/cheliang/', {
+                    carframe_id: carframe_id,
+                    changed_motor_id: document.getElementById("changed_motor_id1").value,
+                    changed_carframe_id: document.getElementById("changed_carframe_id1").value,
+                    changed_car_id: document.getElementById("changed_car_id1").value,
+                    changed_character: document.getElementById("changed_character").value,
+                    gaizhang_shenqingshu: document.getElementById("imgOne_1_1_1").files[0],
+                    yyzz_gaizhangjian: document.getElementById("imgOne_1_1_2").files[0]
+                }).then(function (data) {
+                    if (data.code === 0) {
+                        alert("已上传，请等待审核！")
+                        window.location.href="car_change_info.html";
+                        // $('#upload_application').hide();
+                        // $('#request_bed').hide();
+                        // $('#request_well').show();
+                    }
+                    else {
+                        if (data.code === -1) {
+                            alert("登录失效，请重新登陆！");
+                            localStorage.clear();
+                            // window.location.href="../login.html";
+                        }
+                        if (data.code === -2) {
+                            alert("您的权限不足，无法操作！")
+                        }
+                        if (data.code === -3) {
+                            alert("您的账号已被锁定！")
+                        }
+                        if (data.code === -4) {
+                            alert("信息不完整，无法操作！")
+                        }
+                        if (data.code === -5) {
+                            alert("数据有误，请提供准确的数据！")
+                        }
+
+                    }
+                })
+
+            } else if (search_type === "3") { //修改险别信息
+                _post('/service/revise/xianbie/', {
+                    carframe_id: carframe_id,
+                    changed_chesunxianjifujia:document.getElementById("changed_chesunxianjifujia1").value,
+                    changed_sangyesanzhejifujia:document.getElementById("changed_sangyesanzhejifujia1").value,
+                    changed_daoqiangxianjifujia:document.getElementById("changed_daoqiangxianjifujia1").value,
+                    changed_csryzrxjifujia:document.getElementById("changed_csryzrxjifujia1").value,
+                    changed_qitaxianbie:document.getElementById("changed_qitaxianbie1").value,
+                    gaizhang_shenqingshu:document.getElementById("imgOne_1_1_1").files[0],
+                    yyzz_gaizhangjian:document.getElementById("imgOne_1_1_2").files[0]
+                }).then(function (data) {
+                    if (data.code === 0) {
+                        alert("已上传，请等待审核！")
+                        window.location.href="car_change_info.html";
+                        // $('#upload_application').hide();
+                        // $('#request_bed').hide();
+                        // $('#request_well').show();
+                    }
+                    else {
+                        if (data.code === -1) {
+                            alert("登录失效，请重新登陆！");
+                            localStorage.clear();
+                            // window.location.href="../login.html";
+                        }
+                        if (data.code === -2) {
+                            alert("您的权限不足，无法操作！")
+                        }
+                        if (data.code === -3) {
+                            alert("您的账号已被锁定！")
+                        }
+                        if (data.code === -4) {
+                            alert("信息不完整，无法操作！")
+                        }
+                        if (data.code === -5) {
+                            alert("数据有误，请提供准确的数据！")
+                        }
+
+                    }
+                })
+
+            } else if (search_type === "4") { //修改其他信息
+                _post('/service/revise/qita/', {
+                    carframe_id: carframe_id,
+                    changed_qitaxianbie:document.getElementById("changed_qitaxianbie1").value,
+                    gaizhang_shenqingshu:document.getElementById("imgOne_1_1_1").files[0],
+                    yyzz_gaizhangjian:document.getElementById("imgOne_1_1_2").files[0]
+                }).then(function (data) {
+                    if (data.code === 0) {
+                        alert("已上传，请等待审核！")
+                        window.location.href="car_change_info.html";
+                        // $('#upload_application').hide();
+                        // $('#request_bed').hide();
+                        // $('#request_well').show();
+                    }
+                    else {
+                        if (data.code === -1) {
+                            alert("登录失效，请重新登陆！");
+                            localStorage.clear();
+                            // window.location.href="../login.html";
+                        }
+                        if (data.code === -2) {
+                            alert("您的权限不足，无法操作！")
+                        }
+                        if (data.code === -3) {
+                            alert("您的账号已被锁定！")
+                        }
+                        if (data.code === -4) {
+                            alert("信息不完整，无法操作！")
+                        }
+                        if (data.code === -5) {
+                            alert("数据有误，请提供准确的数据！")
+                        }
+
+                    }
+                })
+
+            }
+
+        }
+    }
+
+</script>
+<script>
+    function change_wenjian() {
+        document.getElementById("wenjian_chose").innerHTML="已选择"
+        document.getElementById("file_name").innerHTML="文件名称："+document.getElementById("file_input").value;
+    }
+
+    function download() {
+        alert("暂无模板！")
+    }
+    function chose() {
+        document.getElementById("file_input").click();
+    }
+    function upload() {
+        if(document.getElementById("wenjian").value==""){
+            alert("请选择文件！")
+
+        }
+        else{
+            _post('/service/insure/personnel/',{
+                file:document.getElementById("wenjian").value,
+            }).then(function (data) {
+                if (data.code == 0) {
+                    //alert_simple.close();
+                    alert("已上传，请等待审核！")
+                    window.location.href="index.html"
+
+
+                }
+                else {
+                    // alert_simple.close();
+                    if(data.code==-1){
+                        alert("登录失效，请重新登陆！");
+                        localStorage.clear();
+                        window.location.href="Login.html";
+                    }
+                    if(data.code==-2){
+                        alert("您的权限不足，无法操作！")
+                    }
+                    if(data.code==-3){
+                        alert("您的账号已被锁定！")
+                    }
+                    if(data.code==-4){
+                        alert("信息不完整，无法操作！")
+                    }
+                    if(data.code==-5){
+                        alert("数据有误，请提供准确的数据！")
+                    }
+
+                }
+            }).fail(function () {
+
+            })
+
+        }
+
+    }
+</script>
+<script>
+
+
+
+</script>
+</body>
+</html>

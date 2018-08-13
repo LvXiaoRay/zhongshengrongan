@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <!--------------------------------------header_user begin 顶部导航栏------------------------------------->
+    <div class="header_user"  style="display: none">
+        <div class="main_width">
+            <!--<span class="tel">客服电话：400-663-6600（周一至周六 9:00-18:00）</span>-->
+            <span class="fr">
+
+
+                <span><a href="javascript:localStorage.clear();window.location.href='../login.html'">已登录，退出登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                <span class="register"><a href="#">个人中心</a></span>
+                <span class="Backlog"><a href="#">保单查询</a></span>
+                <span class="message"><a href="#">服务专区</a></span>
+                <span class="my_insurance"><a href="#">网站导航</a></span>
+            </span>
+        </div>
+    </div>
+
+    <!---------------------------------------header_user end-------------------------------------->
+    <!---------------------------------------header_nav begin 导航栏------------------------------------->
+    <div class="header_nav"  style="display: none">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li  style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>                <!--首页-->
+                    <li  id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a  href="#">人员保险</a></li>
+                    <li  id="hover_che" style="padding-left: 20px;height: 80px"><a href="#">车辆保险</a></li>
+                    <li class="active"  id="hover_cai" style="padding-left: 20px;height: 80px"><a href="#">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="company_information.html">企业介绍</a></li>
+                    <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="product_search_input" placeholder="请输入关键字"></li>
+                    <li class="product_search1"><button id="btn_search_product" class="product_search_button">搜索</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- hover窗口-->
+    <div class="div1_1" id="hover_main1" style="display: none;width: 89%;left: 5.5%;height: 320px">
+        <div class="div1_child1" style="height: 300px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">人员保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px" >
+                    <span ><a class="all_link"  id="introduce_people" href="people_insurance_case.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承包保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a  class="all_link" id="introduce_company" href="people_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险顾问公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a class="all_link" id="introduce_company_info"  href="people_insurance_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link"  id="toubao_progress" href="toubao_progress.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle" href="touble_handle.html" >投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic" href="toubao_statistics.html" >投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people5.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">保全</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="baoquan_state" href="baoquan_statement.html">保全说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="baoquan_handle" href="baoquan_handle.html" >保全办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="baoquan_people_change" href="baoquan_people_change.html" >人员信息变更</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_baoan"  href="lipei_baoan.html">理赔报案</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_handle" href="lipei_handle.html" >理赔办理</a></span>
+                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_dianfu" href="lipei_dianfu.html" >理赔垫付</a></span>
+                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_statistic" href="lipei_statistics.html">理赔统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="company_introduce"  href="company_info.html">详细介绍</a></span>
+                </div>
+
+            </div>
+
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+        </div>
+    </div>
+
+    <div class="div1_1" id="hover_main2" style="display: none;width: 89%;left: 5.5%;height: 390px">
+        <div class="div1_child1" style="height: 370px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">车辆保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px">
+                    <span><a class="all_link" id="chexian_progress2" href="people_insurance_case.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承保保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span><a class="all_link" id="car_toubao_progress" href="people_company.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险顾问公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span><a class="all_link" id="introduce_company_info2" href="people_insurance_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">车投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="toubao_progress2" href="car_toubao_progress.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle2" href="car_toubao_handle.html">投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic2" href="car_toubao_statistics.html">投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">定损和修车网点查询</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="toubao_progr" href="car_dingsun.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people5.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">保费垫付</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="baoquan_state2" href="car_dianfu_progress.html">垫付流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span> <span><a
+                        class="all_link" id="baoquan_handle2" href="car_dianfu.html">保费垫付办理</a></span> <span class="fg"><a
+                        style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="dianfu_statistics" href="car_dianfu_statistics.html">保费垫付办理</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">机动车辆理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px"><span
+                        style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="lipei_baoan2" href="car_lipei_progress.html">理赔流程</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="lipei_handle2" href="car_lipei_baoan.html">理赔报案</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="lipei_statistic2" href="car_lipei_statistics.html">理赔统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">机动车辆第三者责任保险理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="company_introduce2" href="car_dianfu_need_know.html">垫付须知</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="car_third" href="car_third_dianfu.html">机动车辆第三者责任保险紧急医疗垫付</a></span>
+
+
+                </div>
+
+            </div>
+
+            <hr style=" clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">机动车批改</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="lipei_boan2" href="lipei_baoan.html">批改流程</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hndl2" href="car_add_xianzhong.html">增加险种</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_staistic2" href="car_change_baoe.html">保额变更</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hndl" href="car_tuibao_handle.html">退保办理</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_staisti2" href="car_change_info.html">信息变更</a></span>                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>                    <span><a class="all_link" id="pigai_record" href="car_pigai_record.html">批改记录</a></span>
+
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="lipei_boa2" href="company_info.html">详细信息</a></span>
+
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+    </div>
+
+
+    <div class="div1_1" id="hover_main3" style="display: none;width: 89%;left: 5.5%;height: 320px">
+        <div class="div1_child1" style="height: 300px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">财产保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px" >
+                    <span ><a class="all_link"  id="chexian_progress3" href="property_insurance_plan.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承保保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a  class="all_link" id="car_toubao_progress3" href="property_insurance_company.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险顾问公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a class="all_link" id="introduce_company_info3"  href="property_insurance_counselor.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link"  id="toubao_progress3" href="property_toubao_process.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle3" href="property_toubao_handle.html" >投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic3" href="property_touble_statistics.html" >投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">资产增减</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_baoan3"  href="property_asset_increase_statement.html">资产增减说明</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_handle3" href="property_asset_increase_handle.html" >资产增减办理</a></span>
+
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_bao"  href="property_lipei_progress.html">理赔流程</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hand3" href="property_lipei_baoan.html" >理赔报案</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipe_hand3" href="property_lipei_handle.html" >理赔办理</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipe_had3" href="property_lipei_statistics.html" >理赔统计查询</a></span>
+
+                </div>
+
+            </div>
+
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lpei_bao"  href="property_company_info.html">详细信息</a></span>
+                </div>
+
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+    </div>
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-right: 5%;margin-top: 40px" class="word_color">
+        <div style="height:auto;margin-right: 5%">
+            <div style="height: 20px;width: auto"></div>
+            <div style=";height: 57px;"><p style="padding-left: 60px;display: inline-block;font-size: 18px;">资产增减说明:</p>
+                <hr style="width: 95%;margin-left: 2.5%;border: dashed;border-width: 1px;border-bottom-width: 0px;" class="word_color">
+
+            </div>
+            <p style="padding-left: 60px"><span style="font-size: 16px">第一步：提供客户信息</span></p>
+            <p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+                项目公司上传本公司营业执照、客户开票信息（每次投保时要求客户都进行确认）。</p>
+
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px;">第二步：填写投保信息表</span></p><p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+
+            项目公司填写《雇主险投保信息表》，人员姓名、身份证号务必与有效证件内容一致，人员类别以人员参保时状态为准。填写完毕后提交顾问公司进行投保。</p>
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px">第三步：顾问公司审核投保名单</span></p><p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+            顾问公司对项目公司提交的《雇主险投保信息表》进行审核，审核无误后提交保险公司生成生效日期和保费金额。</p>
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px">第四步：保险公司生成保险日期和保费</span></p><p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+            保险公司收到顾问公司提交的《雇主险投保信息表》后，对表中载明的人员进行投保，并对顾问公司反馈生效日期和保费金额。</p>
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px">第五步：顾问公司审核生效日期和保费金额</span></p><p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+            顾问公司对保险公司提供的生效日期和保费金额进行审核，审核无误后通知保险公司出单。</p>
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px">第六步：保险公司制作缴费通知书和批单并邮寄</span></p><p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+            保险公司对审核无误的生效日期和保费金额，为每个投保人制作缴费通知书和批单，制作完毕后进行邮寄，并将快递单号填写在《雇主险投保信息表》中。</p>
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px">第七步：项目公司申请保费、付款</span></p><p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+            项目公司收到审核无误的报价后进行保费申请，申请完毕付款后，上传《银行付款回执单》。</p>
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px">第八步：保险公司开具发票</span></p><p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+            保险公司收到项目公司全额付款后，进行对应金额的发票开具，并在生效日期次月为项目公司邮寄保费发票。</p>
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px">第九步：补减保费、批改保单、更换发票</span></p><p style="padding-left: 60px;font-size: 14px;margin-top: 10px">
+            批改保单：保险公司出单后，如保单上信息出现错误/变更，项目公司需填写《变更登记表》，提交保险公司，保险公司收到《变更登记表》后完成批改。</p><p style="padding-left: 60px;font-size: 14px;padding-right: 0%;margin-top: 5px">
+            补减保费： 保险公司收到《变更登记表》后进行批改过程中，如发生保费增加，保险公司将出具批改单和缴费通知书，邮寄给项目公司进行补交保费；如发生保费减少，保险公司直接将多缴保费退还给项目公司，项目公司应配合保险公司对原开具的发票进行红冲，红冲后由保险公司重新为其出具发票。
+            更换发票：保险公司出具发票后，如发票上信息出现错误，项目公司将发票原件寄回保险公司进行更换。</p>
+
+        </div>
+        <hr style="margin-top:40px;width: 95%;margin-left: 2.5%;border: dashed;border-width: 1px;border-bottom-width: 0px;border-color: #c30a18;margin-bottom: 0px">
+
+        <div style=";height: 37px;"><p style="padding-left: 60px;display: inline-block;font-size: 18px;margin-top: 10px">资产增减注意事项:</p>
+            <hr style="width: 95%;margin-left: 2.5%;border: dashed;border-width: 1px;border-bottom-width: 0px;" class="word_color">
+
+        </div>
+        <div style="height:auto;margin-top: 40px;margin-left: 0%;margin-right: 5%;font-size: 14px">
+
+
+            <p style="padding-left: 60px;margin-top: 20px"><span style="font-size: 16px">一、未投保人员的增员</span></p>
+            <p style="padding-left: 60px;margin-top: 10px"> 每月项目公司上报的增加人员，为该人员本月新入职或未投保过的人员，这些人员需与项目公司存在劳务关系，并有书面的劳务合同。</p>
+            <p style="padding-left:  60px;margin-top: 20px"><span style="font-size: 16px">二、已投保人员的减员</span></p>
+            <p style="padding-left:  60px;margin-top: 10px">每月项目公司上报的减少人员，为项目公司在本保险年度内已为其投保了保险，因人员离职、退休等原因，与项目公司已解除劳务关系的人员。</p>
+            <p style="padding-left:  60px;margin-top: 20px"><span style="font-size: 16px"> 三、已投保人员类别的变更</span></p>
+            <p style="padding-left:  60px;margin-top: 10px"> 项目公司已为人员在本保险年度内投保，投保后发生社保或工作岗位变化，项目公司需将这些人员先做首次投保进行减员，在添加先符合人员状态的人员类别进行投保。</p>
+            <p style="padding-left:  60px;margin-top: 20px"><span style="font-size: 16px">四、出险人员不做减员</span></p>
+            <p style="padding-left:  60px;margin-top: 10px">人员出险后，项目公司在该人员理赔案件未结案前，不做减员处理，待理赔结案后，项目公司根据实际用人情况，再进行减员。</p>
+        </div>
+        <div style="text-align: center;margin-top: 20px;margin-bottom: 20px">
+            <button style="width: 110px;height: 33px"  class="download_btn" onclick="baoquan_handle()">资产增减办理</button>
+        </div>
+    </div >
+    <!--container 内容结束end-->
+    <!--footer footer开始 begin-->
+    <div class="copyright"  style="display: none">
+        <div class="main_width footer">
+            <div class="footer_nav">
+                <p>
+                    <a href="#">关于中盛融安金融</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安小金库</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安钱包</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安白条</a>
+                    <span class="divider">|</span>
+                    <a href="#">联系我们</a>
+                    <span class="divider">|</span>
+                    <a href="#">免责声明</a>
+                </p>
+                <p>Copyright@2004-2018 zsra.com 中盛融安&nbsp;&nbsp;版权所有<span class="divider">|</span>投资有风险&nbsp;&nbsp;购买需谨慎</p>
+            </div>
+            <div class="footer_contact">
+                <div class="f_contact_time">
+                    联系我们<span>（09:00-22:00）</span>
+                </div>
+                <div class="f_contact_content">
+                    <div class="f_cc_left">
+                        <span class="f_cc_item">个人业务：400-098-8511</span>
+                        <span class="f_cc_item">企业业务：400-088-8816</span>
+                    </div>
+                    <div class="f_cc_mid">
+                        <a href="#" class="f_cc_link item_JIMI">咨询我们</a>
+                        <a href="#" class="f_cc_link item_kefu">在线客服</a>
+                    </div>
+                    <div class="f_cc_right">
+                        <a href="#" class="f_cc_link item_mail">客服邮箱</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer footer结束 end-->
+
+</div>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script>
+    function baoquan_handle() {
+        window.location.href="property_asset_increase_handle.html";
+    }
+    document.getElementById("hover_renyuan").onmouseover = function(){
+        document.getElementById("hover_main1").style.display="block";
+    }
+    document.getElementById("hover_renyuan").onmouseout = function(){
+        document.getElementById("hover_main1").style.display="none"
+
+    }
+    document.getElementById("hover_main1").onmouseover=function () {
+        document.getElementById("hover_main1").style.display="block";
+    }
+    document.getElementById("hover_main1").onmouseout=function () {
+        document.getElementById("hover_main1").style.display="none";
+    }
+
+
+    document.getElementById("hover_che").onmouseover = function(){
+        document.getElementById("hover_main2").style.display="block";
+    }
+    document.getElementById("hover_che").onmouseout = function(){
+        document.getElementById("hover_main2").style.display="none"
+
+    }
+    document.getElementById("hover_main2").onmouseover=function () {
+        document.getElementById("hover_main2").style.display="block";
+    }
+    document.getElementById("hover_main2").onmouseout=function () {
+        document.getElementById("hover_main2").style.display="none";
+    }
+
+
+    document.getElementById("hover_cai").onmouseover = function(){
+        document.getElementById("hover_main3").style.display="block";
+    }
+    document.getElementById("hover_cai").onmouseout = function(){
+        document.getElementById("hover_main3").style.display="none"
+
+    }
+    document.getElementById("hover_main3").onmouseover=function () {
+        document.getElementById("hover_main3").style.display="block";
+    }
+    document.getElementById("hover_main3").onmouseout=function () {
+        document.getElementById("hover_main3").style.display="none";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-新增理赔报案</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/jquery-labelauty.css">
+</head>
+<body>
+<div class="wrapper">
+
+    <!--container begin 内容开始-->
+    <div class="container" style="height:auto">
+
+        <hr style="width: 95%;margin-left: 2.5%;margin-bottom: 10px;visibility: hidden">
+
+
+        <!-- 之前的新增报案（暂时不用这个） -->
+        <div class="state_box" style=" height: auto;min-height: 350px">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 20px">请填写并上传《车辆事故报案登记表》</p>
+                <table style="width: 100%">
+                    <tr style="height: 60px">
+                        <td>
+                            <p>经办人姓名</p>
+                        </td>
+                        <td>
+                            <input id="Claimer_name"/>
+                        </td>
+                        <td>
+                            <p>经办人手机号</p>
+                        </td>
+                        <td>
+                            <input id="Claimer_phone"/>
+                        </td>
+                        <td>
+                            <p>报案时间</p>
+                        </td>
+                        <td>
+                            <input id="Accident_time" style="border: none;"/>
+                        </td>
+                        <td>
+                            <p>理赔报案号</p>
+                        </td>
+                        <td>
+                            <input id="lipei_baoan_id"/>
+                        </td>
+                    </tr>
+                    <tr style="height: 60px">
+
+                        <td>
+                            <p>定损人姓名</p>
+                        </td>
+                        <td>
+                            <input id="dingsun_name"/>
+                        </td>
+                        <td>
+                            <p>定损人手机号</p>
+                        </td>
+                        <td>
+                            <input id="dingsun_phone"/>
+                        </td>
+                        <td>
+                            <p>出险地点</p>
+                        </td>
+                        <td>
+                            <input id="Accident_place"/>
+                        </td>
+                </table>
+
+                <div style="text-align: left; padding-left: 10px; padding-top: 20px; padding-bottom: 20px">
+
+                    <!-- 是否需要协助 -->
+                    <span style="padding-right: 20px">是否需要协助</span>
+                    <input type="radio" checked="checked" name="is_need_help" value="归档">
+                    <span>归档</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="is_need_help" value="协助">
+                    <span>协助</span>
+
+                    <!-- 是否结案 -->
+                    <span style="padding-left: 70px; padding-right: 63px;">是否结案</span>
+                    <input id="is_jiean" type="checkbox" name="is_jiean">
+                    <span>结案</span>
+                </div>
+
+                <!-- 多辆车车架号 -->
+                <table class="layui-table" id="table_statistics" style="width: 90%;margin-left:5%;text-align: center">
+                    <th style="text-align: center">车架号</th>
+                    <th style="text-align: center">操作</th>
+                </table>
+            </div>
+            <p id="file_name" style="    text-align: left;padding-left: 40px;margin-top: 10px;"></p>
+            <button id="wenjian_chose" class="download_btn" onclick="chose()"
+                    style="margin-bottom: 20px;font-size: 18px;text-align: center;margin-top:40px;width: 150px;height: 50px">
+                提交报案
+            </button>
+        </div>
+
+        <!-- 弃用的新增报案 -->
+        <div id="add_baoan" class="state_box" style="display: none; height: auto">
+            <table style="margin-top: 10px; margin-left: 30px;">
+                <!-- 申请人信息 -->
+                <tr style="line-height: 40px">
+                    <td align="left" rowspan="2">申请人信息</td>
+                    <td align="left"><p style="padding-left: 20px;display: inline-block;">经办人姓名：</p></td>
+                    <td><input id="Claimer_name1" style="display: inline-block;margin-right: 40px;"/></td>
+                </tr>
+                <tr style="line-height: 40px">
+                    <td align="left"><p style="padding-left: 20px;display: inline-block;">联系方式：</p></td>
+                    <td><input id="Claimer_phone1" style="display: inline-block;margin-right: 40px;"/></td>
+                </tr>
+                <!-- 申请时间 -->
+                <tr style="line-height: 40px">
+                    <td align="left">申请时间</td>
+                    <td align="left"><p style="padding-left: 20px;display: inline-block;">报案时间：</p></td>
+                    <td><input id="Accident_time1" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                </tr>
+                <!-- 出险车辆信息 -->
+                <tr style="line-height: 40px">
+                    <td align="left" rowspan="2">出险车辆信息</td>
+                    <td align="left"><p style="padding-left: 20px;display: inline-block;">车架号：</p></td>
+                    <td><input id="carframe_id1" style="display: inline-block;margin-right: 40px;"/></td>
+                </tr>
+                <tr style="line-height: 40px">
+                    <td align="left"><p style="padding-left: 20px;display: inline-block;">承保公司：</p></td>
+                    <td><input id="tel" style="display: inline-block;margin-right: 40px;"/></td>
+                </tr>
+                <!-- 理赔报案号 -->
+                <tr style="line-height: 40px">
+                    <td align="left">理赔报案号</td>
+                    <td align="left"><p style="padding-left: 20px;display: inline-block;">报案号：</p></td>
+                    <td><input id="lipei_baoan_id1" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                </tr>
+                <!-- 定损员信息 -->
+                <tr style="line-height: 40px">
+                    <td align="left" rowspan="2">定损员信息</td>
+                    <td align="left"><p style="padding-left: 20px;display: inline-block;">定损员姓名：</p></td>
+                    <td><input id="dingsun_name1" style="display: inline-block;margin-right: 40px;"/></td>
+                </tr>
+                <tr style="line-height: 40px">
+                    <td align="left"><p style="padding-left: 20px;display: inline-block;">定损员联系方式：</p></td>
+                    <td><input id="dingsun_phone1" style="display: inline-block;margin-right: 40px;"/></td>
+                </tr>
+                <!-- 是否需要协助 -->
+                <tr style="line-height: 40px">
+                    <td align="left">是否需要协助</td>
+                    <td>
+                        <button class="download_btn">协助</button>
+                    </td>
+                    <td>
+                        <button class="download_btn">归档</button>
+                    </td>
+                </tr>
+                <!-- 是否结案 -->
+                <tr style="line-height: 40px">
+                    <td align="left">是否结案</td>
+                    <td>
+                        <button class="download_btn">结案</button>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div style="text-align: center">
+                <!--<button onclick="xinzeng()" class="download_btn" style="width: 100px; height: 40px; font-size: 16px;">上传</button>-->
+                <!--<button class="download_btn" onclick="chose()" style="margin-bottom: 20px;font-size: 18px;text-align: center;margin-top:20px;width: 150px;height: 50px">提交报案</button>-->
+            </div>
+
+        </div>
+
+
+        <div style="display: none;text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+    </div>
+
+
+    <!--container 内容结束end-->
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/lib.js"></script>
+
+<!-- 获取时间 -->
+<script>
+    var d = new Date()
+    var day = d.getDate()
+    var month = d.getMonth() + 1
+    var year = d.getFullYear()
+    var str_date = year + "-" + month + "-" + day;
+    document.getElementById("Accident_time").value = str_date;
+</script>
+
+<!-- 增加新的车架号 -->
+<script>
+    var str = ""
+    var vars = {};
+    // 简单的字符串作为变量名
+
+    var varname = {}
+    //批量定义
+    for (var i = 0; i < 30; i++) {
+        varname = "td" + i;
+        vars[varname] = ""
+    }
+    for (var i = 0; i < 30; i++) {
+        for (var j = 0; j < 1; j++) {
+
+            vars['td' + i] += '<td id="_' + i + '_' + j + '"  style="padding: 0px;height: 37px;width: 50%!important;"><input style="height: 37px;border:none;width: 50%;text-align: center" id="' + i + '_' + j + '"/></td>'
+        }
+        // vars['td'+i]+='<td id="_'+i+'_'+2+'"  style="padding: 0px;height: 37px;width: 140px!important;"><input type="date" style="height: 37px;border:none;width: 140px;text-align: center" id="'+i+'_'+2+'"/></td>'
+
+        vars['td' + i] += '<td id="_' + i + '_' + 2 + '" style=";height: 37px!important;"><a class="check_detail" style="font-size: 20px;font-weight: bolder" id="' + i + '_' + 8 + '" onclick="more_vehicle(this.id)">+</a></td>'
+    }
+
+    for (var i = 0; i < 30; i++) {
+        str += '<tr style="height: 37px!important;" id="_' + i + '">' + vars['td' + i] + '</tr>';
+    }
+    document.getElementById("table_statistics").innerHTML += str;
+    for (i = 1; i < 30; i++) {
+        document.getElementById("_" + i).style.display = "none"
+
+    }
+
+</script>
+
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/jquery-labelauty.js"></script>
+<script>
+    var row_num = 1;
+
+    function more_vehicle(id) {
+
+        var ss = id.split("_")[0];
+        var c = parseInt(ss) + 1;
+        var id_num = "_" + c;
+        console.log(c)
+        console.log(id_num)
+        row_num += 1;
+        //console.log(id_num+i)
+        document.getElementById(id_num).style.display = "table-row"
+
+    }
+
+    var jsonObject = [];
+    var Object1 = {};
+    var is_jiean = [];
+
+    function chose() {
+        for (i = 0; i < row_num; i++) {
+
+            Object1 = {
+                "frame_id": document.getElementById(i + "_0").value,
+                "sunhuai_chengdu":"1"
+            }
+            jsonObject.push(Object1);
+        }
+
+        if (document.getElementById("is_jiean").checked === false){
+            is_jiean = "不结案";
+        }else {
+            is_jiean = "结案";
+        }
+        _post('/service/claim/vehicle/report/', {
+            Claimer_id: "8001601001",
+            Claimer_name: document.getElementById("Claimer_name").value,
+            Claimer_phone: document.getElementById("Claimer_phone").value,
+            Accident_time: document.getElementById("Accident_time").value,
+            Accident_place: document.getElementById("Accident_place").value,
+            lipei_baoan_id: document.getElementById("lipei_baoan_id").value,
+            dingsun_name: document.getElementById("dingsun_name").value,
+            dingsun_phone: document.getElementById("dingsun_phone").value,
+            is_need_help: $('input:radio:checked').val(),
+            is_jiean: is_jiean,
+            content: JSON.stringify(jsonObject)
+        }).then(function (data) {
+            if (data.code === 0) {
+                alert("上传成功！")
+                window.location.href = "car_lipei_baoan.html"
+            }
+            else {
+                if (data.code === -1) {
+                    alert("登录失效，请重新登陆！");
+                    localStorage.clear();
+                    window.location.href = "../login.html"
+                }
+                if (data.code == -2) {
+                    alert("您的权限不足，无法操作！")
+                }
+                if (data.code == -3) {
+                    alert("您的账号已被锁定！")
+                }
+                if (data.code == -4) {
+                    alert("信息不完整，无法操作！")
+                }
+                if (data.code == -5) {
+                    alert("数据有误，请提供准确的数据！")
+                }
+            }
+        }).fail(function () {
+            alert('无法链接网络！');
+        });
+
+        //JSON.stringify(jsonObject);
+
+
+    }
+
+    // _post('/service/claim/personnel/report/', {
+    //}).then(function (data) {
+    //   if (data.code == 0) {
+
+
+    //    alert("上传成功！")
+    //    window.location.href="lipei_baoan.html"
+    //   }
+    //   else {
+    //     }
+    // }).fail(function () {
+    //      alert('无法链接网络！');
+    //   });
+    //  }
+
+</script>
+
+
+<!-- hover实现方法 -->
+
+</body>
+</html>

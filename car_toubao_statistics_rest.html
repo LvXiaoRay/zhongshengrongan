@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-投保统计查询详情</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+
+</head>
+<body>
+<div class="wrapper">
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom:80px;min-height: 550px">
+
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">机动车投保办理详情</p>
+
+        <!-- 机动车显示余项 -->
+        <table id="vehicle_rest" style="width: 90%; margin-left: 5%;margin-right:5%;margin-top: 10px;height: auto;text-align:left;border: dashed 1px  #5BB33a; padding-left: 20px;">
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">保险年度：</p></td><td><input id="upload_year" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">承包公司：</p></td><td><input id="chengbao_company1" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">出单机构：</p></td><td><input id="chudanjigou" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">投保人：</p></td><td><input id="uploader_username" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">被保险人：</p></td><td><input id="customer_name" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">所有人：</p></td><td><input id="owner" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">车牌号：</p></td><td><input id="car_id" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">发动机号：</p></td><td><input id="motor_id" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">品牌型号：</p></td><td><input id="brand" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">车架号：</p></td><td><input id="carframe_id" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">核定载人数：</p></td><td><input id="capacity" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">核定载质量：</p></td><td><input id="c_weight" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">整备质量：</p></td><td><input id="weight" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">使用性质：</p></td><td><input id="character" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">初登日期：</p></td><td><input id="reg_date" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">新车购置价：</p></td><td><input id="price" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">车辆类型：</p></td><td><input id="type" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">是否新车：</p></td><td><input id="new" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">本次投保险种：</p></td><td><input id="bencitoubaoxianzhong" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">商业险保险起期：</p></td><td><input id="vci_start_date" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">商业险保险止期：</p></td><td><input id="vci_end_date" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">车损保额：</p></td><td><input id="chesunbaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">车损保费：</p></td><td><input id="chesunbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">三者保额：</p></td><td><input id="sanzhebaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">三者保费：</p></td><td><input id="sanzhebaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">盗抢保额：</p></td><td><input id="daoqiangbaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">盗抢保费：</p></td><td><input id="daoqiangbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">司机保额：</p></td><td><input id="sijibaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">司机保费：</p></td><td><input id="sijibaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">乘客保额：</p></td><td><input id="chengkebaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">乘客保费：</p></td><td><input id="chengkebaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">新增设备保额：</p></td><td><input id="xinzhengshebeibaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">新增设备保费：</p></td><td><input id="xinzhengshebeibaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">玻璃保额：</p></td><td><input id="bolibaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">玻璃保费：</p></td><td><input id="bolibaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">划痕保额：</p></td><td><input id="huahenbaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">划痕保费：</p></td><td><input id="huahenbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">涉水保额：</p></td><td><input id="sheshuibaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">涉水保费：</p></td><td><input id="sheshuibaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">自燃保额：</p></td><td><input id="ziranbaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">自燃保费：</p></td><td><input id="ziranbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">指定维修厂保费：</p></td><td><input id="zhidingweixiuchangbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">无法找到第三方保费：</p></td><td><input id="wufazhaodaodisanfangbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">各投保险种不计免赔保费：</p></td><td><input id="getoubaoxianzhongbujimianpeibaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">商业险保费合计：</p></td><td><input id="shangyexianbaofeiheji" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">交强险保费：</p></td><td><input id="jiaoqingxianbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">车船税：</p></td><td><input id="chechuansui" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">总费用：</p></td><td><input id="zongfeiyong" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">签单日期：</p></td><td><input id="qiandanriqi" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">商业险保费合计佣金比例：</p></td><td><input id="shangyexianbaofeihejiyongjinbili" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">商业险佣金：</p></td><td><input id="shangyexianyongjin" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">商业险佣金结算时间：</p></td><td><input id="shangyexianyongjinjiesuanshijian" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">交强险佣金比例：</p></td><td><input id="jiaoqiangxianyongjinbili" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">交强险佣金：</p></td><td><input id="jiaoqiangxianyongjin" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">交强险佣金结算时间：</p></td><td><input id="jiaoqiangxianyongjinjiesuanshijian" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">总佣金：</p></td><td><input id="zongyongjin" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;"></p></td><td></td>
+            </tr>
+        </table>
+
+        <!-- 返回按钮 -->
+        <div style="text-align: center">
+            <button onclick="back_btn()" class="download_btn" style="width: 100px; height: 40px; font-size: 16px;margin-top: 20px">返回</button>
+        </div>
+
+    </div>
+    <!--container 内容结束end-->
+
+
+</div>
+<script src="js/lib.js"></script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script>
+
+    function back_btn(){
+        window.location.href="car_toubao_statistics.html";
+    }
+
+    // 获取项目名称
+    _get('/service/home/info/',{}).then(function (data) {
+        if (data.code === 0) {
+            var jsonproject = data.data.insurance_bill_solution;
+            project_name = Object.keys(jsonproject)[0].split(":")[1];
+            company_name = "info_of_insurance_company_of_project_" + project_name;
+
+
+
+
+            var str = "";
+            var vars = {};
+            // 简单的字符串作为变量名
+            var varname = {};
+            //批量定义
+            var page_num;//页面数量
+            var data_Object;
+            _get('/service/insure/vehicle/stat/', {is_jidongche: "True"}).then(function (data) {
+                if (data.code === 0) {
+                    var data_Object_vehicle = data.data.list;
+                    personnel_list = data.data;
+                    var id = location.search.split("?")[1];
+                    document.getElementById("upload_year").value = data_Object_vehicle[id].upload_year;
+                    document.getElementById("chengbao_company1").value = data_Object_vehicle[id].insurance_company_list[company_name].name;
+                    if (data_Object_vehicle[id].chudanjigou == null) {
+                        document.getElementById("chudanjigou").value = "无";
+                    } else {
+                        document.getElementById("chudanjigou").value = data_Object_vehicle[id].chudanjigou;
+                    }
+                    document.getElementById("uploader_username").value = data_Object_vehicle[id].uploader_username;
+                    document.getElementById("customer_name").value = data_Object_vehicle[id].customer_name;
+                    document.getElementById("owner").value = data_Object_vehicle[id].owner;
+                    document.getElementById("car_id").value = data_Object_vehicle[id].car_id;
+                    document.getElementById("motor_id").value = data_Object_vehicle[id].motor_id;
+                    document.getElementById("brand").value = data_Object_vehicle[id].brand;
+                    document.getElementById("carframe_id").value = data_Object_vehicle[id].carframe_id;
+                    document.getElementById("capacity").value = data_Object_vehicle[id].capacity;
+                    document.getElementById("c_weight").value = data_Object_vehicle[id].weight;
+                    document.getElementById("weight").value = data_Object_vehicle[id].weight;
+                    document.getElementById("character").value = data_Object_vehicle[id].character;
+                    document.getElementById("reg_date").value = data_Object_vehicle[id].reg_date;
+                    document.getElementById("price").value = data_Object_vehicle[id].price + "元";
+                    document.getElementById("type").value = data_Object_vehicle[id].type;
+                    document.getElementById("new").value = data_Object_vehicle[id].new;
+                    if (data_Object_vehicle[id].bencitoubaoxianzhong == null) {
+                        document.getElementById("bencitoubaoxianzhong").value = "无";
+                    } else {
+                        document.getElementById("bencitoubaoxianzhong").value = data_Object_vehicle[id].bencitoubaoxianzhong;
+                    }
+                    document.getElementById("vci_start_date").value = data_Object_vehicle[id].vci_start_date;
+                    document.getElementById("vci_end_date").value = data_Object_vehicle[id].vci_end_date;
+                    document.getElementById("chesunbaoe").value = data_Object_vehicle[id].chesunbaoe;
+                    document.getElementById("chesunbaofei").value = data_Object_vehicle[id].chesunbaofei;
+                    document.getElementById("sanzhebaoe").value = data_Object_vehicle[id].sanzhebaoe;
+                    document.getElementById("sanzhebaofei").value = data_Object_vehicle[id].sanzhebaofei;
+                    document.getElementById("daoqiangbaoe").value = data_Object_vehicle[id].daoqiangbaoe;
+                    document.getElementById("daoqiangbaofei").value = data_Object_vehicle[id].daoqiangbaofei;
+                    document.getElementById("sijibaoe").value = data_Object_vehicle[id].sijibaoe;
+                    document.getElementById("sijibaofei").value = data_Object_vehicle[id].sijibaofei;
+                    document.getElementById("chengkebaoe").value = data_Object_vehicle[id].chengkebaoe;
+                    document.getElementById("chengkebaofei").value = data_Object_vehicle[id].chengkebaofei;
+                    document.getElementById("xinzhengshebeibaoe").value = data_Object_vehicle[id].xinzhengshebeibaoe;
+                    document.getElementById("xinzhengshebeibaofei").value = data_Object_vehicle[id].xinzhengshebeibaofei;
+                    document.getElementById("bolibaoe").value = data_Object_vehicle[id].bolibaoe;
+                    document.getElementById("bolibaofei").value = data_Object_vehicle[id].bolibaofei;
+                    document.getElementById("huahenbaoe").value = data_Object_vehicle[id].huahenbaoe;
+                    document.getElementById("huahenbaofei").value = data_Object_vehicle[id].huahenbaofei;
+                    document.getElementById("sheshuibaoe").value = data_Object_vehicle[id].sheshuibaoe;
+                    document.getElementById("sheshuibaofei").value = data_Object_vehicle[id].sheshuibaofei;
+                    document.getElementById("ziranbaoe").value = data_Object_vehicle[id].ziranbaoe;
+                    document.getElementById("ziranbaofei").value = data_Object_vehicle[id].ziranbaofei;
+                    document.getElementById("zhidingweixiuchangbaofei").value = data_Object_vehicle[id].zhidingweixiuchangbaofei;
+                    document.getElementById("wufazhaodaodisanfangbaofei").value = data_Object_vehicle[id].wufazhaodaodisanfangbaofei;
+                    document.getElementById("getoubaoxianzhongbujimianpeibaofei").value = data_Object_vehicle[id].getoubaoxianzhongbujimianpeibaofei;
+                    document.getElementById("shangyexianbaofeiheji").value = data_Object_vehicle[id].shangyexianbaofeiheji;
+                    document.getElementById("jiaoqingxianbaofei").value = data_Object_vehicle[id].jiaoqingxianbaofei;
+                    document.getElementById("chechuansui").value = data_Object_vehicle[id].chechuansui;
+                    document.getElementById("zongfeiyong").value = data_Object_vehicle[id].zongfeiyong;
+                    if (data_Object_vehicle[id].qiandanriqi == null) {
+                        document.getElementById("qiandanriqi").value = "无";
+                    } else {
+                        document.getElementById("qiandanriqi").value = data_Object_vehicle[id].qiandanriqi;
+                    }
+                    document.getElementById("shangyexianbaofeihejiyongjinbili").value = data_Object_vehicle[id].shangyexianbaofeihejiyongjinbili;
+                    document.getElementById("shangyexianyongjin").value = data_Object_vehicle[id].shangyexianyongjin;
+                    if (data_Object_vehicle[id].shangyexianyongjinjiesuanshijian == null) {
+                        document.getElementById("shangyexianyongjinjiesuanshijian").value = "无";
+                    } else {
+                        document.getElementById("shangyexianyongjinjiesuanshijian").value = data_Object_vehicle[id].shangyexianyongjinjiesuanshijian;
+                    }
+                    document.getElementById("jiaoqiangxianyongjinbili").value = data_Object_vehicle[id].jiaoqiangxianyongjinbili;
+                    document.getElementById("jiaoqiangxianyongjin").value = data_Object_vehicle[id].jiaoqiangxianyongjin;
+                    if (data_Object_vehicle[id].jiaoqiangxianyongjinjiesuanshijian == null) {
+                        document.getElementById("jiaoqiangxianyongjinjiesuanshijian").value = "无";
+                    } else {
+                        document.getElementById("jiaoqiangxianyongjinjiesuanshijian").value = data_Object_vehicle[id].jiaoqiangxianyongjinjiesuanshijian;
+                    }
+                    document.getElementById("zongyongjin").value = data_Object_vehicle[id].zongyongjin;
+                }
+            });
+
+
+
+        }
+    });
+
+</script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+
+
+</body>
+</html>

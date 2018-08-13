@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-垫付办理</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/gloab.css" rel="stylesheet">
+    <link href="css/index1.css" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+<div class="wrapper">
+
+    <!--container begin 内容开始-->
+    <div class="container" style="min-height: 450px">
+
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">保费垫付</p>
+
+        <table class="layui-table"  id="table_statistics" style="width: 90%;margin-left:5%;text-align: center">
+            <tr style="text-align: center;background-color: #c4d69e">
+                <th  style="text-align: center">序号</th>
+                <th  style="text-align: center">投保人</th>
+                <th  style="text-align: center">垫付保费金额</th>
+                <th  style="text-align: center">预计还款时间</th>
+                <th  style="text-align: center">实际还款时间</th>
+                <th  style="text-align: center">经办人姓名</th>
+                <th  style="text-align: center">操作</th>
+            </tr>
+        </table>
+        <div class="tcdPageCode"></div>
+
+        <!-- 信用校验 -->
+        <div id="credit_result_bad" style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">垫付信用校验反馈结果：</p>
+                <textarea id="credit_textarea" style=" width: 90%; font-size: 14px; margin-top: 20px; text-align: left; padding-left: 30px;
+                                     height: 200px; border: dashed; border-width: 1px; border-color: #5BB33a; padding-top: 10px;">
+                </textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px" onclick="upload_repayment()">确定</button>
+        </div>
+
+        <!-- 上传垫付申请 -->
+        <div id="upload_application" style="display: none;margin-left: 5%;margin-right:5%;margin-top: 20px;height: 400px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">一、上传垫付申请</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 60px;text-align: left;padding-left: 40px">注意：垫付申请,请从企业介绍的<a href="#" style="color: blue;">下载中心</a>下载模板，请选择车辆保险的保费垫付中的《垫付申请表》。</p>
+            </div>
+            <table style="margin-top: 10px; margin-left: 30px;">
+                <tr>
+                    <td rowspan="5"><img  id="imgPre_1_1" onclick="photo_1_1()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+                    <tr><td align="left"><p style="padding-left: 40px;display: inline-block;">申请人：</p></td><td><input id="shenqingren" style="display: inline-block;margin-right: 40px;border: none"/></td></tr>
+                    <tr><td align="left"><p style="padding-left: 40px;display: inline-block;">申请时间：</p></td><td><input id="upload_date" style="display: inline-block;margin-right: 40px"/></td></tr>
+                    <tr><td align="left"><p style="padding-left: 40px;display: inline-block;">申请垫付金额：</p></td><td><input id="apply_amount" style="display: inline-block;margin-right: 40px"/></td></tr>
+                    <tr><td align="left"><p style="padding-left: 40px;display: inline-block;">还款时间：</p></td><td><input id="prepare_return_date" placeholder="2018-05-12" style="display: inline-block;margin-right: 40px"/></td></tr>
+                </tr>
+                <tr>
+                    <td><p style="font-size: 16px">盖章申请书</p></td>
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne1" id="imgOne_1_1_1" onchange="preImg(this.id,'imgPre_1_1');" />
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px" onclick="upload_application()">上传</button>
+        </div>
+
+        <!-- 垫付意见反馈 -->
+        <div id="feedback1" style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">垫付意见反馈结果：</p>
+                <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     border-color: #5BB33a;
+                                     padding-top: 10px;
+               ">注意：您已经完成上传垫付申请。</textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px" onclick="feedback1()">确定</button>
+        </div>
+
+        <!-- 打款凭证反馈 -->
+        <div id="feedback2" style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">医疗垫付打款凭证反馈：</p>
+                <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     border-color: #5BB33a;
+                                     padding-top: 10px;
+               ">注意：您已经完成上传垫付申请，请于十日内还款。</textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px" onclick="feedback2()">确定</button>
+        </div>
+
+
+        <!-- 上传保费款还款凭证 -->
+        <div id="upload_repayment" style="margin-left: 5%;margin-right:5%;margin-top: 10px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">三、上传保费款还款凭证</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 10px;text-align: left;padding-left: 40px">注意：请上传保费款还款凭证，拍照上传。</p>
+            </div>
+            <table style="margin-top: 20px; margin-left: 30px;">
+                <tr>
+                    <td><img  id="imgPre_2_1" onclick="photo_1_2()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne2" id="imgOne_1_1_2" onchange="preImg(this.id,'imgPre_2_1');" />
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px"  onclick="upload_repayment()">上传</button>
+        </div>
+
+
+        <!-- 借款信用评价结果 -->
+        <div id="credit_result_well" style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">借款信用评价结果：</p>
+                <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     border-color: #5BB33a;
+                                     padding-top: 10px;
+               ">您的信用良好，请继续保持良好信用，以便保费垫付。</textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px">确定</button>
+        </div>
+
+    </div >
+
+
+
+
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/lib.js"></script>
+<!-- 垫付流程js -->
+<script>
+    var vehicle_id = location.search.split("?")[1];
+    if ( vehicle_id !== undefined) {
+        // 信用校验
+        _get('/service/premium_pay/validation/',{}).then(function (data){
+            if (data.code === 0) {
+                if (data.data.desc !== "信用合格!"){
+                    $('#credit_result_bad').show();
+                    $('#upload_application').hide();
+                    $('#feedback1').hide();
+                    $('#feedback2').hide();
+                    $('#upload_repayment').hide();
+                    $('#credit_result_well').hide();
+                    document.getElementById("credit_textarea").innerHTML= data.data.desc;
+                }else{
+                    $('#upload_application').show();
+                    document.getElementById("shenqingren").value = data.data.shenqingren;
+                }
+            }
+            else {
+                if (data.code === -1) {
+                    alert("登录失效，请重新登陆！");
+                    localStorage.clear();
+                    window.location.href = "../login.html";
+                }
+                if (data.code === -2) {
+                    alert("您的权限不足，无法操作！")
+                }
+                if (data.code === -3) {
+                    alert("您的账号已被锁定！")
+                }
+                if (data.code === -4) {
+                    alert("信息不完整，无法操作！")
+                }
+                if (data.code === -5) {
+                    alert("数据有误，请提供准确的数据！")
+                }
+
+            }
+        })
+
+        // 上传申请文件
+        function upload_application() {
+            if (document.getElementById("imgPre_1_1").getAttribute("src") === "images/add_img.png") {  // 判断是否已经上传图片
+                alert("请上传盖章申请书！")
+            }
+            else {
+                _post('/service/premium_pay/', {
+                    apply_amount: document.getElementById("apply_amount").value,
+                    upload_date: document.getElementById("upload_date").value,
+                    prepare_return_date: document.getElementById("prepare_return_date").value,
+                    gaizhang_shenqingshu: document.getElementById("imgOne_1_1_1").files[0],
+                    pici_id:vehicle_id
+                }).then(function (data) {
+                    if (data.code === 0) {
+                        alert("已上传，请等待审核！")
+                        $('#credit_result_bad').hide();
+                        $('#upload_application').hide();
+                        $('#feedback1').show();
+                        $('#feedback2').hide();
+                        $('#upload_repayment').hide();
+                        $('#credit_result_well').hide();
+                    }
+                })
+            }
+
+        }
+
+        // 垫付意见反馈
+        function feedback1() {
+            $('#credit_result_bad').hide();
+            $('#upload_application').hide();
+            $('#feedback1').hide();
+            $('#feedback2').show();
+            $('#upload_repayment').hide();
+            $('#credit_result_well').hide();
+        }
+
+        // 打款凭证反馈
+        function feedback2() {
+            $('#credit_result_bad').hide();
+            $('#upload_application').hide();
+            $('#feedback1').hide();
+            $('#feedback2').hide();
+            $('#upload_repayment').show();
+            $('#credit_result_well').hide();
+        }
+
+        // 上传还款凭证，信用不足亦跳转至此
+        function upload_repayment() {
+
+            if (document.getElementById("imgPre_1_2").getAttribute("src") === "images/add_img.png") {     // 判断是否已经上传图片
+                alert("请上传还款凭证！")
+            }
+            else {
+                _post('/service/premium_pay/upload/' + id + '/return/', {                                       // 这边的id未设计好怎么获取
+                    gaizhang_shenqingshu: document.getElementById("imgOne_1_1_2").files[0]
+                }).then(function (data) {
+                    if (data.code === 0) {
+                        alert("已上传，请等待审核！")
+                        $('#credit_result_bad').hide();
+                        $('#upload_application').hide();
+                        $('#feedback1').hide();
+                        $('#feedback2').hide();
+                        $('#upload_repayment').hide();
+                        $('#credit_result_well').show();
+                    }
+                })
+            }
+
+        }
+
+        // 借款信用评价结果
+        function credit_result_well() {
+            $('#credit_result_bad').hide();
+            $('#upload_application').hide();
+            $('#feedback1').hide();
+            $('#feedback2').hide();
+            $('#upload_repayment').hide();
+            $('#credit_result_well').show();
+        }
+    }
+</script>
+<script>
+    var str=""
+    var vars = {};
+    // 简单的字符串作为变量名
+    var  varname={}
+    //批量定义
+    var personnel_list;
+
+    _get('/service/premium_pay/', {
+    }).then(function (data) {
+        if (data.code === 0) {
+            // localStorage.setItem("personnel_list_length",data.data.count);
+            //  dianfu_data = data.data.list;
+            if(data.data.all_count>10){
+                page_num = Math.ceil(data.data.all_count/10);
+                $(".tcdPageCode").createPage({
+                    pageCount:page_num,
+                    current:1,
+                    backFn:function(p){
+                        _get('/service/premium_pay/', {
+                            limited:10,
+                            offset:(p-1)*10,
+                        }).then(function (data) {
+                            if(p === page_num){
+                                for(i = 9;i>=data.data.count;i--){
+                                    for(j = 0;j < 7;j++){
+                                        document.getElementById(i+"_"+j).style.display="none";
+                                    }
+                                }
+                            }
+                            else{
+                                for(i = 0;i < 10; i++){
+                                    for(j = 0; j < 7; j++){
+                                        document.getElementById(i+"_"+j).style.display="table-cell"
+                                    }
+                                }
+
+                            }
+                            for(i=0;i<8;i++){
+                                document.getElementById(i+"_0").innerHTML=i+1;
+                                document.getElementById(i+"_1").innerHTML=data.data.list[i].uploader_username;
+                                document.getElementById(i+"_2").innerHTML=data.data.list[i].apply_amount;
+                                document.getElementById(i+"_3").innerHTML=data.data.list[i].prepare_return_date.split("T")[0];
+                                if (data.data.list[i].real_return_date == null){
+                                    document.getElementById(i+"_4").innerHTML="未填写";
+                                } else {
+                                    document.getElementById(i + "_4").innerHTML = data.data.list[i].real_return_date.split("T")[0];
+                                }if (data.data.list[i].jingbanren_name == null){
+                                    document.getElementById(i+"_5").innerHTML="未填写";
+                                } else {
+                                    document.getElementById(i + "_5").innerHTML = data.data.list[i].jingbanren_name;
+                                }
+                                document.getElementById(i + "_6").innerHTML = '<span style="margin-right: 10px;" ><a class="check_detail" href="car_dianfu_detail.html?'+i+'">查看详情</a></span>'
+                            }
+                        });
+                    }
+                });
+                for(i=0; i<10; i++) {
+                    varname="td"+i;
+                    vars[varname]=""
+                }
+                for(i=0;i<10;i++){
+                    for (var j=0;j<7;j++){
+                        vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+                    }
+                    //vars['td'+i]+='<td id="'+i+'_'+5+'" style="height: 37px!important;"><span style="margin-right: 10px">查看个人信息</span></td>'
+                }
+                for(i=0;i<10;i++){
+                    str+='<tr style="height: 37px!important;">'+vars['td'+i]+'</tr>';
+                }
+                document.getElementById("table_statistics").innerHTML+=str;
+                for(i=0;i<10;i++){
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_1").innerHTML=data.data.list[i].uploader_username;
+                    document.getElementById(i+"_2").innerHTML=data.data.list[i].apply_amount;
+                    document.getElementById(i+"_3").innerHTML=data.data.list[i].prepare_return_date.split("T")[0];
+                    if (data.data.list[i].real_return_date == null){
+                        document.getElementById(i+"_4").innerHTML="未填写";
+                    } else {
+                        document.getElementById(i + "_4").innerHTML = data.data.list[i].real_return_date.split("T")[0];
+                    }if (data.data.list[i].jingbanren_name == null){
+                        document.getElementById(i+"_5").innerHTML="未填写";
+                    } else {
+                        document.getElementById(i + "_5").innerHTML = data.data.list[i].jingbanren_name;
+                    }
+                    document.getElementById(i + "_6").innerHTML = '<span style="margin-right: 10px;" ><a class="check_detail" href="car_dianfu_detail.html?'+i+'">查看详情</a></span>'
+                }
+
+            }
+            else {
+                $(".tcdPageCode").createPage({
+                    pageCount:1,
+                    current:1,
+                    backFn:function(p){
+                        alert(p);
+                    }
+                });
+                for(var i = 0; i < data.data.count; i++){
+                    for(i=0; i < data.data.count; i++) {
+                        varname="td"+i;
+                        vars[varname]=""
+                    }
+                    for(i=0;i<data.data.count;i++){
+                        for (var j=0;j<7;j++){
+                            vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+                        }
+                    }
+                    for(i=0;i<data.data.count;i++){
+                        str+='<tr style="height: 37px!important;">'+vars['td'+i]+'</tr>';
+                    }
+                    document.getElementById("table_statistics").innerHTML+=str;
+                    for(i=0;i<data.data.count;i++){
+                        document.getElementById(i+"_0").innerHTML=i + 1;
+                        document.getElementById(i+"_1").innerHTML=data.data.list[i].uploader_username;
+                        document.getElementById(i+"_2").innerHTML=data.data.list[i].apply_amount;
+                        document.getElementById(i+"_3").innerHTML=data.data.list[i].prepare_return_date.split("T")[0];
+                        if (data.data.list[i].real_return_date == null){
+                            document.getElementById(i+"_4").innerHTML="未填写";
+                        } else {
+                            document.getElementById(i + "_4").innerHTML = data.data.list[i].real_return_date.split("T")[0];
+                        }if (data.data.list[i].jingbanren_name == null){
+                            document.getElementById(i+"_5").innerHTML="未填写";
+                        } else {
+                            document.getElementById(i + "_5").innerHTML = data.data.list[i].jingbanren_name;
+                        }
+                        document.getElementById(i + "_6").innerHTML = '<span style="margin-right: 10px;" ><a class="check_detail" href="car_dianfu_detail.html?'+i+'">查看详情</a></span>'
+                    }
+
+                }
+            }
+
+        }
+        else {
+        }
+    });
+</script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+
+<script>
+    function change_wenjian() {
+        document.getElementById("wenjian_chose").innerHTML="已选择"
+        document.getElementById("file_name").innerHTML="文件名称："+document.getElementById("wenjian").value;
+    }
+
+    function download() {
+        if(document.getElementById("check_msg").innerHTML=="信用校验"){
+            alert("校验成功！")
+            document.getElementById("check_msg").innerHTML="下载文件"
+        }
+        else {
+            alert("暂无模板！")
+        }
+
+    }
+    function chose() {
+        document.getElementById("wenjian").click();
+    }
+
+</script>
+<!-- 获取时间 -->
+<script>
+    var d = new Date()
+    var day = d.getDate()
+    var month = d.getMonth() + 1
+    var year = d.getFullYear()
+    var str_date = year + "-" + month + "-" + day;
+    document.getElementById("upload_date").value = str_date;
+</script>
+<script>
+
+
+    function xinzeng() {
+        window.location.href="touble_new.html";
+    }
+</script>
+<script>
+    function photo_1_1() {
+        document.getElementById("imgOne_1_1_1").click();
+    }
+    function photo_1_2() {
+        document.getElementById("imgOne_1_1_2").click();
+    }
+    function photo_1_3() {
+        document.getElementById("imgOne_1_1_3").click();
+    }
+    function photo_1_4() {
+        document.getElementById("imgOne_1_1_4").click();
+    }
+    function photo_1_4() {
+        document.getElementById("imgOne_1_1_5").click();
+    }
+    // 预览上传图片
+    function preImg(sourceId, targetId) {
+        if (typeof FileReader === 'undefined') {
+            alert('格式错误');
+            return;
+        }
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            var img = document.getElementById(targetId);
+            img.src = this.result;
+        }
+        reader.readAsDataURL(document.getElementById(sourceId).files[0]);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+</head>
+<body>
+<div class="wrapper">
+    <!--------------------------------------header_user begin 顶部导航栏------------------------------------->
+    <div class="header_user">
+        <div class="main_width">
+            <!--<span class="tel">客服电话：400-663-6600（周一至周六 9:00-18:00）</span>-->
+            <span class="fr">
+                <span><a href="javascript:localStorage.clear();window.location.href='../login.html'">已登录，退出登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                <span class="register"><a href="#">个人中心</a></span>
+                <span class="Backlog"><a href="#">保单查询</a></span>
+                <span class="message"><a href="#">服务专区</a></span>
+                <span class="my_insurance"><a href="#">网站导航</a></span>
+            </span>
+        </div>
+    </div>
+
+    <!---------------------------------------header_user end-------------------------------------->
+    <!---------------------------------------header_nav begin 导航栏------------------------------------->
+    <div class="header_nav">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li  style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>                <!--首页-->
+                    <li  id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a  href="new_shouye.html">人员保险</a></li>
+                    <li  id="hover_che" class="active" style="padding-left: 20px;height: 80px"><a href="new_shouye_vehicle.html">车辆保险</a></li>
+                    <li  id="hover_cai" style="padding-left: 20px;height: 80px"><a href="new_shouye_property.html">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="company_information.html">企业介绍</a></li>
+                    <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="product_search_input" placeholder="请输入关键字"></li>
+                    <li class="product_search1"><button id="btn_search_product" class="product_search_button">搜索</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------------header_nav end-------------------------------------->
+    <!----分类，轮播图---->
+
+
+    <!--container begin 内容开始-->
+    <div class="container" id="contain">
+        <table style="text-align: center;width: 70%;margin-left: 15%;margin-top: 60px">
+            <tr>
+                <td>
+                    <img style="width: 200px;height: 200px" onclick="tiaozhuan1()" src="images/banli2.jpg">
+                </td>
+                <td>
+                    <img style="width: 200px;height: 200px" onclick="tiaozhuan2()" src="images/chaxun2.png">
+                </td>
+                <td>
+                <img style="width: 200px;height: 200px;" onclick="tiaozhuan3()" src="images/zixun3.jpg">
+                </td>
+
+            </tr>
+        </table>
+        <table  style="text-align: center;width: 70%;margin-left: 15%;margin-top: 60px">
+            <tr>
+                <td style="font-size: 20px">
+                    车辆险办理
+                </td>
+                <td style="font-size: 20px">
+                    车辆险查询
+                </td>
+                <td style="font-size: 20px">
+                    车辆险咨询
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--container 内容结束end-->
+    <!--footer footer开始 begin-->
+    <div class="copyright">
+        <div class="main_width footer">
+            <div class="footer_nav">
+                <p>
+                    <a href="#">关于中盛融安金融</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安小金库</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安钱包</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安白条</a>
+                    <span class="divider">|</span>
+                    <a href="#">联系我们</a>
+                    <span class="divider">|</span>
+                    <a href="#">免责声明</a>
+                </p>
+                <p>Copyright © 2004-2016 zsra.com 中盛融安，版权所有<span class="divider">|</span>投资有风险，购买需谨慎</p>
+            </div>
+            <div class="footer_contact">
+                <div class="f_contact_time">
+                    联系我们<span>（09:00-22:00）</span>
+                </div>
+                <div class="f_contact_content">
+                    <div class="f_cc_left">
+                        <span class="f_cc_item">个人业务：400-098-8511</span>
+                        <span class="f_cc_item">企业业务：400-088-8816</span>
+                    </div>
+                    <div class="f_cc_mid">
+                        <a href="#" class="f_cc_link item_JIMI">咨询我们</a>
+                        <a href="#" class="f_cc_link item_kefu">在线客服</a>
+                    </div>
+                    <div class="f_cc_right">
+                        <a href="#" class="f_cc_link item_mail">客服邮箱</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer footer介绍 end-->
+    <!--
+     -->
+</div>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+    var height_s=window.screen.height-400;
+    document.getElementById("contain").style.minHeight=height_s+"px";
+    function tiaozhuan1() {
+        window.location.href="new_vehicle_shouye.html"
+    }
+    function tiaozhuan2() {
+        window.location.href="new_vehicle_chaxun.html"
+    }
+    function tiaozhuan3() {
+        window.location.href="new_vehicle_zixun.html"
+    }
+</script>
+
+</body>
+</html>

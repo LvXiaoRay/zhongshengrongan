@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投保办理</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/gloab.css" rel="stylesheet">
+    <link href="css/index1.css" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+<div class="wrapper">
+
+    <!--container begin 内容开始-->
+    <div class="container" style=";height:550px;">
+        <div class="bgf4"style="margin-top: 0px">
+            <div class="login-box f-mt10 f-pb50">
+                <div class="main bgf">
+                    <div class="reg-box-pan display-inline">
+                        <div class="step">
+                            <ul>
+                                <li class="col-xs-4 on">
+                                    <span class="num"><em class="f-r5"></em><i>1</i></span>
+                                    <span class="line_bg lbg-r"></span>
+                                    <p class="lbg-txt">下载模板</p>
+                                </li>
+                                <li class="col-xs-4">
+                                    <span class="num"><em class="f-r5"></em><i>2</i></span>
+                                    <span class="line_bg lbg-l"></span>
+                                    <span class="line_bg lbg-r"></span>
+                                    <p class="lbg-txt">上传文件</p>
+                                </li>
+                                <li class="col-xs-4">
+                                    <span class="num"><em class="f-r5"></em><i>3</i></span>
+                                    <span class="line_bg lbg-l"></span>
+                                    <p class="lbg-txt">文件提交</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="reg-box" id="verifyCheck" style="margin-top:20px;">
+                            <div class="part1">
+                                <div class="item col-xs-12">
+                                 <p>注意：当前是车辆保险，请选择车辆保险的模板填写信息。</p>
+                                </div>
+                                <div class="item col-xs-12" >
+                                  <button class="download_btn" onclick="download()">下载模板</button>
+                                </div>
+
+
+                                <div class="item col-xs-12">
+                                    <span class="intelligent-label f-fl">&nbsp;</span>
+                                    <div class="f-fl item-ifo" style="margin-left: 15%">
+                                        <a href="javascript:;" class="btn btn-blue f-r3" id="btn_part1"
+                                           style="background-color: #c30a18; border: none">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="part2" style="display:none">
+                                <div class="item col-xs-12">
+                                    <p>注意：请填写完整的信息，方便相关工作人员录入信息。</p>
+                                </div>
+                                <div class="item col-xs-12">
+                                    <button id="wenjian_chose" class="download_btn" onclick="chose()">选择文件</button><p id="file_name"></p>
+                                    <input id="wenjian" onchange="change_wenjian()" type="file" style="display: none"/>
+                                </div>
+                                <div class="item col-xs-12">
+                                    <span class="intelligent-label f-fl">&nbsp;</span>
+                                    <div class="f-fl item-ifo" style="margin-left: 15%">
+                                        <a href="javascript:;" class="btn btn-blue f-r3" id="btn_part2"
+                                           style="background-color: #c30a18; border: none">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="part3" style="display:none">
+                                <div class="item col-xs-12">
+                                  <p>文件选择完毕</p>
+                                </div>
+                                <div class="item col-xs-12">
+
+                                </div>
+                                <div class="item col-xs-12" style="">
+
+                                    <div class="f-fl item-ifo" style="margin-left: 25%">
+                                        <a href="javascript:;" class="btn btn-blue f-r3" id="btn_part3" onclick="upload()"
+                                           style="background-color: #c30a18; border: none">提交文件</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="part4 text-center" style="display:none">
+                                <h3>恭喜您已提交成功！</h3>
+                                <p class="c-666 f-mt30 f-mb50">页面将在 <strong id="times" class="f-size18">10</strong> 秒钟后，跳转到 <a href="index.html" class="c-blue">首页</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-sPopBg" style="z-index:9;"></div>
+            <div class="m-sPopCon regcon">
+                <div class="m-sPopTitle"><strong>服务协议条款</strong><b id="sPopClose" class="m-sPopClose" onClick="closeClause()">×</b></div>
+                <div class="apply_up_content">
+    	<pre class="f-r0">
+		<strong>同意以下服务条款，提交注册信息</strong>
+        </pre>
+                </div>
+                <center><a class="btn btn-blue btn-lg f-size12 b-b0 b-l0 b-t0 b-r0 f-pl50 f-pr50 f-r3" href="javascript:closeClause();">已阅读并同意此条款</a></center>
+            </div>
+        </div>
+
+
+    </div >
+
+    <!--container 内容结束end-->
+
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/lib.js"></script>
+<script>
+    $(function(){
+        //第一页的确定按钮
+        $("#btn_part1").click(function(){
+            if(!verifyCheck._click()) return;
+            $(".part1").hide();
+            $(".part2").show();
+            $(".step li").eq(1).addClass("on");
+        });
+        //第二页的确定按钮
+        $("#btn_part2").click(function(){
+            if(!verifyCheck._click()) return;
+            if(document.getElementById("wenjian").value==""){
+                alert("请选择文件！")
+
+            }else {
+                $(".part2").hide();
+                $(".part3").show();
+            }
+
+        });
+        //第三页的确定按钮
+        $("#btn_part3").click(function(){
+            if(!verifyCheck._click()) return;
+
+                _post('/service/insure/personnel/',{
+                    file:document.getElementById("wenjian").value,
+                }).then(function (data) {
+                    if (data.code == 0) {
+                        //alert_simple.close();
+                        alert("已上传，请等待审核！")
+
+                        $(".part3").hide();
+                        $(".part4").show();
+                        $(".step li").eq(2).addClass("on");
+                        countdown({
+                            maxTime:10,
+                            ing:function(c){
+                                $("#times").text(c);
+                            },
+                            after:function(){
+                                window.location.href="index.html";
+                            }
+                        });
+
+                    }
+                    else {
+                        // alert_simple.close();
+                        if(data.code==-1){
+                            alert("登录失效，请重新登陆！");
+                            localStorage.clear();
+                            window.location.href="Login.html";
+                        }
+                        if(data.code==-2){
+                            alert("您的权限不足，无法操作！")
+                        }
+                        if(data.code==-3){
+                            alert("您的账号已被锁定！")
+                        }
+                        if(data.code==-4){
+                            alert("信息不完整，无法操作！")
+                        }
+                        if(data.code==-5){
+                            alert("数据有误，请提供准确的数据！")
+                        }
+
+                    }
+                }).fail(function () {
+
+                })
+
+
+        });
+    });
+    function showoutc(){$(".m-sPopBg,.m-sPopCon").show();}
+    function closeClause(){
+        $(".m-sPopBg,.m-sPopCon").hide();
+    }
+</script>
+ <script>
+     function change_wenjian() {
+         document.getElementById("wenjian_chose").innerHTML="已选择"
+         document.getElementById("file_name").innerHTML="文件名称："+document.getElementById("wenjian").value;
+     }
+
+     function download() {
+         alert("暂无模板！")
+     }
+     function chose() {
+         document.getElementById("wenjian").click();
+     }
+     function upload() {
+         if(document.getElementById("wenjian").value==""){
+             alert("请选择文件！")
+
+         }
+         else{
+              _post('/service/insure/personnel/',{
+                  file:document.getElementById("wenjian").value,
+              }).then(function (data) {
+                  if (data.code == 0) {
+                      //alert_simple.close();
+                      alert("已上传，请等待审核！")
+                      window.location.href="index.html"
+
+
+                  }
+                  else {
+                      // alert_simple.close();
+                      if(data.code==-1){
+                          alert("登录失效，请重新登陆！");
+                          localStorage.clear();
+                          window.location.href="Login.html";
+                      }
+                      if(data.code==-2){
+                          alert("您的权限不足，无法操作！")
+                      }
+                      if(data.code==-3){
+                          alert("您的账号已被锁定！")
+                      }
+                      if(data.code==-4){
+                          alert("信息不完整，无法操作！")
+                      }
+                      if(data.code==-5){
+                          alert("数据有误，请提供准确的数据！")
+                      }
+
+                  }
+              }).fail(function () {
+
+              })
+
+         }
+
+     }
+ </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-投保统计查询详情</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+
+</head>
+<body>
+<div class="wrapper">
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom:80px;min-height: 550px">
+
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">机动车投保办理详情</p>
+
+        <!-- 非机动车显示余项 -->
+        <table id="feijidongche_rest" style="width: 90%; margin-left: 5%;margin-right:5%;margin-top: 10px;height: auto;text-align:left;border: dashed 1px  #5BB33a; padding-left: 20px;">
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">承包公司：</p></td><td><input id="chengbao_company_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">被保险人：</p></td><td><input id="customer_name_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">被保险人地址：</p></td><td><input id="customer_work_address_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">产品名称：</p></td><td><input id="product_name_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">产品型号：</p></td><td><input id="product_kind_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">车辆唯一代码：</p></td><td><input id="unique_code_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">购置单价：</p></td><td><input id="price_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">财产险保额：</p></td><td><input id="caicanxianbaoe_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">财产险保费：</p></td><td><input id="caicanxianbaofei_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">公责险保额：</p></td><td><input id="gongzexianbaoe_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">公责险保费：</p></td><td><input id="gongzexianbaofei_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">保险起期：</p></td><td><input id="start_date_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">保险终期：</p></td><td><input id="end_date_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">总费率：</p></td><td><input id="zongbaofei_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">佣金比例：</p></td><td><input id="yongjin_bili_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">佣金：</p></td><td><input id="yongjin_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">佣金结算时间：</p></td><td><input id="yongjin_jiesuan_time_f" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;"></p></td><td></td>
+            </tr>
+        </table>
+
+        <!-- 返回按钮 -->
+        <div style="text-align: center">
+            <button onclick="back_btn()" class="download_btn" style="width: 100px; height: 40px; font-size: 16px;margin-top: 20px">返回</button>
+        </div>
+
+    </div>
+    <!--container 内容结束end-->
+
+
+</div>
+<script src="js/lib.js"></script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script>
+
+    // 返回
+    function back_btn(){
+        window.location.href="car_toubao_statistics.html";
+    }
+
+    // 获取项目名称
+    _get('/service/home/info/',{}).then(function (data) {
+        if (data.code === 0) {
+            var jsonproject = data.data.insurance_bill_solution;
+            project_name = Object.keys(jsonproject)[0].split(":")[1];
+            company_name = "info_of_insurance_company_of_project_" + project_name;
+
+
+
+
+            var str = "";
+            var vars = {};
+            // 简单的字符串作为变量名
+            var varname = {};
+            //批量定义
+            var page_num;//页面数量
+            var data_Object;
+            _get('/service/insure/vehicle/stat/', {is_jidongche: "False"}).then(function (data) {
+                if (data.code === 0) {
+                    var data_Object = data.data.list;
+                    personnel_list = data.data;
+                    // 获取批次
+                    var id = location.search.split("?")[1];
+                    // 获取承保公司
+                    document.getElementById("chengbao_company_f").value=data_Object[id].insurance_company_list[company_name].name;
+                    document.getElementById("customer_name_f").value=data_Object[id].customer_name;
+                    document.getElementById("customer_work_address_f").value=data_Object[id].customer_work_address;
+                    document.getElementById("product_name_f").value=data_Object[id].product_name;
+                    document.getElementById("product_kind_f").value=data_Object[id].product_kind;
+                    document.getElementById("unique_code_f").value=data_Object[id].unique_code;
+                    document.getElementById("price_f").value=data_Object[id].price;
+                    document.getElementById("caicanxianbaoe_f").value=data_Object[id].caicanxianbaoe;
+                    document.getElementById("caicanxianbaofei_f").value=data_Object[id].caicanxianbaofei;
+                    document.getElementById("gongzexianbaoe_f").value=data_Object[id].gongzexianbaoe;
+                    document.getElementById("gongzexianbaofei_f").value=data_Object[id].gongzexianbaofei;
+                    document.getElementById("start_date_f").value=data_Object[id].start_date;
+                    document.getElementById("end_date_f").value=data_Object[id].end_date;
+                    document.getElementById("zongbaofei_f").value=data_Object[id].zongbaofei;
+                    document.getElementById("yongjin_bili_f").value=data_Object[id].yongjin_bili;
+                    document.getElementById("yongjin_f").value=data_Object[id].yongjin;
+                    if (data_Object[id].yongjin_jiesuan_time == null){
+                        document.getElementById("yongjin_jiesuan_time_f").value="未填写";
+                    } else {
+                        document.getElementById("yongjin_jiesuan_time_f").value = data_Object[id].yongjin_jiesuan_time;
+                    }
+                }
+            });
+
+
+
+        }
+    });
+
+</script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+
+
+</body>
+</html>

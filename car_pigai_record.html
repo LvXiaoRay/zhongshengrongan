@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-批改记录</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+</head>
+<body>
+<div class="wrapper">
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom:80px;height:auto">
+
+        <div style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 250px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;">
+            <div><p style="font-size: 15px;margin-top: 20px;text-align: left;padding-left: 40px">筛选条件：</p>
+
+            </div>
+            <div style="text-align: left;padding-left: 40px;padding-top: 20px">
+                <p style="padding-left: 0px;display: inline-block">批改类型：</p><input style="display: inline-block;margin-right: 40px"/>
+                <p style="padding-left: 0px;display: inline-block;">查询开始日期：</p><input name="search_start" style="display: inline-block;margin-right: 40px" placeholder="2018-02-01"/>
+                <p style="padding-left: 0px;display: inline-block;">查询结束日期：</p><input name="search_end" style="display: inline-block" placeholder="2018-02-06"/>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 50px;width: 150px;height: 50px">开始筛选</button>
+            </div>
+        </div>
+
+        <table class="layui-table"  id="table_statistics" style="width: 90%;margin-left:5%;text-align: center">
+
+            <tr style="text-align: center;background-color: #c4d69e">
+                <th   style="text-align: center">序号</th>
+                <th  style="text-align: center" >投保人</th>
+                <th  style="text-align: center" >车架号</th>
+                <th   style="text-align: center">保单号</th>
+                <th  style="text-align: center">批改后车牌号</th>
+                <th  style="text-align: center">批改后车架号</th>
+                <th  style="text-align: center">批改后初登日期</th>
+                <th  style="text-align: center">增加险种</th>
+                <th  style="text-align: center">批改后保险金额</th>
+                <th  style="text-align: center">操作</th>
+            </tr>
+        </table>
+        <div class="tcdPageCode"></div>
+        <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+    </div >
+    <!--container 内容结束end-->
+
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/jquery.page.js"></script>
+<script>
+    var str=""
+    var vars = {};
+    // 简单的字符串作为变量名
+    var  varname={}
+    //批量定义
+    for(var i=0; i<10; i++) {
+        varname="td"+i;
+        vars[varname]=""
+    }
+    for(var i=0;i<10;i++){
+        for (var j=0;j<9;j++){
+
+            vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+        }
+        vars['td'+i]+='<td id="'+i+'_'+5+'" style="height: 37px!important;"><span style="margin-right: 10px"> <a href="toubao_statistics_detail.html" class="check_detail">查看详情</a></span></td>'
+    }
+    for(var i=0;i<10;i++){
+        str+='<tr style="height: 37px!important;">'+vars['td'+i]+'</tr>';
+    }
+    document.getElementById("table_statistics").innerHTML+=str;
+    _get('/service/insure/personnel/stat/', {
+    }).then(function (data) {
+        if (data.code == 0) {
+            localStorage.setItem("personnel_statistics_length",data.data.list.length);
+
+            if(data.data.list.length>10){
+                for(i=0;i<10;i++){
+                    if(i%2==1){
+                        document.getElementById(i+"_2").innerHTML="是";
+
+                    }else{
+                        document.getElementById(i+"_2").innerHTML="未生效";
+
+                    }
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_1").innerHTML="来来来";
+                    document.getElementById(i+"_3").innerHTML=2018;
+                    if(i%2==1){
+                        document.getElementById(i+"_4").innerHTML="2018-02-02";
+                    }else{
+                        document.getElementById(i+"_4").innerHTML="2018-02-09";
+                    }
+
+                }
+            }
+            else {
+                for(i=0;i<data.data.list.length;i++){
+                    if(i%2==1){
+                        document.getElementById(i+"_2").innerHTML="是";
+
+                    }else{
+                        document.getElementById(i+"_2").innerHTML="未生效";
+
+                    }
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_1").innerHTML="来来来";
+                    document.getElementById(i+"_3").innerHTML=2018;
+                    if(i%2==1){
+                        document.getElementById(i+"_4").innerHTML="2018-02-02";
+                    }else{
+                        document.getElementById(i+"_4").innerHTML="2018-02-09";
+                    }
+
+                }
+            }
+
+        }
+        else {
+        }
+    });
+    for(i=0;i<10;i++){
+        document.getElementById(i+"_3").innerHTML="2018-02-02";
+        if(i%2==1){
+            document.getElementById(i+"_2").innerHTML="2018";
+            document.getElementById(i+"_4").innerHTML="未生效";
+        }else{
+            document.getElementById(i+"_2").innerHTML="2018";
+            document.getElementById(i+"_4").innerHTML="已生效";
+        }
+        document.getElementById(i+"_0").innerHTML=i+1;
+        document.getElementById(i+"_1").innerHTML="启迪桑德";
+
+    }
+</script>
+<script>
+    $(".tcdPageCode").createPage({
+        pageCount:50,
+        current:1,
+        backFn:function(p){
+            alert(p);
+        }
+    });
+</script>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-增加险种</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/gloab.css" rel="stylesheet">
+    <link href="css/index1.css" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+<div class="wrapper">
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom: 80px;height:auto;">
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">增加险种</p>
+
+        <!-- 上传变更申请 -->
+        <div id="upload_application" style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">一、上传变更申请表和营业执照盖章件</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 60px;text-align: left;padding-left: 40px">注意：增加险种申请表，请从企业介绍的<a href="download_center.html" style="color: blue;">下载中心</a>下载模板，请选择车辆保险的机动车批改中的《增加险种申请表》。</p>
+            </div>
+            <p id="file_name" style="    text-align: left;padding-left: 40px;margin-top: 10px;"></p>
+            <input id="file_input" style="display: none"  onchange="change_word()" type="file"/>
+            <button id="wenjian_chose" class="download_btn" onclick="chose()" style="font-size: 18px;text-align: center;margin-top:80px;width: 150px;height: 50px">选择文件</button>
+        </div>
+
+        <!-- 审核存在问题 -->
+        <div id="request_bed" style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">《增加险种申请表》审核确认反馈结果：</p>
+                <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     border-color: #5BB33a;
+                                     padding-top: 10px;
+               ">本次提交存在问题；请重新提交文件</textarea>
+            </div>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px">重新上传</button>
+        </div>
+
+        <!-- 审核已通过 -->
+        <div id="request_well" style="margin-left: 5%;margin-right:5%;margin-top: 10px;height: 45px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;display: none">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">《增加险种申请表》审核已通过</p>
+            </div>
+        </div>
+
+    </div >
+
+    <!--container 内容结束end-->
+
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/lib.js"></script>
+<script>
+     function change_word() {
+         document.getElementById("wenjian_chose").innerHTML = "提交文件"
+         document.getElementById("file_name").innerHTML = "文件名称：" + document.getElementById("file_input").value;
+     }
+
+     function chose() {
+         if (document.getElementById("wenjian_chose").innerHTML === "选择文件") {
+             document.getElementById("file_input").click();
+         }
+         if (document.getElementById("wenjian_chose").innerHTML === "提交文件") {
+             // 问题：新增险种的接口已知，操作未知
+             _post('/service/revise/xinzengxianzhong/', {
+                 insure_excel: document.getElementById("file_input").files[0]
+             }).then(function (data) {
+                 if (data.code == 0) {
+                     alert("已上传，请等待审核！");
+                     // $('#upload_application').hide();
+                     // $('#request_bed').hide();
+                     // $('#request_well').hide();
+                     window.location.href="car_add_xianzhong.html"
+                 }
+                 else {
+                     // alert_simple.close();
+                     if (data.code == -1) {
+                         alert("登录失效，请重新登陆！");
+                         // localStorage.clear();
+                         // window.location.href="Login.html";
+                     }
+                     if (data.code == -2) {
+                         alert("您的权限不足，无法操作！")
+                     }
+                     if (data.code == -3) {
+                         alert("您的账号已被锁定！")
+                     }
+                     if (data.code == -4) {
+                         alert("信息不完整，无法操作！")
+                     }
+                     if (data.code == -5) {
+                         alert("数据有误，请提供准确的数据！")
+                     }
+                 }
+             })
+         }
+     }
+
+</script>
+</body>
+</html>

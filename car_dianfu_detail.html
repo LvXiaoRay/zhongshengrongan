@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-保费垫付详情</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <style type="text/css">
+        textarea{
+            width: 90%;
+            font-size: 14px;
+            margin-top: 20px;
+            text-align: left;
+            padding-left: 20px;
+            height: 200px;
+            border: dashed 1px #5BB33a;
+            padding-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="wrapper">
+
+    <div class="header_nav">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>
+                    <!--首页-->
+                    <li id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a
+                            href="#">人员保险</a></li>
+                    <li class="active" id="hover_che" style="padding-left: 20px;height: 80px"><a href="#">车辆保险</a></li>
+                    <li id="hover_cai" style="padding-left: 20px;height: 80px"><a href="#">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="company_information.html">企业介绍</a></li>
+                    <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="product_search_input" placeholder="请输入关键字"></li>
+                    <li class="product_search1">
+                        <button id="btn_search_product" class="product_search_button">搜索</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom:80px;min-height: 550px">
+
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">保费垫付详情</p>
+
+        <!-- 显示余项 -->
+        <table id="toubao_rest" style="width: 90%; margin-left: 5%;margin-right:5%;margin-top: 10px;height: auto;text-align:left;border: dashed 1px  #5BB33a; padding-left: 20px;">
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">投保人：</p></td><td><input id="uploader_username" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">垫付保费金额：</p></td><td><input id="apply_amount" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">申请时间：</p></td><td><input id="upload_date" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">预计还款时间：</p></td><td><input id="prepare_return_date" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">实际还款时间：</p></td><td><input id="real_return_date" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">经办人姓名：</p></td><td><input id="jingbanren_name" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">承保公司：</p></td><td><input id="uploader_company_name" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">当前流程阶段：</p></td><td><input id="procedure_step" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;"></p></td><td></td>
+            </tr>
+            <!--<tr style="line-height: 40px">-->
+                <!--<td><p style="padding-left: 0px;display: inline-block;"></p></td>-->
+            <!--</tr>-->
+        </table>
+
+    </div>
+    <!--container 内容结束end-->
+
+</div>
+<script src="js/lib.js"></script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script>
+    _get('/service/premium_pay/',{}).then(function (data) {
+        if (data.code === 0) {
+            var data_Object = data.data.list;
+            var id = location.search.split("?")[1];
+            // console.log(data_Object[id]);
+            document.getElementById("uploader_username").value=data_Object[id].uploader_username;
+            document.getElementById("apply_amount").value=data_Object[id].apply_amount;
+            document.getElementById("upload_date").value=data_Object[id].upload_date;
+            document.getElementById("prepare_return_date").value=data_Object[id].prepare_return_date;
+            document.getElementById("uploader_company_name").value=data_Object[id].uploader_company_name;
+            if (data_Object[id].jingbanren_name == null){
+                document.getElementById("jingbanren_name").value="未填写";
+            } else {
+                document.getElementById("jingbanren_name").value = data_Object[id].jingbanren_name;
+            }
+            if (data_Object[id].real_return_date == null){
+                document.getElementById("real_return_date").value="未填写";
+            } else {
+                document.getElementById("real_return_date").value = data_Object[id].real_return_date;
+            }
+            // 判断当前流程阶段
+            if (data_Object[id].procedure_step === 0){
+                document.getElementById("procedure_step").value="待审核";
+            } else if(data_Object[id].procedure_step === 1){
+                document.getElementById("procedure_step").value="审核通过";
+            } else if(data_Object[id].procedure_step === 2){
+                document.getElementById("procedure_step").value="投保已确认";
+            } else if(data_Object[id].procedure_step === 3) {
+                document.getElementById("procedure_step").value = "报价已上传";
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

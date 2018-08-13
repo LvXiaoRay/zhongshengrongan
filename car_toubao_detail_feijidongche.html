@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-投保办理详情</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <style type="text/css">
+        textarea{
+            width: 90%;
+            font-size: 14px;
+            margin-top: 20px;
+            text-align: left;
+            padding-left: 20px;
+            height: 200px;
+            border: dashed 1px #5BB33a;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!--------------------------------------header_user begin 顶部导航栏------------------------------------->
+
+
+    <!---------------------------------------header_user end-------------------------------------->
+    <!---------------------------------------header_nav begin 导航栏------------------------------------->
+
+
+
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom:80px;height:auto">
+
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">非机动车投保办理详情</p>
+
+        <table class="layui-table" id="table_statistics" style="width: 90%;margin-left:5%;text-align: center">
+
+            <tr style="text-align: center;background-color: #c4d69e">
+                <th style="text-align: center">序号</th>
+                <th style="text-align: center">产品名称</th>
+                <th style="text-align: center">购置单价（元）</th>
+                <th style="text-align: center">产品型号</th>
+                <th style="text-align: center">车辆唯一代码</th>
+                <th style="text-align: center">起保日期</th>
+                <th style="text-align: center">终保日期</th>
+                <th style="text-align: center">财产险保额</th>
+                <th style="text-align: center">公责险保额</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+        </table>
+        <div class="tcdPageCode"></div>
+
+        <!-- 审核确认,正在审核中 -->
+        <div id="request_shenhe" class="state_box" style="display: none;">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">
+                《投保机动车／非机动车信息表》审核确认反馈结果：</p>
+                <textarea readonly>正在审核中，请耐心等待。</textarea>
+            </div>
+            <button class="download_btn"
+                    style="display: none;font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px">
+                重新上传
+            </button>
+        </div>
+
+        <!-- 申请状态 -->
+        <div id="application_state" class="state_box" style="display: none;">
+            <div id="application_step">
+            </div>
+        </div>
+
+        <!-- 交费凭证上传 -->
+        <div id="upload_jiaofei" style="display: none; margin-left: 5%;margin-right:5%;margin-top: 10px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">交费凭证上传</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 10px;text-align: left;padding-left: 40px">
+                    注意：请将缴费凭证拍照后上传，以便后台人员录入信息。</p>
+            </div>
+            <table style="margin-top: 20px; margin-left: 30px;">
+                <tr>
+                    <td><img  id="imgPre_1_1" onclick="photo_1_1()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>
+                </tr>
+                <tr>
+                    <td><p style="font-size: 16px">交费凭证</p></td>
+
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne1" id="imgOne_1_1_1" onchange="preImg(this.id,'imgPre_1_1');" />
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px" onclick="upload_jiaofei()">上传</button>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin: 15px 0 0 10px;width: 150px;height: 50px" onclick="apply_dianfu()">申请垫付</button>
+        </div>
+
+        <!-- 发票原件收到确认 -->
+        <div id="shoudao_fapiao" style="display: none; margin-left: 5%;margin-right:5%;margin-top: 10px;height: auto;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">发票原件收到确认</p>
+                <p style="margin-top: 10px;font-size: 14px;text-align: left;padding-left: 40px">
+                    注意：如果您收到本次投保办理的发票，请点击确认。</p>
+            </div>
+            <textarea readonly>我已收到本次投保办理的发票。</textarea>
+            <button class="download_btn"
+                    style="font-size: 18px;text-align: center;margin-top: 15px; margin-bottom:20px; width: 150px;height: 50px"  onclick="confirm_fapiao()">确认
+            </button>
+        </div>
+
+        <!-- 确认反馈 -->
+        <div id="confirm_fankui" style="display: none; margin-left: 5%;margin-right:5%;margin-top: 10px;height: auto;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">确认反馈</p>
+                <p style="margin-top: 10px;font-size: 14px;text-align: left;padding-left: 40px">
+                    注意：请点击确认完成本次投保办理。</p>
+            </div>
+            <textarea readonly>本次投保办理已完成。</textarea>
+            <button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px; margin-bottom:20px; width: 150px;height: 50px" onclick="queren_fankui()">确认</button>
+        </div>
+
+        <!-- 显示余项 -->
+        <table id="toubao_rest" style="width: 90%; margin-left: 5%;margin-right:5%;margin-top: 10px;height: auto;text-align:left;border: dashed 1px  #5BB33a; padding-left: 20px; display: none">
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">产品名称：</p></td><td><input id="product_name" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">购置单价（元）：</p></td><td><input id="price" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">产品型号：</p></td><td><input id="product_kind" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">车辆唯一代码：</p></td><td><input id="unique_code" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">起保日期：</p></td><td><input id="start_date" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">终保日期：</p></td><td><input id="end_date" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">财产险保额：</p></td><td><input id="caicanxianbaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">财产险保费：</p></td><td><input id="caicanxianbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">公责险保额：</p></td><td><input id="gongzexianbaoe" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <tr style="line-height: 40px">
+                <td><p style="padding-left: 20px;display: inline-block;">公责险保费：</p></td><td><input id="gongzexianbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">总保费：</p></td><td><input id="zongbaofei" style="display: inline-block;margin-right: 40px;border: none"/></td>
+                <td><p style="padding-left: 0px;display: inline-block;">当前流程阶段：</p></td><td><input id="procedure_step" style="display: inline-block;margin-right: 40px;border: none"/></td>
+            </tr>
+            <!--<tr style="line-height: 40px">-->
+            <!--<td><p style="padding-left: 0px;display: inline-block;"></p></td>-->
+            <!--</tr>-->
+        </table>
+
+    </div>
+    <!--container 内容结束end-->
+
+
+</div>
+<script src="js/lib.js"></script>
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script>
+    // 上传图片预备工作
+    function photo_1_1() {
+        document.getElementById("imgOne_1_1_1").click();
+    }
+    // 预览图片
+    function preImg(sourceId, targetId) {
+        if (typeof FileReader === 'undefined') {
+            alert('格式错误');
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = document.getElementById(targetId);
+            img.src = this.result;
+        }
+        reader.readAsDataURL(document.getElementById(sourceId).files[0]);
+    }
+
+    // 上传交费凭证
+    function upload_jiaofei() {
+        if(document.getElementById("imgPre_1_1").getAttribute("src") === "images/add_img.png"){           // 判断是否已经上传图片
+            alert("请上传交费凭证！")
+        }
+        else{
+            _post('/service/insure/vehicle/' + vehicle_id +'/upload/',{
+                jiaofei_pingzheng:document.getElementById("imgOne_1_1_1").files[0]
+            }).then(function (data) {
+                if (data.code === 0) {
+                    //alert_simple.close();
+                    alert("已上传，请等待审核！")
+                    location.reload()
+                }
+                else {
+                    if(data.code===-1){
+                        alert("登录失效，请重新登录！");
+                        window.location.href="../login.html";
+                    }
+                    if(data.code===-2){
+                        alert("您的权限不足，无法操作！")
+                    }
+                    if(data.code===-3){
+                        alert("您的账号已被锁定！")
+                    }
+                    if(data.code===-4){
+                        alert("信息不完整，无法操作！")
+                    }
+                    if(data.code===-5){
+                        alert("数据有误，请提供准确的数据！")
+                    }
+
+                }
+            })
+        }
+
+    }
+
+    // 申请垫付
+    function apply_dianfu() {
+        window.location.href="car_dianfu.html?"+ vehicle_id;
+    }
+
+    // 确认收到发票
+    function confirm_fapiao() {
+        _get('/service/insure/vehicle/'+ vehicle_id +'/confirm/1/',{
+            is_right: 'True'
+        }).then(function (data) {
+            if (data.code === 0) {
+                location.reload()
+            }
+        });
+    }
+    // 确认反馈
+    function queren_fankui() {
+        _get('/service/insure/vehicle/'+ vehicle_id +'/confirm/2/',{
+            is_right: 'True'
+        }).then(function (data) {
+            if (data.code === 0) {
+                location.reload()
+            }
+        });
+    }
+</script>
+<script>
+    var str = "";
+    var vars = {};
+    // 简单的字符串作为变量名
+    var varname = {};
+    //批量定义
+    var page_num;//页面数量
+    vehicle_id = location.search.split("?")[1];
+    _get('/service/insure/pici/feijidongche/' + location.search.split("?")[1] + '/', {}).then(function (data) {
+        if (data.code === 0) {
+            personnel_list = data.data;
+            var id = location.search.split("?")[1];
+            if (data.data.all_count > 10) {
+                page_num = Math.ceil(data.data.all_count / 10);
+                $(".tcdPageCode").createPage({
+                    pageCount: page_num,
+                    current: 1,
+                    backFn: function (p) {
+                        _get('/service/insure/pici/feijidongche/' + location.search.split("?")[1] + '/', {
+                            limited: 10,
+                            offset: (p - 1) * 10,
+                        }).then(function (data) {
+                            if (p == page_num) {
+                                for (i = 9; i >= data.data.count; i--) {
+                                    for (j = 0; j < 10; j++) {
+                                        document.getElementById(i + "_" + j).style.display = "none";
+                                    }
+                                }
+                            }
+                            else {
+                                for (i = 0; i < 10; i++) {
+                                    for (j = 0; j < 10; j++) {
+                                        document.getElementById(i + "_" + j).style.display = "table-cell"
+                                    }
+                                }
+
+                            }
+                            for (i = 0; i < 10; i++) {
+                                document.getElementById(i + "_0").innerHTML = (p - 1) * 10 + i + 1;
+                                document.getElementById(i + "_1").innerHTML = data.data.vehicle_list[i].product_name;
+                                document.getElementById(i + "_2").innerHTML = data.data.vehicle_list[i].price;
+                                document.getElementById(i + "_3").innerHTML = data.data.vehicle_list[i].product_kind;
+                                document.getElementById(i + "_4").innerHTML = data.data.vehicle_list[i].unique_code;
+                                document.getElementById(i + "_5").innerHTML = data.data.vehicle_list[i].start_date;
+                                document.getElementById(i + "_6").innerHTML = data.data.vehicle_list[i].end_date;
+                                document.getElementById(i + "_7").innerHTML = data.data.vehicle_list[i].caicanxianbaoe;
+                                document.getElementById(i + "_8").innerHTML = data.data.vehicle_list[i].caicanxianbaofei;
+                                document.getElementById(i + "_9").innerHTML = '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail_rest_feijidongche.html?'+id+'&'+i+'">显示余项</a></span>'
+
+                            }
+                        });
+                    }
+                });
+                for (var i = 0; i < 10; i++) {
+                    varname = "td" + i;
+                    vars[varname] = ""
+                }
+                for (var i = 0; i < 10; i++) {
+                    for (var j = 0; j < 10; j++) {
+
+                        vars['td' + i] += '<td id="' + i + '_' + j + '" style="height: 37px!important;"></td>'
+                    }
+                    //vars['td'+i]+='<td id="'+i+'_'+5+'" style="height: 37px!important;"><span style="margin-right: 10px">查看个人信息</span></td>'
+                }
+
+                for (var i = 0; i < 10; i++) {
+                    str += '<tr style="height: 37px!important;">' + vars['td' + i] + '</tr>';
+                }
+                document.getElementById("table_statistics").innerHTML += str;
+                for (i = 0; i < 10; i++) {
+                    document.getElementById(i + "_0").innerHTML = (p - 1) * 10 + i + 1;
+                    document.getElementById(i + "_1").innerHTML = data.data.vehicle_list[i].product_name;
+                    document.getElementById(i + "_2").innerHTML = data.data.vehicle_list[i].price;
+                    document.getElementById(i + "_3").innerHTML = data.data.vehicle_list[i].product_kind;
+                    document.getElementById(i + "_4").innerHTML = data.data.vehicle_list[i].unique_code;
+                    document.getElementById(i + "_5").innerHTML = data.data.vehicle_list[i].start_date;
+                    document.getElementById(i + "_6").innerHTML = data.data.vehicle_list[i].end_date;
+                    document.getElementById(i + "_7").innerHTML = data.data.vehicle_list[i].caicanxianbaoe;
+                    document.getElementById(i + "_8").innerHTML = data.data.vehicle_list[i].caicanxianbaofei;
+                    document.getElementById(i + "_9").innerHTML = '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail_rest_feijidongche.html?'+id+'&'+i+'">显示余项</a></span>'
+                }
+
+
+            }
+            else {
+                $(".tcdPageCode").createPage({
+                    pageCount: 1,
+                    current: 1,
+                    backFn: function (p) {
+                        alert(p);
+                    }
+                });
+                for (i = 0; i < data.data.count; i++) {
+
+                    for (var i = 0; i < data.data.count; i++) {
+                        varname = "td" + i;
+                        vars[varname] = ""
+                    }
+                    for (var i = 0; i < data.data.count; i++) {
+                        for (var j = 0; j < 10; j++) {
+
+                            vars['td' + i] += '<td id="' + i + '_' + j + '" style="height: 37px!important;"></td>'
+                        }
+
+                    }
+                    for (var i = 0; i < data.data.count; i++) {
+                        str += '<tr style="height: 37px!important;">' + vars['td' + i] + '</tr>';
+                    }
+                    document.getElementById("table_statistics").innerHTML += str;
+                    for (i = 0; i < data.data.count; i++) {
+                        document.getElementById(i + "_0").innerHTML = i + 1;
+                        document.getElementById(i + "_1").innerHTML = data.data.vehicle_list[i].product_name;
+                        document.getElementById(i + "_2").innerHTML = data.data.vehicle_list[i].price;
+                        document.getElementById(i + "_3").innerHTML = data.data.vehicle_list[i].product_kind;
+                        document.getElementById(i + "_4").innerHTML = data.data.vehicle_list[i].unique_code;
+                        document.getElementById(i + "_5").innerHTML = data.data.vehicle_list[i].start_date;
+                        document.getElementById(i + "_6").innerHTML = data.data.vehicle_list[i].end_date;
+                        document.getElementById(i + "_7").innerHTML = data.data.vehicle_list[i].caicanxianbaoe;
+                        document.getElementById(i + "_8").innerHTML = data.data.vehicle_list[i].caicanxianbaofei;
+                        document.getElementById(i + "_9").innerHTML = '<span style="margin-right: 10px;" ><a class="check_detail" href="car_toubao_detail_rest_feijidongche.html?'+id+'&'+i+'">显示余项</a></span>'
+                    }
+
+                }
+            }
+
+
+            // 生成当前流程阶段
+            var application_step = "待审核";
+            if (personnel_list.procedure_step === 0){
+                document.getElementById("procedure_step").value="待审核";
+                $("#request_shenhe").show();
+                $("#application_state").hide();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 1){
+                document.getElementById("procedure_step").value="审核通过";
+                application_step = "审核通过";
+                $("#request_shenhe").hide();
+                $("#application_state").show();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 2 ){
+                document.getElementById("procedure_step").value="投保已确认";
+                application_step = "投保已确认";
+                $("#request_shenhe").hide();
+                $("#application_state").show();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 3){
+                document.getElementById("procedure_step").value="投保已确认";
+                application_step = "投保已确认";
+                $("#request_shenhe").hide();
+                $("#application_state").show();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 4){
+                document.getElementById("procedure_step").value="投保已确认";
+                application_step = "投保已确认";
+                $("#request_shenhe").hide();
+                $("#application_state").show();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 5){
+                // 上传交费凭证
+                $("#request_shenhe").hide();
+                $("#application_state").hide();
+                $("#upload_jiaofei").show();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 6){
+                document.getElementById("procedure_step").value="交费凭证已上传";
+                application_step = "交费凭证已上传";
+                $("#request_shenhe").hide();
+                $("#application_state").show();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 7){
+                document.getElementById("procedure_step").value="交费凭证已上传";
+                application_step = "交费凭证已上传";
+                $("#request_shenhe").hide();
+                $("#application_state").show();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 8){
+                document.getElementById("procedure_step").value="交费凭证已上传";
+                application_step = "交费凭证已上传";
+                $("#request_shenhe").hide();
+                $("#application_state").show();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 9){
+                // 这里确认发票
+                $("#request_shenhe").hide();
+                $("#application_state").hide();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").show();
+                $("#confirm_fankui").hide();
+            } else if(personnel_list.procedure_step === 10){
+                // 这里确认反馈
+                $("#request_shenhe").hide();
+                $("#application_state").hide();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").show();
+            } else if(personnel_list.procedure_step === 11){
+                document.getElementById("procedure_step").value="客户已反馈";
+                application_step = "客户已反馈";
+                $("#request_shenhe").hide();
+                $("#application_state").show();
+                $("#upload_jiaofei").hide();
+                $("#shoudao_fapiao").hide();
+                $("#confirm_fankui").hide();
+            }
+
+            document.getElementById("application_step").innerHTML = "<p style=\"font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px\">申请状态：</p>\n" +
+                "                <textarea readonly>" + application_step +"</textarea>";
+
+
+        }
+    });
+
+</script>
+<script>
+
+</script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+
+
+</body>
+</html>

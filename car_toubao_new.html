@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网-新增投保</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link href="css/gloab.css" rel="stylesheet">
+    <link href="css/index1.css" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+<div class="wrapper">
+
+    <!--container begin 内容开始-->
+    <div class="container" style="min-height: 600px;">
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">投保办理</p>
+        <div style="" class="state_box">
+            <div>
+                <p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">一、上传被保车辆明细</p>
+                <div  style="text-align: left; padding-left: 40px; padding-top: 30px;">
+                    <input type="radio" checked="checked" name="vehicle" value="True">
+                    <span style="color: #5BB33a;">机动车</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="vehicle" value="False">
+                    <span style="color: #5BB33a;">非机动车</span>
+                </div>
+                <p style="font-size: 14px;margin-top: 30px;text-align: left;padding-left: 40px">
+                    注意：被保车辆信息表,请从企业介绍的<a href="download_center.html" style="color: blue;">下载中心</a>下载模板，请选择车辆保险的投保办理中的《投保机动车／非机动车信息表》。</p>
+            </div>
+            <p id="file_name" style=" text-align: left; padding-left: 40px; margin-top: 10px;"></p>
+            <input id="file_input" style="display: none" onchange="change_word()" type="file"/>
+            <button id="wenjian_chose" class="download_btn" onclick="chose()" style="font-size: 18px;text-align: center;margin-top:80px;width: 150px;height: 50px">选择文件</button>
+        </div>
+    </div>
+
+    <!--container 内容结束end-->
+    <!--footer footer开始 begin-->
+    <div class="copyright" style="margin-top: 0%;position: relative">
+        <div class="main_width footer">
+            <div class="footer_nav">
+                <p>
+                    <a href="#">关于中盛融安金融</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安小金库</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安钱包</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安白条</a>
+                    <span class="divider">|</span>
+                    <a href="#">联系我们</a>
+                    <span class="divider">|</span>
+                    <a href="#">免责声明</a>
+                </p>
+                <p>Copyright © 2004-2016 zsra.com 中盛融安，版权所有<span class="divider">|</span>投资有风险，购买需谨慎</p>
+            </div>
+            <div class="footer_contact">
+                <div class="f_contact_time">
+                    联系我们<span>（09:00-22:00）</span>
+                </div>
+                <div class="f_contact_content">
+                    <div class="f_cc_left">
+                        <span class="f_cc_item">个人业务：400-098-8511</span>
+                        <span class="f_cc_item">企业业务：400-088-8816</span>
+                    </div>
+                    <div class="f_cc_mid">
+                        <a href="#" class="f_cc_link item_JIMI">咨询我们</a>
+                        <a href="#" class="f_cc_link item_kefu">在线客服</a>
+                    </div>
+                    <div class="f_cc_right">
+                        <a href="#" class="f_cc_link item_mail">客服邮箱</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer footer介绍 end-->
+
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/lib.js"></script>
+<script>
+    function photo_1_1() {
+        document.getElementById("imgOne_1_1_1").click();
+    }
+    function preImg(sourceId, targetId) {
+        if (typeof FileReader === 'undefined') {
+            alert('格式错误');
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var img = document.getElementById(targetId);
+            img.src = this.result;
+        }
+        reader.readAsDataURL(document.getElementById(sourceId).files[0]);
+    }
+    function change_word() {
+        document.getElementById("wenjian_chose").innerHTML = "提交文件"
+        document.getElementById("file_name").innerHTML = "文件名称：" + document.getElementById("file_input").value;
+    }
+</script>
+<script>
+    function chose() {
+        if (document.getElementById("wenjian_chose").innerHTML == "选择文件") {
+            document.getElementById("file_input").click();
+        }
+        if (document.getElementById("wenjian_chose").innerHTML == "提交文件") {
+            // console.log($('input:radio:checked').val())
+            _post('/service/insure/vehicle/', {
+                is_jidongche: $('input:radio:checked').val(),
+                insure_excel: document.getElementById("file_input").files[0]
+            }).then(function (data) {
+                if (data.code == 0) {
+                    alert("已上传，请等待审核！")
+                    window.location.href = "car_toubao_handle.html"
+                }
+                else {
+                    // alert_simple.close();
+                    if (data.code == -1) {
+                        alert("登录失效，请重新登陆！");
+                        // localStorage.clear();
+                        window.location.href="../login.html";
+                    }
+                    if (data.code == -2) {
+                        alert("您的权限不足，无法操作！")
+                    }
+                    if (data.code == -3) {
+                        alert("您的账号已被锁定！")
+                    }
+                    if (data.code == -4) {
+                        alert("信息不完整，无法操作！")
+                    }
+                    if (data.code == -5) {
+                        alert("数据有误，请提供准确的数据！")
+                    }
+                }
+            })
+        }
+    }
+    function upload() {
+        if (document.getElementById("wenjian").value == "") {
+            alert("请选择文件！")
+        }
+        else {
+        }
+    }
+</script>
+</body>
+</html>

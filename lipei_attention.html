@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投保办理</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.css">
+    <link rel="stylesheet" href="./build/css/app.css" media="all">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/jquery-labelauty.css">
+    <link rel="stylesheet" type="text/css" href="css/index_step.css">
+</head>
+<body>
+<div class="wrapper">
+    <!--------------------------------------header_user begin 顶部导航栏------------------------------------->
+    <div class="header_user" style="display: none">
+        <div class="main_width">
+            <!--<span class="tel">客服电话：400-663-6600（周一至周六 9:00-18:00）</span>-->
+            <span class="fr">
+                <span><a href="javascript:localStorage.clear();window.location.href='../login.html'">已登录，退出登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                <span class="register"><a href="#">个人中心</a></span>
+                <span class="Backlog"><a href="#">保单查询</a></span>
+                <span class="message"><a href="#">服务专区</a></span>
+                <span class="my_insurance"><a href="#">网站导航</a></span>
+            </span>
+        </div>
+    </div>
+    <!---------------------------------------header_user end-------------------------------------->
+    <!---------------------------------------header_nav begin 导航栏------------------------------------->
+    <div class="header_nav" style="display: none">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li  style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>                <!--首页-->
+                    <li  class="active" id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a  href="#">人员保险</a></li>
+                    <li  id="hover_che" style="padding-left: 20px;height: 80px"><a href="#">车辆保险</a></li>
+                    <li  id="hover_cai" style="padding-left: 20px;height: 80px"><a href="#">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="company_information.html">企业介绍</a></li>
+                    <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="product_search_input" placeholder="请输入关键字"></li>
+                    <li class="product_search1"><button id="btn_search_product" class="product_search_button">搜索</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- hover窗口-->
+    <div class="div1_1" id="hover_main1" style="display: none;width: 89%;left: 5.5%;height: 320px">
+        <div class="div1_child1" style="height: 300px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">人员保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px" >
+                    <span ><a class="all_link"  id="introduce_people" href="people_insurance_case.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承包保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a  class="all_link" id="introduce_company" href="people_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险顾问公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a class="all_link" id="introduce_company_info"  href="people_insurance_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link"  id="toubao_progress" href="toubao_progress.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle" href="touble_handle.html" >投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic" href="toubao_statistics.html" >投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people5.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">保全</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="baoquan_state" href="baoquan_statement.html">保全说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="baoquan_handle" href="baoquan_handle.html" >保全办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="baoquan_people_change" href="baoquan_people_change.html" >人员信息变更</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_baoan"  href="lipei_baoan.html">理赔报案</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_handle" href="lipei_handle.html" >理赔办理</a></span>
+                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_dianfu" href="lipei_dianfu.html" >理赔垫付</a></span>
+                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_statistic" href="lipei_statistics.html">理赔统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="company_introduce"  href="company_info.html">详细介绍</a></span>
+                </div>
+
+            </div>
+
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+        </div>
+    </div>
+
+    <div class="div1_1" id="hover_main2" style="display: none;width: 89%;left: 5.5%;height: 390px">
+        <div class="div1_child1" style="height: 370px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">车辆保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px">
+                    <span><a class="all_link" id="chexian_progress2" href="people_insurance_case.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承保保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span><a class="all_link" id="car_toubao_progress" href="people_company.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险顾问公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span><a class="all_link" id="introduce_company_info2" href="people_insurance_company.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">车投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="toubao_progress2" href="car_toubao_progress.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle2" href="car_toubao_handle.html">投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic2" href="car_toubao_statistics.html">投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">定损和修车网点查询</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="toubao_progr" href="car_dingsun.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people5.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">保费垫付</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="baoquan_state2" href="car_dianfu_progress.html">垫付流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span> <span><a
+                        class="all_link" id="baoquan_handle2" href="car_dianfu.html">保费垫付办理</a></span> <span class="fg"><a
+                        style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="dianfu_statistics" href="car_dianfu_statistics.html">保费垫付办理</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">机动车辆理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px"><span
+                        style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link" id="lipei_baoan2" href="car_lipei_progress.html">理赔流程</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="lipei_handle2" href="car_lipei_baoan.html">理赔报案</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span> <span><a class="all_link" id="lipei_statistic2" href="car_lipei_statistics.html">理赔统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear:both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">机动车辆第三者责任保险理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="company_introduce2" href="car_dianfu_need_know.html">垫付须知</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="car_third" href="car_third_dianfu.html">机动车辆第三者责任保险紧急医疗垫付</a></span>
+
+
+                </div>
+
+            </div>
+
+            <hr style=" clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">机动车批改</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="lipei_boan2" href="lipei_baoan.html">批改流程</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hndl2" href="car_add_xianzhong.html">增加险种</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_staistic2" href="car_change_baoe.html">保额变更</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hndl" href="car_tuibao_handle.html">退保办理</a></span>
+                    <span class="fg"><a href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_staisti2" href="car_change_info.html">信息变更</a></span>                    <span class="fg"><a href="#" >&nbsp;|&nbsp;</a></span>                    <span><a class="all_link" id="pigai_record" href="car_pigai_record.html">批改记录</a></span>
+
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px"><a
+                        class="all_link" id="lipei_boa2" href="company_info.html">详细信息</a></span>
+
+                </div>
+            </div>
+            <hr style="clear:both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+    </div>
+
+
+    <div class="div1_1" id="hover_main3" style="display: none;width: 89%;left: 5.5%;height: 320px">
+        <div class="div1_child1" style="height: 300px">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people1.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">财产保险方案</span>
+                <div style="color: white;margin-left: 10px;margin-bottom: 0px;margin-bottom: 0px;margin-top: 10px;line-height: 33px" >
+                    <span ><a class="all_link"  id="chexian_progress3" href="property_insurance_plan.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people2.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">承保保险公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a  class="all_link" id="car_toubao_progress3" href="property_insurance_company.html">详细信息</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people3.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px;margin-bottom: 10px">保险顾问公司信息</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span ><a class="all_link" id="introduce_company_info3"  href="property_insurance_counselor.html">详细介绍</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 30px;margin-bottom: 5px">
+                <img src="images/people4.png" style="height:60px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 10px;margin-top: 0px">投保</span>
+                <div style="color: white;margin-left: 10px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left: 0px;margin-top: 0px;margin-bottom: 10px"><a class="all_link"  id="toubao_progress3" href="property_toubao_process.html">投保流程说明</a></span>
+                    <span class="fg"><a style="font-size: 16px" href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_handle3" href="property_toubao_handle.html" >投保办理</a></span>
+                    <span class="fg"><a href="#" style="font-size: 16px">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="toubao_statistic3" href="property_touble_statistics.html" >投保统计查询</a></span>
+                </div>
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+        <div class="div1_child2" data-inline="true" style="height: 300px;width: 49%">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people6.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">资产增减</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_baoan3"  href="property_asset_increase_statement.html">资产增减说明</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_handle3" href="property_asset_increase_handle.html" >资产增减办理</a></span>
+
+                </div>
+            </div>
+            <hr style="clear: both;width: 96%;border-style: dashed;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">理赔</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lipei_bao"  href="property_lipei_progress.html">理赔流程</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipei_hand3" href="property_lipei_baoan.html" >理赔报案</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipe_hand3" href="property_lipei_handle.html" >理赔办理</a></span>
+                    <span class="fg"><a  href="#">&nbsp;|&nbsp;</a></span>
+                    <span><a class="all_link" id="lipe_had3" href="property_lipei_statistics.html" >理赔统计查询</a></span>
+
+                </div>
+
+            </div>
+
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+            <div style="display: inline;float:left;margin-left: 20px;margin-right:10px;margin-bottom: 5px">
+                <img src="images/people7.png" style="height:56px;width: 60px ">
+            </div>
+            <div style="margin-top: 0px;width: 80%;float:left;height: 56px">
+                <span style="font-size: 16px;margin-left: 0px;margin-top: 0px">企业信息</span>
+                <div style="color: white;margin-left: 0px;margin-top: 15px">
+                    <span style="font-size: 16px;margin-left:0px;margin-top: 0px;margin-bottom: 10px" ><a class="all_link" id="lpei_bao"  href="property_company_info.html">详细信息</a></span>
+                </div>
+
+            </div>
+            <hr style="clear: both;border-style: dashed;width: 96%;border-top: none;border-color: #d4d4d4">
+        </div>
+    </div>
+    <!--container begin 内容开始-->
+    <div class="container" id="contain" style="width: 85%;margin-left:5%;margin-top: 40px;margin-bottom: 40px">
+
+        <hr style="width: 95%;margin-left: 2.5%;margin-bottom: 10px;visibility: hidden">
+
+        <div style=";height: 57px;"><p class=" layui-elem-quote layui-quote-nm">理赔所需材料</p>
+
+
+        </div>
+
+        <div class="layui-elem-quote layui-quote-nm" style="height: 1230px">
+            <div class="step-list" style="margin-top: 20px">
+                <div class="intro-flow">
+                    <div class="intro-list">
+                        <div class="intro-list-left">
+                            一般索赔文件（所有索赔均须提供）
+                        </div>
+                        <div class="intro-list-right">
+                            <span>1</span>
+                            <div class="intro-list-content">
+                                1、出险通知书、索赔函;<br>
+                                2、事故证明（被保险人出具）和出险职员名单;<br>
+                                3、出险人员身份证明;
+                                <br>4、被保险人与所雇人员签订的雇佣关系证明及所雇人员的薪金证明（新入职员工可不提供）;
+                                <br>5、劳动保障行政部门出具的工伤认定证明、职业病诊断机构出具的职业病诊断证明书或职业病诊断鉴定委员会出具的职业病诊断鉴定书、劳动能力鉴定委员会做出的劳动能力鉴定结论；（本条适用于参加社保员工）;
+                                <br> 6、可开具正规发票的医疗机构出具的附有病理检查、化验检查及其他医疗仪器检查报告的医疗诊断证明、病历及医疗、医药费原始单据、结算明细表;
+                                <br>7、生效的法律文书（包括裁定书、裁决书、判决书、调解书等）;
+                                <br> 8、被保险人营业执照复印件（项目公司首次发生保险事故时只提供一次）;
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="intro-list ">
+                        <div class="intro-list-left">
+                            索赔医疗费（门诊医疗）
+                        </div>
+                        <div class="intro-list-right">
+                            <span>2</span>
+                            <div class="intro-list-content">
+                                1、一般索赔材料;
+                                <br>2、就诊医院出具的医疗发票（原件）;
+                                <br>3、门、急诊意外伤害诊断证明（原件）;
+                                <br>4、药品处方、明细单（原件）;
+                                <br>5、检查、化验、影像等报告单（如有需要提供）;
+                                <br>6、门、急诊病历（复印件）;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-list">
+                        <div class="intro-list-left">
+                            索赔医疗费（住院医疗）
+                        </div>
+                        <div class="intro-list-right">
+                            <span>3</span>
+                            <div class="intro-list-content">
+                               1、一般索赔材料;
+                                <br> 2、住院病案（包括入院记录，出院记录，病案首页，长期医嘱，临时医嘱，如有手术需提供手术记录等）;
+                                <br>3、（意外伤害）住院诊断证明;
+                                <br>4、住院费用清单;
+                                   </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-list ">
+                        <div class="intro-list-left">
+                            索赔住院补贴
+                        </div>
+                        <div class="intro-list-right">
+                            <span>4</span>
+                            <div class="intro-list-content">
+                                住院病案首页复印件并加盖医院红章;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-list ">
+                        <div class="intro-list-left">
+                            索赔伤残赔偿
+                        </div>
+                        <div class="intro-list-right">
+                            <span>5</span>
+                            <div class="intro-list-content">
+                                 1、一般索赔文件;
+                                <br>2、双方认可的医疗机构或司法鉴定机构出具的被保险人伤残程度鉴定书;
+                                <br> 3、职业病诊断证明书或鉴定书（如是职业病）;
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-list ">
+                        <div class="intro-list-left">
+                            索赔雇主法律责任扩展条款赔偿
+                        </div>
+                        <div class="intro-list-right">
+                            <span>6</span>
+                            <div class="intro-list-content">
+                                1、一般索赔文件
+                                <br>2、法院或仲裁机构出具的有关案情进展的重要文件（如民事调解书，仲裁裁决书，民事判决书或刑事判决书等）;
+                                <br>3、被保险人与雇员签定的赔偿协议或支付凭证;
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-list ">
+                        <div class="intro-list-left">
+                            超万元的大额理赔案件需增加的理赔材料
+                        </div>
+                        <div class="intro-list-right">
+                            <span>7</span>
+                            <div class="intro-list-content">
+                               1、一般索赔文件;
+                                <br>2、填写被保险人身份信息登记表;
+                                <br>3、企业三证、法定代表人/负责人及授权办理业务人员的身份证明文件。针对每个被保险人，在发生第一次超万元理赔提供相关材料后，保险公司备档，在文件有效期内，类似的赔案无需再次提供。如果文件过期，需再次提供;
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-list ">
+                        <div class="intro-list-left">
+                            已先行通过其它途径获得保险赔偿的索赔材料
+                        </div>
+                        <div class="intro-list-right">
+                            <span>8</span>
+                            <div class="intro-list-content">
+                                1、一般索赔文件
+                                <br> 2、其他公司出具保险分割单;
+                                <br>3、原始相关理赔票据复印件;
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-list  intro-list-last">
+                        <div class="intro-list-left">
+                            其它保险赔偿
+                        </div>
+                        <div class="intro-list-right">
+                            <span>9</span>
+                            <div class="intro-list-content">
+                               1、一般索赔文件;
+                                <br> 2、保险人合理要求其他证明材料;
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style=";height: 57px;margin-top: 30px;margin-bottom: 20px"><p class=" layui-elem-quote layui-quote-nm">理赔办理的注意事项</p>
+
+
+        </div>
+
+        <div class="layui-elem-quote layui-quote-nm" style="height: 900px">
+            <div class="step-list" style="margin-top: 20px">
+                <div class="intro-flow">
+                    <div class="intro-list">
+                        <div class="intro-list-left">
+                            提供理赔材料注意事项
+                        </div>
+                        <div class="intro-list-right">
+                            <span>1</span>
+                            <div class="intro-list-content">
+                               1、如涉及交通事故赔偿案件，按照责任划分，请提供肇事方保险公司出具的分割单或者结算单，如私下进行私了的，请提供调解协议书，如肇事逃逸的请提供报警记录，方可进行理赔;
+                                <br>2、如涉及其他保险报销的案件（如新农合、其他商业保险），请出示对方社保和对方保险公司出具的分割单和所有医疗材料的复印件，（需要社保部门盖章或对方保险公司盖章），方可进行理赔;
+                                <br>3、如涉及死亡案件的，死者的死亡证明，户口销户证明，火葬证或土葬证，四者必须提供一个原件，方可进行理赔;
+                                <br>4、出险后请在2年内提交理赔资料原件，逾期保险公司将不予理赔;
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="intro-list ">
+                        <div class="intro-list-left">
+                            理赔办理注意事项（索赔身故赔偿金）
+                        </div>
+                        <div class="intro-list-right">
+                            <span>2</span>
+                            <div class="intro-list-content">
+                               2.1、因保险事故致员工身故时，各项目公司要及时与员工家属签订赔偿协议，明确赔偿金额，并在协议中明确写明赔偿条件之一是协助项目公司提供索赔材料;
+                                <br>2.2、发生保险事故后，若保险公司或公估公司与出险人员或项目公司工作人员联系，要求前往项目现场当地进行查勘，请先和保险顾问联系，沟通是否予以接待及接待时的注意事项;
+                                <br>&nbsp;&nbsp;2.2.1如果直接接到公估公司电话，未经过保险顾问通知，请让公估公司先与我们保险顾问联系，不予直接接待公估查勘人员;
+                                <br>&nbsp;&nbsp;2.2.2保险顾问会将注意事项交待给项目理赔对接人员;
+                                <br>&nbsp;&nbsp;2.2.3公估公司查勘时，如果有不确定的问题请及时与我们保险顾问联系，以免影响理赔;
+                                <br>&nbsp;&nbsp;2.2.4公估公司只有调查的权利，没有取走理赔资料的权利，请各项目理赔对接人不要将理赔资料直接交给保险公估公司，需将资料原件递给保险顾问;
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-list">
+                        <div class="intro-list-left">
+                            理赔办理注意事项（索赔残疾赔偿金）
+                        </div>
+                        <div class="intro-list-right">
+                            <span>3</span>
+                            <div class="intro-list-content">
+                               3.1如涉及出险人工伤鉴定和伤残鉴定的，参保人员需要到当地劳动部门做出鉴定，未参保人员需要雇主险协议内指定机构做出鉴定，请提前通知保险顾问，需到保险公司指定的伤残鉴定机构进行鉴定，如当地没有保险公司指定的鉴定机构，保险公司认可后才可到自行安排的鉴定机构进行鉴定；保险公司方可承认理赔，也可以自行就近找有资质的鉴定中心进行鉴定，但在鉴定前需要向保险公司提供所去鉴定中心的名称和电话，保险公司核实无误的情况下，方可前往鉴定;
+                               <br>3.2如需索赔伤残赔偿金，均需按工伤鉴定标准进行鉴定，其他鉴定保险公司不予承认;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-list ">
+                        <div class="intro-list-left">
+                            理赔办理注意事项（医疗赔偿金）
+                        </div>
+                        <div class="intro-list-right">
+                            <span>4</span>
+                            <div class="intro-list-content">
+                                4.1出险后请第一时间去正规医院就医，不要自行擅自处理，如因自身原因导致病情加重的，保险公司将不予以理赔;
+                                <br>4.2出险后在医院就医时，请直接治疗与本次事故有直接关系的病情，无直接关系或有间接病情的理赔请求，保险保险将不予以理赔;
+                                <br>4.3医疗缴费票据、药费明细单，需要提供原件，如果无法提供，保险公司将不予以理赔(先行其他途径报销的情况除外)
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-list intro-list-last">
+                        <div class="intro-list-left">
+                            突发疾病身故注意事项
+                        </div>
+                        <div class="intro-list-right intro-list-last">
+                            <span>5</span>
+                            <div class="intro-list-content">
+                              突发疾病身故仅限工作时间、工作地点发生，且经抢救无效48小时内死亡的情况。请各项目公司对员工进行宣导时，强调并非所有情况下的突发疾病均可赔偿;
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div style="display: none">
+        <p style="padding-left: 60px;font-size: 15px"><span style="font-size: 15px;" class="word_color">1、</span>
+            一般索赔文件（所有索赔均须提供）：</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.1</span>出险通知书、索赔函;</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.2</span>事故证明（被保险人出具）和出险职员名单;</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.3</span>出险人员身份证明;</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.4</span>被保险人与所雇人员签订的雇佣关系证明及所雇人员的薪金证明（新入职员工可不提供）;</p>
+        <p style="width: 90%;padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.5</span>劳动保障行政部门出具的工伤认定证明、职业病诊断机构出具的职业病诊断证明书或职业病诊断鉴定委员会出具的职业病诊断鉴定书、劳动能力鉴定委员会做出的劳动能力鉴定结论；（本条适用于参加社保员工）;</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.6</span>可开具正规发票的医疗机构出具的附有病理检查、化验检查及其他医疗仪器检查报告的医疗诊断证明、病历及医疗、医药费原始单据、结算明细表;</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.7</span>生效的法律文书（包括裁定书、裁决书、判决书、调解书等）;</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.8</span>被保险人营业执照复印件（项目公司首次发生保险事故时只提供一次）;</p>
+        <p style="padding-left: 60px;font-size: 15px;margin-top: 20px"><span style="font-size: 15px;" class="word_color">2、</span>索赔医疗费：</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1</span>门诊医疗</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.1</span>一般索赔材料;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.2</span>就诊医院出具的医疗发票（原件）;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.3</span>门、急诊意外伤害诊断证明（原件）;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.4</span>药品处方、明细单（原件）;</p>
+        <p style="width: 90%;padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.5</span>检查、化验、影像等报告单（如有需要提供）;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.6</span>门、急诊病历（复印件）</p>
+        <p style="padding-left: 60px;margin-top: 5px;margin-top:15px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.2</span>住院医疗</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.2.1</span>一般索赔材料;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.2.2</span>住院病案（包括入院记录，出院记录，病案首页，长期医嘱，临时医嘱，如有手术需提供手术记录等）;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.2.3</span>（意外伤害）住院诊断证明;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.2.4</span>住院费用清单;</p>
+
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 0px"><span style="font-size: 15px;" class="word_color">3、</span>索赔住院补贴</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">3.1</span>住院病案首页复印件并加盖医院红章;</p>
+
+        <p style="padding-left: 60px;margin-top: 5px;margin-top:15px;font-size: 15px;margin-left: 0px"><span style="font-size: 15px;" class="word_color">4、</span>索赔伤残赔偿</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">4.1</span>一般索赔文件;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">4.2</span>双方认可的医疗机构或司法鉴定机构出具的被保险人伤残程度鉴定书;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">4.3</span>职业病诊断证明书或鉴定书（如是职业病）;</p>
+
+        <p style="padding-left: 60px;margin-top: 15px;font-size: 15px;margin-left: 0px"><span style="font-size: 15px;" class="word_color">5、</span>索赔身故赔偿</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">5.1</span>一般索赔文件;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">5.2</span>医院、公安部门或其他保险人认可的机构出具的被保险人的身故证明或验尸报告;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">5.3</span>户口注销证明、火化证明（或土葬证明）;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">5.4</span>户口注销证明、火化证明（或土葬证明）;</p>
+
+        <p style="padding-left: 60px;margin-top: 15px;font-size: 15px;margin-left: 0px"><span style="font-size: 15px;" class="word_color">6、</span>索赔雇主法律责任扩展条款赔偿 </p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">6.1</span>一般索赔文件;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">6.2</span>法院或仲裁机构出具的有关案情进展的重要文件（如民事调解书，仲裁裁决书，民事判决书或刑事判决书等）;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">6.3</span>被保险人与雇员签定的赔偿协议或支付凭证;</p>
+
+        <p style="padding-left: 60px;margin-top: 15px;font-size: 15px;margin-left: 0px"><span style="font-size: 15px;" class="word_color">7、</span>超万元的大额理赔案件需增加的理赔材料 </p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">7.1</span>一般索赔文件;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">7.2</span>填写被保险人身份信息登记表;</p>
+        <p style="padding-left: 70px;width:89%;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">7.3</span>企业三证、法定代表人/负责人及授权办理业务人员的身份证明文件。针对每个被保险人，在发生第一次超万元理赔提供相关材料后，保险公司备档，在文件有效期内，类似的赔案无需再次提供。如果文件过期，需再次提供;</p>
+
+
+        <p style="padding-left: 60px;margin-top: 15px;font-size: 15px;margin-left: 0px"><span style="font-size: 15px;" class="word_color">8、</span>已先行通过其它途径获得保险赔偿的索赔材料 </p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">8.1</span>一般索赔文件;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">8.2</span>其他公司出具保险分割单;</p>
+        <p style="padding-left: 70px;width:89%;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">8.3</span>原始相关理赔票据复印件;</p>
+
+        <p style="padding-left: 60px;margin-top: 15px;font-size: 15px;margin-left: 0px"><span style="font-size: 15px;" class="word_color">9、</span>其它保险赔偿 </p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">9.1</span>一般索赔文件;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">9.2</span>保险人合理要求其他证明材料;</p>
+
+        </div>
+
+
+
+
+
+
+        <div style="display: none;height: 37px;"><p style="padding-left: 60px;display: inline-block;font-size: 16px;">理赔办理的注意事项:</p>
+
+
+        </div>
+
+
+
+        <div style="display: none">
+
+
+        <p style="padding-left: 60px;font-size: 15px"><span style="font-size: 15px;" class="word_color">1、</span>
+            提供理赔材料注意事项：</p>
+        <p style="width: 90%;padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.1</span>、如涉及交通事故赔偿案件，按照责任划分，请提供肇事方保险公司出具的分割单或者结算单，如私下进行私了的，请提供调解协议书，如肇事逃逸的请提供报警记录，方可进行理赔;</p>
+        <p style="width: 90%;padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.2</span>如涉及其他保险报销的案件（如新农合、其他商业保险），请出示对方社保和对方保险公司出具的分割单和所有医疗材料的复印件，（需要社保部门盖章或对方保险公司盖章），方可进行理赔;</p>
+        <p style="width:90%;padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.3</span>如涉及死亡案件的，死者的死亡证明，户口销户证明，火葬证或土葬证，四者必须提供一个原件，方可进行理赔;</p>
+        <p style="width:90%;padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">1.4</span>出险后请在2年内提交理赔资料原件，逾期保险公司将不予理赔;</p>
+
+
+
+        <p style="padding-left: 60px;font-size: 15px;margin-top: 20px"><span style="font-size: 15px;" class="word_color">2、</span>理赔办理注意事项：</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1</span>索赔身故赔偿金注意事项:</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.1</span>因保险事故致员工身故时，各项目公司要及时与员工家属签订赔偿协议，明确赔偿金额，并在协议中明确写明赔偿条件之一是协助项目公司提供索赔材料;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.2</span>发生保险事故后，若保险公司或公估公司与出险人员或项目公司工作人员联系，要求前往项目现场当地进行查勘，请先和保险顾问联系，沟通是否予以接待及接待时的注意事项;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.2.1</span>如果直接接到公估公司电话，未经过保险顾问通知，请让公估公司先与我们保险顾问联系，不予直接接待公估查勘人员;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.2.2</span>保险顾问会将注意事项交待给项目理赔对接人员;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.2.3</span>公估公司查勘时，如果有不确定的问题请及时与我们保险顾问联系，以免影响理赔;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.1.2.4</span>公估公司只有调查的权利，没有取走理赔资料的权利，请各项目理赔对接人不要将理赔资料直接交给保险公估公司，需将资料原件递给保险顾问;</p>
+        <p style="padding-left: 60px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.2</span>索赔残疾赔偿金注意事项</p>
+        <p style="width: 90%;padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.2.1</span>如涉及出险人工伤鉴定和伤残鉴定的，参保人员需要到当地劳动部门做出鉴定，未参保人员需要雇主险协议内指定机构做出鉴定，请提前通知保险顾问，需到保险公司指定的伤残鉴定机构进行鉴定，如当地没有保险公司指定的鉴定机构，保险公司认可后才可到自行安排的鉴定机构进行鉴定；保险公司方可承认理赔，也可以自行就近找有资质的鉴定中心进行鉴定，但在鉴定前需要向保险公司提供所去鉴定中心的名称和电话，保险公司核实无误的情况下，方可前往鉴定;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.2.2</span>如需索赔伤残赔偿金，均需按工伤鉴定标准进行鉴定，其他鉴定保险公司不予承认;</p>
+        <p style="padding-left: 60px;margin-top: 5px;margin-top:15px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.3</span>医疗赔偿金注意事项</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.3.1</span>出险后请第一时间去正规医院就医，不要自行擅自处理，如因自身原因导致病情加重的，保险公司将不予以理赔;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.3.2</span>出险后在医院就医时，请直接治疗与本次事故有直接关系的病情，无直接关系或有间接病情的理赔请求，保险保险将不予以理赔;</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.3.3</span>医疗缴费票据、药费明细单，需要提供原件，如果无法提供，保险公司将不予以理赔(先行其他途径报销的情况除外)</p>
+
+
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 10px"><span style="font-size: 15px;" class="word_color">2.4</span>突发疾病身故注意事项</p>
+        <p style="padding-left: 70px;margin-top: 5px;font-size: 15px;margin-left: 20px"><span style="font-size: 15px;" class="word_color">2.4.1</span>突发疾病身故仅限工作时间、工作地点发生，且经抢救无效48小时内死亡的情况。请各项目公司对员工进行宣导时，强调并非所有情况下的突发疾病均可赔偿;</p>
+        </div>
+     <div style="text-align: center;margin-top: 20px">
+         <button class="download_btn" style="width: 100px;height: 30px" onclick="baoquan_new()">理赔办理</button>
+     </div>
+
+
+
+
+    </div >
+
+
+    <!--container 内容结束end-->
+    <!--footer footer开始 begin-->
+    <div class="copyright" style="margin-top: 40px;display: none">
+        <div class="main_width footer">
+            <div class="footer_nav">
+                <p>
+                    <a href="#">关于中盛融安金融</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安小金库</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安钱包</a>
+                    <span class="divider">|</span>
+                    <a href="#">关于中盛融安白条</a>
+                    <span class="divider">|</span>
+                    <a href="#">联系我们</a>
+                    <span class="divider">|</span>
+                    <a href="#">免责声明</a>
+                </p>
+                <p>Copyright © 2004-2016 zsra.com 中盛融安，版权所有<span class="divider">|</span>投资有风险，购买需谨慎</p>
+            </div>
+            <div class="footer_contact">
+                <div class="f_contact_time">
+                    联系我们<span>（09:00-22:00）</span>
+                </div>
+                <div class="f_contact_content">
+                    <div class="f_cc_left">
+                        <span class="f_cc_item">个人业务：400-098-8511</span>
+                        <span class="f_cc_item">企业业务：400-088-8816</span>
+                    </div>
+                    <div class="f_cc_mid">
+                        <a href="#" class="f_cc_link item_JIMI">咨询我们</a>
+                        <a href="#" class="f_cc_link item_kefu">在线客服</a>
+                    </div>
+                    <div class="f_cc_right">
+                        <a href="#" class="f_cc_link item_mail">客服邮箱</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer footer介绍 end-->
+    <div class="sideBar" style="display: none">
+        <a href="#" class="slider_block app"><i></i></a>
+        <a href="#" class="slider_block jimi"><i></i></a>
+        <a href="#" class="slider_block feedback"><i></i></a>
+        <a href="javascript:" class="slider_block backtop" id="backtop"><i></i></a>
+    </div>
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/lib.js"></script>
+<script>
+    var height_s=window.screen.height-300;
+    document.getElementById("contain").style.minHeight=height_s+"px";
+    var str=""
+    var vars = {};
+    // 简单的字符串作为变量名
+
+    var  varname={}
+    //批量定义
+    for(var i=0; i<10; i++) {
+        varname="td"+i;
+        vars[varname]=""
+    }
+    for(var i=0;i<10;i++){
+        for (var j=0;j<8;j++){
+
+            vars['td'+i]+='<td id="'+i+'_'+j+'" style="height: 37px!important;"></td>'
+        }
+        vars['td'+i]+='<td id="'+i+'_'+7+'" style="height: 37px!important;"><a class="check_detail" href="lipei_baoan_detail.html">查看详情</a></td>'
+    }
+
+    for(var i=0;i<10;i++){
+        str+='<tr style="height: 37px!important;">'+vars['td'+i]+'</tr>';
+    }
+    document.getElementById("table_statistics").innerHTML+=str;
+
+    _get('/service/claim/personnel/', {
+    }).then(function (data) {
+        if (data.code == 0) {
+            localStorage.setItem("personnel_lipeij_length",data.data.list.length);
+
+            if(data.data.list.length>10){
+                for(i=0;i<10;i++){
+                    if(i%2==1){
+                        document.getElementById(i+"_2").innerHTML="是";
+
+                    }else{
+                        document.getElementById(i+"_2").innerHTML="未生效";
+
+                    }
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_1").innerHTML="来来来";
+                    document.getElementById(i+"_3").innerHTML=2018;
+                    if(i%2==1){
+                        document.getElementById(i+"_4").innerHTML="2018-02-02";
+                    }else{
+                        document.getElementById(i+"_4").innerHTML="2018-02-09";
+                    }
+
+                }
+            }
+            else {
+                for(i=0;i<data.data.list.length;i++){
+                    if(i%2==1){
+                        document.getElementById(i+"_2").innerHTML="是";
+
+                    }else{
+                        document.getElementById(i+"_2").innerHTML="未生效";
+
+                    }
+                    document.getElementById(i+"_0").innerHTML=i+1;
+                    document.getElementById(i+"_1").innerHTML="来来来";
+                    document.getElementById(i+"_3").innerHTML=2018;
+                    if(i%2==1){
+                        document.getElementById(i+"_4").innerHTML="2018-02-02";
+                    }else{
+                        document.getElementById(i+"_4").innerHTML="2018-02-09";
+                    }
+
+                }
+            }
+
+        }
+        else {
+        }
+    }).fail(function () {
+        alert('无法链接网络！');
+    });
+    function baoquan_new() {
+        window.location.href="lipei_handle_banli.html"
+    }
+    function new_lipei() {
+        window.location.href="lipei_handle.html"
+    }
+</script>
+<script>
+    $(".tcdPageCode").createPage({
+        pageCount:50,
+        current:1,
+        backFn:function(p){
+            alert(p);
+        }
+    });
+</script>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+
+<script src="js/jquery-labelauty.js"></script>
+<script>
+    $(function(){
+        $(':input').labelauty();
+    });
+
+    function change_word() {
+        document.getElementById("wenjian_chose").innerHTML="提交文件"
+        document.getElementById("file_name").innerHTML="文件名称："+document.getElementById("file_input").value;
+    }
+    function chose() {
+        if(document.getElementById("wenjian_chose").innerHTML=="选择文件")
+        {document.getElementById("file_input").click();}
+        if(document.getElementById("wenjian_chose").innerHTML=="提交文件"){
+            _post('/service/claim/personnel/',{
+                file:document.getElementById("file_input").value,
+            }).then(function (data) {
+                if (data.code == 0) {
+                    alert("已上传，请等待审核！")
+                    window.location.href="index.html"
+                }
+                else {
+                    if(data.code==-1){
+                        alert("登录失效，请重新登陆！");
+                    }
+                    if(data.code==-2){
+                        alert("您的权限不足，无法操作！")
+                    }
+                    if(data.code==-3){
+                        alert("您的账号已被锁定！")
+                    }
+                    if(data.code==-4){
+                        alert("信息不完整，无法操作！")
+                    }
+                    if(data.code==-5){
+                        alert("数据有误，请提供准确的数据！")
+                    }
+                }
+            }).fail(
+                window.onload=function () {
+                alert("无法链接网络！")
+            })
+        }
+    }
+</script>
+<script>
+
+    document.getElementById("hover_renyuan").onmouseover = function(){
+        document.getElementById("hover_main1").style.display="block";
+    }
+    document.getElementById("hover_renyuan").onmouseout = function(){
+        document.getElementById("hover_main1").style.display="none"
+
+    }
+    document.getElementById("hover_main1").onmouseover=function () {
+        document.getElementById("hover_main1").style.display="block";
+    }
+    document.getElementById("hover_main1").onmouseout=function () {
+        document.getElementById("hover_main1").style.display="none";
+    }
+
+
+    document.getElementById("hover_che").onmouseover = function(){
+        document.getElementById("hover_main2").style.display="block";
+    }
+    document.getElementById("hover_che").onmouseout = function(){
+        document.getElementById("hover_main2").style.display="none"
+
+    }
+    document.getElementById("hover_main2").onmouseover=function () {
+        document.getElementById("hover_main2").style.display="block";
+    }
+    document.getElementById("hover_main2").onmouseout=function () {
+        document.getElementById("hover_main2").style.display="none";
+    }
+
+
+    document.getElementById("hover_cai").onmouseover = function(){
+        document.getElementById("hover_main3").style.display="block";
+    }
+    document.getElementById("hover_cai").onmouseout = function(){
+        document.getElementById("hover_main3").style.display="none"
+
+    }
+    document.getElementById("hover_main3").onmouseover=function () {
+        document.getElementById("hover_main3").style.display="block";
+    }
+    document.getElementById("hover_main3").onmouseout=function () {
+        document.getElementById("hover_main3").style.display="none";
+    }
+</script>
+</body>
+</html>

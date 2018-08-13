@@ -1,0 +1,192 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="css/my_style.css">
+    <style type="text/css">
+        body, html, #allmap {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+        #l-map {
+            height: 300px;
+            width: 100%;
+        }
+
+        #r-result {
+            width: 100%;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    </style>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=5H1cYMzqXRSKUE6WraRM7pxAb9qe5MnN"></script>
+    <title>本地搜索的数据接口</title>
+</head>
+<body>
+
+<div style="position:absolute; z-index: 1; margin-top: 20px; margin-left: 20px;">
+    <input id="keyword" style="width: 300px;height: 38px;" >
+    <input type="button" onclick="search_try()">
+</div>
+
+<div id="l-map" style="position:absolute;z-index: 2"></div>
+<!--<div id="r-result" style="position:absolute;z-index: 2"></div>-->
+
+
+<!--<ul class="menu" style="margin-bottom: 0px;height: 60px">-->
+    <!--<li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="product_search_input"-->
+                                                                           <!--placeholder="请输入关键字"></li>-->
+    <!--<li class="product_search1">-->
+        <!--<button id="btn_search_product" class="product_search_button">搜索</button>-->
+    <!--</li>-->
+<!--</ul>-->
+
+
+
+<!--<div id="searchbox" class="clearfix">-->
+    <!--<div id="searchbox-container">-->
+        <!--<div id="sole-searchbox-content" class="searchbox-content">-->
+            <!--<input id="sole-input" class="searchbox-content-common" type="text" name="word" autocomplete="off" maxlength="256" placeholder="搜地点、查公交、找路线" value="">-->
+            <!--&lt;!&ndash;<div class="input-clear" title="清空" style="display: none;"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="searchbox-content-button right-button loading-button route-button" data-title="路线" data-tooltip="1">&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<button id="search-button" data-title="搜索" data-tooltip="2"></button>-->
+    <!--<div id="toast-wrapper" class="">-->
+        <!--<div id="toast" class="success">-->
+            <!--<img class="info-tip-img" src="/wolfman/static/common/images/transparent.gif" alt="">-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("l-map");
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+
+    var options = {
+        onSearchComplete: function (results) {
+            // 判断状态是否正确
+            if (local.getStatus() == BMAP_STATUS_SUCCESS) {
+                var s = [];
+                for (var i = 0; i < results.getCurrentNumPois(); i++) {
+                    s.push(results.getPoi(i).title + ", " + results.getPoi(i).address);
+                }
+                // document.getElementById("r-result").innerHTML = s.join("<br/>");
+            }
+        }
+    };
+    var local = new BMap.LocalSearch(map, options);
+    local.search("公园");
+
+
+    function search_try() {
+        var keyword = $("input#keyword").val();
+
+        var adds = [
+            "江西省萍乡市安源区长兴馆建设路9号",
+            "蚌埠市长征路125号",
+            "蚌埠市经开区兴业街792号三星集团楼下",
+            "新乡南封曹路838",
+            "淮南市泉山西路旺泉公学西300米路南",
+            "淮上蚌固路",
+            "保定市朝阳北大街1233号",
+            "合肥市徽州大道1186号",
+            "济南市历城区王舍人街道祥泰城西北400米",
+            "亳州市工业园区淮河路南侧",
+            "昌邑206国道转盘西南角",
+            "临沂市郯城县郯东路190号",
+            "山东省滨州市黄河5号渤海11路",
+            "鱼台县北环路济宁市申科汽车销售服务有限公司鱼台分公司北97米",
+            "楚雄市鹿城镇东兴社区小姑英二村",
+            "廊坊市大城县",
+            "黑龙江大兴安岭地区塔河县207",
+            "山东省德州市德城区大学东路1527号艾家坊小区东243米",
+            "内蒙古多伦广成",
+            "云南文山汽配城",
+            "南明区青云路302号",
+            "海城市南外环",
+            "邯郸路邯郸市拖拉机厂西北60米",
+            "吉林省吉林市昌邑区辽宁路",
+            "河北省邢台市巨鹿县巨鹿镇东杨庄村西",
+            "张家口西门村康定路",
+            "绥化兰西县东环城路老电池厂对面",
+            "讷河市新客运站西厢房北走300米",
+            "河北省邢台市开发区建业路大梁庄商贸楼北侧",
+            "平山市柏坡东路",
+            "青岛市平度市青啤大道30—1号",
+            "河北省邯郸市邯郸县高新技术产业园区内（东环路与309国道交叉口东行200米路北",
+            "日照市东港区日照路北首",
+            "东港市环城西大街100号",
+            "临沂市平邑县327国道与文化路交汇处东南角",
+            "若羌县315国道1560公里处",
+            "肇庆市端州二路",
+            "太仓经济开发区板桥兴业路199号",
+            "沙井新桥107国道东侧兴业丰田店（沙井客运站往松岗2Km）",
+            "内蒙古自治区呼和浩特市新城区海东路",
+            "山东省泰安市宁阳县城北关路105号",
+            "天门市西寺",
+            "尉氏县人民路东段路南",
+            "河北省邯郸市邯郸县高新技术产业园区内（东环路与309国道交叉口东行200米路北",
+            "乌海巴青赛黄磷厂西侧",
+            "内蒙古自治区乌海市海勃湾区海达街30号",
+            "咸宁市温泉咸宁大道泉塘六组菜市场",
+            "赤壁市赤马港周画路幸福大道",
+            "汉川经济开发区荷沙路以北",
+            "邵阳市双清区长岭社区晏家渔塘2组42号",
+            "河南省新乡市红旗区文化路南段西院旁边",
+            "新野县城东新唐路看守所斜对面",
+            "陕西省咸阳市兴平市西城区金城路西段南侧南汤台",
+            "宿州道东大街235号",
+            "徐州市二环北路下淀路",
+            "溆浦城南雷达站往前300米",
+            "烟台市芝罘区机场路卧龙工业园",
+            "宜昌市伍家岗",
+            "河北省永清镇南关厢",
+            "永兴县黄泥镇灵坎桥",
+            "攸县交通北路170号",
+            "莘县莘聊路（新汽车站北500米路东）",
+            "运城市河东东街268号",
+            "桑植县澧源镇文明路（五里桥变电站内）",
+            // "张家口桥西区高家屯",
+            "正定县车站西街交通宾馆路西综合楼",
+            "忠县忠州镇瑜巴路新桥三社",
+            "淄博张恒路11号",
+            "黔南都匀市剑江北路55号",
+            "隆尧山口镇北潘庄",
+            "岚山区安东卫街道",
+            "湖北省咸宁市温泉咸宁大道泉塘六组菜市场",
+            "栖霞市迎宾路",
+            "献县东环南路32号",
+            "湖南省株洲市茶陵县云盘街1号",
+            "元谋县马元镇",
+            "兰陵县兰陵路东段",
+            "深泽县府前西街285号",
+            "邵阳市大祥区祭旗坡376号",
+            "宜章县岩泉镇红桥"
+        ];
+        //字符串方法indexOf
+        var len = adds.length;
+        var arr = [];
+        for (var i = 0; i < len; i++) {
+            //如果字符串中不包含目标字符会返回-1
+            if (adds[i].indexOf(keyword) >= 0) {
+                arr.push(adds[i]);
+                console.log(arr);
+            }
+        }
+    }
+
+</script>

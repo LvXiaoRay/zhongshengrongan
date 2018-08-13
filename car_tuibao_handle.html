@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机动车批改</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/gloab.css" rel="stylesheet">
+    <link href="css/index1.css" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/register.js"></script>
+</head>
+<body>
+<div class="wrapper">
+
+
+
+
+
+
+    <div class="header_nav">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>
+                    <!--首页-->
+                    <li id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a
+                            href="#">人员保险</a></li>
+                    <li class="active" id="hover_che" style="padding-left: 20px;height: 80px"><a href="#">车辆保险</a></li>
+                    <li id="hover_cai" style="padding-left: 20px;height: 80px"><a href="#">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="company_information.html">企业介绍</a></li>                     <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="product_search_input" style="height: 33px;" placeholder="请输入关键字"></li>
+                    <li class="product_search1">
+                        <button id="btn_search_product" class="product_search_button"
+                                style="width: 45px;height: 33px;">搜索
+                        </button>
+                    </li>       <!--关于我们-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------------------------header_nav end------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--container begin 内容开始-->
+    <div class="container" style="margin-bottom: 80px;height:auto;">
+        <p style="text-align: center;margin-top: 20px;font-size: 18px;font-weight: bolder;">退保办理</p>
+        <div style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 550px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;">
+
+            <!--选择上传的文件-->
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">
+                上传变更申请表、营业执照盖章件和保费发票红冲单</p>
+                <p style="margin-top: 10px;font-size: 14px;margin-top: 60px;text-align: left;padding-left: 40px">
+                    注意：退保办理申请表，请从企业介绍的<a href="#" style="color: blue;">下载中心</a>下载模板，请选择车辆保险的机动车批改中的《退保办理申请表》。</p>
+            </div>
+            <p id="file_name" style="    text-align: left;padding-left: 40px;margin-top: 10px;"></p>
+            <input id="file_input" multiple style="display: none" onchange="change_wenjian()" type="file"/>
+            <button id="wenjian_chose" class="download_btn" onclick="chose()"
+                    style="font-size: 18px;text-align: center;margin-top:80px;width: 150px;height: 50px">选择文件
+            </button>
+
+            <!--上传保费发票红冲单-->
+            <table style="margin-top: 20px; margin-left: 30px;">
+                <tr>
+                    <td><img id="imgPre_1" onclick="photo_1_1()" src="images/add_img.png"
+                             style=" margin-left: 10px;data-inline:true;height:155px;width:155px"/></td>
+                </tr>
+                <tr>
+                    <td><p style="font-size: 14px; color: #5BB33a;">保费发票红冲单</p></td>
+                </tr>
+            </table>
+            <input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_1"
+                   onchange="preImg(this.id,'imgPre_1');UpladFile(this.id,1);"/>
+            <!--<input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_2" onchange="preImg(this.id,'imgPre_2');UpladFile(this.id,2);" />-->
+            <button class="download_btn"
+                    style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">上传
+            </button>
+
+        </div>
+
+
+        <div style="margin-left: 5%;margin-right:5%;margin-top: 20px;height: 350px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;">
+            <div><p style="font-size: 16px;margin-top: 20px;text-align: left;padding-left: 40px">《退保办理申请表》审核确认反馈结果：</p>
+                <textarea style=" width: 90%;
+                                    font-size: 14px;
+                                    margin-top: 20px;
+                                    text-align: left;
+                                    padding-left: 20px;
+                                     height: 200px;
+                                     border: dashed;
+                                     border-width: 1px;
+                                     border-color: #5BB33a;
+                                     padding-top: 10px;
+               ">本次提交存在问题；请重新提交文件</textarea>
+            </div>
+            <button class="download_btn"
+                    style="font-size: 18px;text-align: center;margin-top: 10px;width: 150px;height: 50px">重新上传
+            </button>
+        </div>
+
+        <div style="margin-left: 5%;margin-right:5%;margin-top: 10px;height: 45px;text-align:center;border:dashed;border-width: 1px;border-color: #5BB33a;">
+            <div><p style="font-size: 16px;margin-top: 10px;text-align: left;padding-left: 40px">《退保办理申请表》审核已通过</p>
+                <!--<p style="margin-top: 10px;font-size: 14px;margin-top: 10px;text-align: left;padding-left: 40px">注意：您已经完成《被保人员信息表》的上传，请上传确认函和缴费通知单,</p>-->
+            </div>
+            <!--<table style="margin-top: 20px; margin-left: 30px;">-->
+            <!--<tr>-->
+            <!--<td><img  id="imgPre_1" onclick="photo_1_1()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>-->
+            <!--<td><img  id="imgPre_2" onclick="photo_1_2()" src="images/add_img.png" style=" margin-left: 10px;data-inline:true;height:155px;width:155px" /></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td><p style="font-size: 16px">确认函</p></td>-->
+            <!--<td><p style="font-size: 16px">缴费通知单</p></td>-->
+            <!--</tr>-->
+            <!--</table>-->
+            <!--<input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_1" onchange="preImg(this.id,'imgPre_1');UpladFile(this.id,1);" />-->
+            <!--<input style="display: none" accept="image/*" type="file" value="" name="imgOne3" id="imgOne_1_1_2" onchange="preImg(this.id,'imgPre_2');UpladFile(this.id,2);" />-->
+            <!--<button class="download_btn" style="font-size: 18px;text-align: center;margin-top: 15px;width: 150px;height: 50px">上传</button>-->
+        </div>
+
+    </div>
+
+    <!--container 内容结束end-->
+
+
+
+</div>
+
+<script src="./plugins/layui/layui.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.page.js"></script>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/lib.js"></script>
+<script>
+    $(function () {
+        //第一页的确定按钮
+        $("#btn_part1").click(function () {
+            if (!verifyCheck._click()) return;
+            $(".part1").hide();
+            $(".part2").show();
+            $(".step li").eq(1).addClass("on");
+        });
+        //第二页的确定按钮
+        $("#btn_part2").click(function () {
+            if (!verifyCheck._click()) return;
+            if (document.getElementById("wenjian").value == "") {
+                alert("请选择文件！")
+
+            } else {
+                $(".part2").hide();
+                $(".part3").show();
+            }
+
+        });
+        //第三页的确定按钮
+        $("#btn_part3").click(function () {
+            if (!verifyCheck._click()) return;
+
+            _post('/service/insure/personnel/', {
+                file: document.getElementById("wenjian").value,
+            }).then(function (data) {
+                if (data.code == 0) {
+                    //alert_simple.close();
+                    alert("已上传，请等待审核！")
+
+                    $(".part3").hide();
+                    $(".part4").show();
+                    $(".step li").eq(2).addClass("on");
+                    countdown({
+                        maxTime: 10,
+                        ing: function (c) {
+                            $("#times").text(c);
+                        },
+                        after: function () {
+                            window.location.href = "index.html";
+                        }
+                    });
+
+                }
+                else {
+                    // alert_simple.close();
+                    if (data.code == -1) {
+                        alert("登录失效，请重新登陆！");
+                        localStorage.clear();
+                        window.location.href = "Login.html";
+                    }
+                    if (data.code == -2) {
+                        alert("您的权限不足，无法操作！")
+                    }
+                    if (data.code == -3) {
+                        alert("您的账号已被锁定！")
+                    }
+                    if (data.code == -4) {
+                        alert("信息不完整，无法操作！")
+                    }
+                    if (data.code == -5) {
+                        alert("数据有误，请提供准确的数据！")
+                    }
+
+                }
+            }).fail(function () {
+
+            })
+
+
+        });
+    });
+
+    function showoutc() {
+        $(".m-sPopBg,.m-sPopCon").show();
+    }
+
+    function closeClause() {
+        $(".m-sPopBg,.m-sPopCon").hide();
+    }
+</script>
+<script>
+    function change_wenjian() {
+        document.getElementById("wenjian_chose").innerHTML = "已选择"
+        document.getElementById("file_name").innerHTML = "文件名称：" + document.getElementById("file_input").value;
+    }
+
+    function download() {
+        alert("暂无模板！")
+    }
+
+    function chose() {
+        document.getElementById("file_input").click();
+    }
+
+    function photo_1_1() {
+        document.getElementById("imgOne_1_1_1").click();
+    }
+
+    function preImg(sourceId, targetId) {
+        if (typeof FileReader === 'undefined') {
+            alert('格式错误');
+            return;
+        }
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            var img = document.getElementById(targetId);
+            img.src = this.result;
+        }
+        reader.readAsDataURL(document.getElementById(sourceId).files[0]);
+    }
+
+    function upload() {
+        if (document.getElementById("wenjian").value === "") {
+            alert("请选择文件！")
+
+        }
+        else {
+            _post('/service/insure/personnel/', {
+                file: document.getElementById("wenjian").value,
+            }).then(function (data) {
+                if (data.code == 0) {
+                    //alert_simple.close();
+                    alert("已上传，请等待审核！")
+                    window.location.href = "index.html"
+
+
+                }
+                else {
+                    // alert_simple.close();
+                    if (data.code == -1) {
+                        alert("登录失效，请重新登陆！");
+                        localStorage.clear();
+                        window.location.href = "Login.html";
+                    }
+                    if (data.code == -2) {
+                        alert("您的权限不足，无法操作！")
+                    }
+                    if (data.code == -3) {
+                        alert("您的账号已被锁定！")
+                    }
+                    if (data.code == -4) {
+                        alert("信息不完整，无法操作！")
+                    }
+                    if (data.code == -5) {
+                        alert("数据有误，请提供准确的数据！")
+                    }
+
+                }
+            }).fail(function () {
+
+            })
+
+        }
+
+    }
+</script>
+<script>
+
+
+
+</script>
+</body>
+</html>

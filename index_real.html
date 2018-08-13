@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中盛融安官网</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jquery.slideBox.css">
+    <link rel="stylesheet" href="css/my_style.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <!--------------------------------------header_user begin 顶部导航栏------------------------------------->
+    <div class="header_user">
+        <div class="main_width">
+            <!--<span class="tel">客服电话：400-663-6600（周一至周六 9:00-18:00）</span>-->
+            <span class="fr">
+
+
+                <span><a href="javascript:localStorage.clear();window.location.href='../login.html'">已登录，退出登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                <span class="register"><a href="#">个人中心</a></span>
+                <span class="Backlog"><a href="#">保单查询</a></span>
+                <span class="message"><a href="#">服务专区</a></span>
+                <span class="my_insurance"><a href="#">网站导航</a></span>
+            </span>
+        </div>
+    </div>
+
+    <!---------------------------------------header_user end-------------------------------------->
+    <!---------------------------------------header_nav begin 导航栏------------------------------------->
+    <div class="header_nav">
+        <div class="main_width" style="margin-top:0px">
+            <h1><a href="index.html" class="logo fl">中盛融安官网-互联网保险服务平台</a></h1>
+            <!--<a href="#" class="my_policy fr">我的保单</a>-->
+            <div class="menuBox" style="margin-bottom: 0px;height: 100px">
+                <ul class="menu" style="margin-bottom: 0px;height: 60px">
+                    <li  style="padding-left: 20px;height: 80px;padding-bottom: 5px"><a href="index.html">首页</a></li>                <!--首页-->
+                    <li  id="hover_renyuan" style="padding-left: 20px;height: 80px;text-align: center"><a  href="#">人员保险</a></li>
+                    <li  id="hover_che" style="padding-left: 20px;height: 80px"><a href="#">车辆保险</a></li>
+                    <li  id="hover_cai" style="padding-left: 20px;height: 80px"><a href="#">财产险</a></li>
+                    <!--保险产品-->
+                    <li style="padding-left: 20px"><a href="company_information.html">企业介绍</a></li>
+                    <li style="padding-left: 20px"><a href="download_center.html">下载中心</a></li>
+                    <!--理财中心-->
+                    <li class="product_search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="product_search_input" placeholder="请输入关键字"></li>
+                    <li class="product_search1"><button id="btn_search_product" class="product_search_button">搜索</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="table">
+        <!--<table style="width: 60%; margin-left: 20%; margin-top: 40px; text-align: center;">-->
+            <!--<tr style="width: 50%">-->
+                <!--<td><img id="index_0" src="images/index_headquarters.jpg"></td>-->
+                <!--<td><img id="index_1" src="images/index_waste.jpg"></td>-->
+                <!--<td><img id="index_2" src="images/index_water.jpg"></td>-->
+            <!--</tr>-->
+            <!--<tr style="width: 50%">-->
+                <!--<td>启迪桑德环境总部</td>-->
+                <!--<td>启迪桑德环境固废</td>-->
+                <!--<td>启迪桑德环境水务</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>&nbsp;</td>-->
+            <!--</tr>-->
+            <!--<tr style="width: 50%">-->
+                <!--<td><img id="index_3" src="images/index_environment.JPG"></td>-->
+                <!--<td><img id="index_4" src="images/index_resources.png"></td>-->
+                <!--<td><img id="index_5" src="images/index_huanwei.jpg"></td>-->
+            <!--</tr>-->
+            <!--<tr style="width: 50%">-->
+                <!--<td>启迪桑德环境托管公司</td>-->
+                <!--<td>启迪桑德再生资源</td>-->
+                <!--<td>桑德环卫</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+
+        <table id="department_table" style="width: 60%; margin-left: 20%; margin-top: 40px; text-align: center;">
+        </table>
+    </div>
+
+
+</div>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/jquery.slideBox.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/index.js"></script>
+<script src="js/lib.js"></script>
+<script type="text/javascript">
+    var department;
+    var str = "";
+
+
+    _get('/service/home/', {}).then(function (data) {
+        if (data.code === 0) {
+            // console.log(data);
+            department = data.data.department_info;
+            console.log(department);
+            for (var x in department) {
+                if (department[x] == "1") {
+                    document.getElementById("index_" + i).onclick = click1;
+                }
+
+
+                // document.getElementById("index_headquarters").onclick = null;
+
+            }
+        }
+    });
+
+
+    // ----------------------------------------------- 动态添加首页部门 start ----------------------------------------->
+    // 模拟部门数据
+    department1 = {
+        "启迪桑德环境总部": 1,
+        "启迪桑德环境固废": 1,
+        "启迪桑德环境水务": 1,
+        "启迪桑德环境托管公司": 1,
+        "启迪桑德再生资源": 1,
+        "桑德环卫": 1,
+        "部门7": 0,
+        "部门8": 0,
+        "部门9": 0,
+        "部门10": 0
+    }
+
+    var i = 0;
+    var z = 0;
+
+    // 获取部门数据中有权限的部门
+    var department2 = [];
+    for (var x in department1) {
+        if (department1[x] == "1") {
+            department2[z] = x;
+            z++;
+        }
+    }
+    // console.log(department2);
+    var e = 0;
+    var str_pic;
+    var str_info;
+
+    // 部门每行显示3个，先放能摆满三个的行
+    for (var a = 1; a <= z / 3; a++) {   // 计算有几行能摆满三个，循环几次
+        str_pic = "";   // 重置部门图片
+        str_info = "";  // 重置部门名称
+        // 先摆一行
+        for (var b = 1; b < 4; b++) {
+            e = (a - 1) * 3 + b - 1;    // 计算这是第几个部门
+            // 将部门图片摆满
+            str_pic += '<td><img id="try_" ' + e +
+                ' src="images/index_0' + e +
+                '.png" onclick="click1()"></td>'
+            // 将部门名称摆满
+            str_info += '<td>' + department2[e] + '</td>'
+        }
+        // 将三个部门组成一行
+        str += '<tr style="width:50%">' + str_pic + '</tr>' +
+            '<tr style="width:50%">' + str_info + '</tr>' +
+            '<tr><td>&nbsp;</td></tr>';
+    }
+
+    // 添加最后一行
+    str_pic = "";   // 重置部门图片
+    str_info = "";  // 重置部门名称
+    var g = 0;
+    for (var f = 0; f < z%3; f++){
+        g = z - z%3 +f;     // 最后一行部门计数
+        // 生成最后一行部门图片
+        str_pic += '<td><img id="try_" ' + g +
+            ' src="images/bank0' + g +
+            '.png" onclick="click1()"></td>'
+        // 生成最后一行部门名称
+        str_info += '<td>' + department2[g] + '</td>'
+    }
+    // 将最后一行部门添加到新的一个<tr>
+    str += '<tr style="width:50%">' + str_pic + '</tr>' +
+        '<tr style="width:50%">' + str_info + '</tr>' +
+        '<tr><td>&nbsp;</td></tr>';
+
+    // 加载动态生成的表格
+    document.getElementById("department_table").innerHTML += str;
+    // ----------------------------------------------- 动态添加首页部门 end ----------------------------------------->
+
+
+
+    function click1() {
+        window.location.href = "index.html";
+    }
+</script>
+</body>
+</html>
